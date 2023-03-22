@@ -7,4 +7,11 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="redbull_red">#E21B4D</color>
+    <color name="redbull_yellow">#FFD300</color>
+    <color name="redbull_white">#F4EBEE</color>
+    <color name="redbull_gray">#D9D4CE</color>
+    <color name="redbull_blue">#000B8D</color>
+    <color name="redbull_light_blue">#1D19AC</color>
 </resources>

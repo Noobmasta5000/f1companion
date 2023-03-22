@@ -1,3 +1,39 @@
 <resources>
-    <string name="app_name">f1companion</string>
+    <string name="app_name">F1 Companion</string>
+
+    <string-array name="team_names">
+        <item>Alfa Romeo</item>
+        <item>AlphaTauri</item>
+        <item>Alpine</item>
+        <item>Aston Martin</item>
+        <item>Ferrari</item>
+        <item>Haas</item>
+        <item>Mclaren</item>
+        <item>Mercedes</item>
+        <item>Red Bull</item>
+        <item>Williams</item>
+    </string-array>
+
+    <string-array name="driver_names">
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+    </string-array>
 </resources>
