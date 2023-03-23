@@ -71,10 +71,11 @@ public class drivers extends AppCompatActivity {
 
                                     //Get data from api and load into appropriate locations
                                     String driver_name = data.getJSONArray("response").getJSONObject(i).getJSONObject("driver").getString("name");
-                                    String driver_team =data.getJSONArray("response").getJSONObject(i).getJSONObject("team").getString("name");
-                                    String driver_number =data.getJSONArray("response").getJSONObject(i).getJSONObject("driver").getString("number");
+                                    String driver_team = data.getJSONArray("response").getJSONObject(i).getJSONObject("team").getString("name");
+                                    String driver_number = data.getJSONArray("response").getJSONObject(i).getJSONObject("driver").getString("number");
+                                    String driver_image_url = data.getJSONArray("response").getJSONObject(i).getJSONObject("driver").getString("image");
                                     textView.setText(driver_name + "\n" + driver_team + "\nDriver number: " + driver_number);
-                                    Picasso.get().load("https://media-2.api-sports.io/formula-1/drivers/25.png").into(profile_pic);
+                                    Picasso.get().load(driver_image_url).into(profile_pic);
                                     Log.d("MESSAGE", driver_name + driver_team + driver_number);
                                 } catch (JSONException e) {
                                     e.printStackTrace();
