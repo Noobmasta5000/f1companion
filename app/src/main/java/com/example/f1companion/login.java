@@ -37,16 +37,6 @@ public class login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        try {
-            JSONObject data = loadJSON.getAssetJsonData(getApplicationContext());
-            TextView textView = findViewById(R.id.textview1);
-            String name = data.getJSONArray("response").getJSONObject(0).getString("name");
-            textView.setText(name);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-
         Request request = new Request.Builder()
                 .url("https://api-formula-1.p.rapidapi.com/drivers?name=lando%20norris")
                 .get()
@@ -80,9 +70,6 @@ public class login extends AppCompatActivity {
 
             }
         });
-
-
-
     }
 
     public void goto_drivers(View view) {
