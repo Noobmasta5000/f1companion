@@ -15,6 +15,13 @@
         android:theme="@style/Theme.F1companion"
         tools:targetApi="31">
         <activity
+            android:name=".track_info"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".team_info"
             android:exported="false">
             <meta-data
@@ -37,14 +44,16 @@
         </activity>
         <activity
             android:name=".tracks"
-            android:exported="false">
+            android:exported="false"
+            android:parentActivityName=".login">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
             android:name=".teams"
-            android:exported="false">
+            android:exported="false"
+            android:parentActivityName=".login">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />

@@ -24,12 +24,16 @@
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
 
-                <ImageView
+                <TextView
                     android:id="@+id/ranking_0"
                     android:layout_width="192px"
                     android:layout_height="192px"
                     android:layout_weight="1"
-                    app:srcCompat="@mipmap/ic_launcher" />
+                    android:ems="10"
+                    android:gravity="center"
+                    android:textSize="144px"
+                    android:textColor="@color/gold"
+                    android:text="1" />
 
                 <ImageView
                     android:id="@+id/profile_pic_0"
@@ -46,7 +50,7 @@
                     android:ems="10"
                     android:gravity="center_vertical"
                     android:inputType="textMultiLine"
-                    android:text="Temporary" />
+                    android:text="" />
             </LinearLayout>
 
             <LinearLayout
@@ -54,12 +58,16 @@
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
 
-                <ImageView
+                <TextView
                     android:id="@+id/ranking_1"
                     android:layout_width="192px"
                     android:layout_height="192px"
                     android:layout_weight="1"
-                    app:srcCompat="@mipmap/ic_launcher" />
+                    android:ems="10"
+                    android:gravity="center"
+                    android:textSize="144px"
+                    android:textColor="@color/silver"
+                    android:text="2" />
 
                 <ImageView
                     android:id="@+id/profile_pic_1"
@@ -73,7 +81,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:text="Temporary"
+                    android:text=""
                     android:ems="10"
                     android:gravity="center_vertical"
                     android:inputType="textMultiLine" />
@@ -84,12 +92,16 @@
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
 
-                <ImageView
+                <TextView
                     android:id="@+id/ranking_2"
                     android:layout_width="192px"
                     android:layout_height="192px"
                     android:layout_weight="1"
-                    app:srcCompat="@mipmap/ic_launcher" />
+                    android:ems="10"
+                    android:gravity="center"
+                    android:textSize="144px"
+                    android:textColor="@color/bronze"
+                    android:text="3" />
 
                 <ImageView
                     android:id="@+id/profile_pic_2"
@@ -106,7 +118,7 @@
                     android:ems="10"
                     android:gravity="center_vertical"
                     android:inputType="textMultiLine"
-                    android:text="Temporary" />
+                    android:text="" />
             </LinearLayout>
 
             <LinearLayout
@@ -114,12 +126,15 @@
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
 
-                <ImageView
+                <TextView
                     android:id="@+id/ranking_3"
                     android:layout_width="192px"
                     android:layout_height="192px"
                     android:layout_weight="1"
-                    app:srcCompat="@mipmap/ic_launcher" />
+                    android:ems="10"
+                    android:gravity="center"
+                    android:textSize="144px"
+                    android:text="4" />
 
                 <ImageView
                     android:id="@+id/profile_pic_3"
@@ -136,7 +151,7 @@
                     android:ems="10"
                     android:gravity="center_vertical"
                     android:inputType="textMultiLine"
-                    android:text="Temporary" />
+                    android:text="" />
             </LinearLayout>
 
             <LinearLayout
@@ -144,12 +159,15 @@
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
 
-                <ImageView
+                <TextView
                     android:id="@+id/ranking_4"
                     android:layout_width="192px"
                     android:layout_height="192px"
                     android:layout_weight="1"
-                    app:srcCompat="@mipmap/ic_launcher" />
+                    android:ems="10"
+                    android:gravity="center"
+                    android:textSize="144px"
+                    android:text="5" />
 
                 <ImageView
                     android:id="@+id/profile_pic_4"
@@ -166,7 +184,7 @@
                     android:ems="10"
                     android:gravity="center_vertical"
                     android:inputType="textMultiLine"
-                    android:text="Temporary" />
+                    android:text="" />
             </LinearLayout>
 
             <LinearLayout
@@ -174,12 +192,15 @@
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
 
-                <ImageView
+                <TextView
                     android:id="@+id/ranking_5"
                     android:layout_width="192px"
                     android:layout_height="192px"
                     android:layout_weight="1"
-                    app:srcCompat="@mipmap/ic_launcher" />
+                    android:ems="10"
+                    android:gravity="center"
+                    android:textSize="144px"
+                    android:text="6" />
 
                 <ImageView
                     android:id="@+id/profile_pic_5"
@@ -196,7 +217,7 @@
                     android:ems="10"
                     android:gravity="center_vertical"
                     android:inputType="textMultiLine"
-                    android:text="Temporary" />
+                    android:text="" />
             </LinearLayout>
 
             <LinearLayout
@@ -204,12 +225,15 @@
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
 
-                <ImageView
+                <TextView
                     android:id="@+id/ranking_6"
                     android:layout_width="192px"
                     android:layout_height="192px"
                     android:layout_weight="1"
-                    app:srcCompat="@mipmap/ic_launcher" />
+                    android:ems="10"
+                    android:gravity="center"
+                    android:textSize="144px"
+                    android:text="7" />
 
                 <ImageView
                     android:id="@+id/profile_pic_6"
@@ -226,7 +250,7 @@
                     android:ems="10"
                     android:gravity="center_vertical"
                     android:inputType="textMultiLine"
-                    android:text="Temporary" />
+                    android:text="" />
             </LinearLayout>
 
             <LinearLayout
@@ -234,12 +258,15 @@
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
 
-                <ImageView
+                <TextView
                     android:id="@+id/ranking_7"
                     android:layout_width="192px"
                     android:layout_height="192px"
                     android:layout_weight="1"
-                    app:srcCompat="@mipmap/ic_launcher" />
+                    android:ems="10"
+                    android:gravity="center"
+                    android:textSize="144px"
+                    android:text="8" />
 
                 <ImageView
                     android:id="@+id/profile_pic_7"
@@ -256,7 +283,7 @@
                     android:ems="10"
                     android:gravity="center_vertical"
                     android:inputType="textMultiLine"
-                    android:text="Temporary" />
+                    android:text="" />
             </LinearLayout>
 
             <LinearLayout
@@ -264,12 +291,15 @@
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
 
-                <ImageView
+                <TextView
                     android:id="@+id/ranking_8"
                     android:layout_width="192px"
                     android:layout_height="192px"
                     android:layout_weight="1"
-                    app:srcCompat="@mipmap/ic_launcher" />
+                    android:ems="10"
+                    android:gravity="center"
+                    android:textSize="144px"
+                    android:text="9" />
 
                 <ImageView
                     android:id="@+id/profile_pic_8"
@@ -286,7 +316,7 @@
                     android:ems="10"
                     android:gravity="center_vertical"
                     android:inputType="textMultiLine"
-                    android:text="Temporary" />
+                    android:text="" />
             </LinearLayout>
 
             <LinearLayout
@@ -294,12 +324,15 @@
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
 
-                <ImageView
+                <TextView
                     android:id="@+id/ranking_9"
                     android:layout_width="192px"
                     android:layout_height="192px"
                     android:layout_weight="1"
-                    app:srcCompat="@mipmap/ic_launcher" />
+                    android:ems="10"
+                    android:gravity="center"
+                    android:textSize="144px"
+                    android:text="10" />
 
                 <ImageView
                     android:id="@+id/profile_pic_9"
@@ -316,7 +349,7 @@
                     android:ems="10"
                     android:gravity="center_vertical"
                     android:inputType="textMultiLine"
-                    android:text="Temporary" />
+                    android:text="" />
             </LinearLayout>
 
             <LinearLayout
@@ -324,12 +357,15 @@
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
 
-                <ImageView
+                <TextView
                     android:id="@+id/ranking_10"
                     android:layout_width="192px"
                     android:layout_height="192px"
                     android:layout_weight="1"
-                    app:srcCompat="@mipmap/ic_launcher" />
+                    android:ems="10"
+                    android:gravity="center"
+                    android:textSize="144px"
+                    android:text="11" />
 
                 <ImageView
                     android:id="@+id/profile_pic_10"
@@ -346,7 +382,7 @@
                     android:ems="10"
                     android:gravity="center_vertical"
                     android:inputType="textMultiLine"
-                    android:text="Temporary" />
+                    android:text="" />
             </LinearLayout>
 
             <LinearLayout
@@ -354,12 +390,15 @@
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
 
-                <ImageView
+                <TextView
                     android:id="@+id/ranking_11"
                     android:layout_width="192px"
                     android:layout_height="192px"
                     android:layout_weight="1"
-                    app:srcCompat="@mipmap/ic_launcher" />
+                    android:ems="10"
+                    android:gravity="center"
+                    android:textSize="144px"
+                    android:text="12" />
 
                 <ImageView
                     android:id="@+id/profile_pic_11"
@@ -376,7 +415,7 @@
                     android:ems="10"
                     android:gravity="center_vertical"
                     android:inputType="textMultiLine"
-                    android:text="Temporary" />
+                    android:text="" />
             </LinearLayout>
 
             <LinearLayout
@@ -384,12 +423,15 @@
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
 
-                <ImageView
+                <TextView
                     android:id="@+id/ranking_12"
                     android:layout_width="192px"
                     android:layout_height="192px"
                     android:layout_weight="1"
-                    app:srcCompat="@mipmap/ic_launcher" />
+                    android:ems="10"
+                    android:gravity="center"
+                    android:textSize="144px"
+                    android:text="13" />
 
                 <ImageView
                     android:id="@+id/profile_pic_12"
@@ -406,7 +448,7 @@
                     android:ems="10"
                     android:gravity="center_vertical"
                     android:inputType="textMultiLine"
-                    android:text="Temporary" />
+                    android:text="" />
             </LinearLayout>
 
             <LinearLayout
@@ -414,12 +456,15 @@
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
 
-                <ImageView
+                <TextView
                     android:id="@+id/ranking_13"
                     android:layout_width="192px"
                     android:layout_height="192px"
                     android:layout_weight="1"
-                    app:srcCompat="@mipmap/ic_launcher" />
+                    android:ems="10"
+                    android:gravity="center"
+                    android:textSize="144px"
+                    android:text="14" />
 
                 <ImageView
                     android:id="@+id/profile_pic_13"
@@ -436,7 +481,7 @@
                     android:ems="10"
                     android:gravity="center_vertical"
                     android:inputType="textMultiLine"
-                    android:text="Temporary" />
+                    android:text="" />
             </LinearLayout>
 
             <LinearLayout
@@ -444,12 +489,15 @@
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
 
-                <ImageView
+                <TextView
                     android:id="@+id/ranking_14"
                     android:layout_width="192px"
                     android:layout_height="192px"
                     android:layout_weight="1"
-                    app:srcCompat="@mipmap/ic_launcher" />
+                    android:ems="10"
+                    android:gravity="center"
+                    android:textSize="144px"
+                    android:text="15" />
 
                 <ImageView
                     android:id="@+id/profile_pic_14"
@@ -466,7 +514,7 @@
                     android:ems="10"
                     android:gravity="center_vertical"
                     android:inputType="textMultiLine"
-                    android:text="Temporary" />
+                    android:text="" />
             </LinearLayout>
 
             <LinearLayout
@@ -474,12 +522,15 @@
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
 
-                <ImageView
+                <TextView
                     android:id="@+id/ranking_15"
                     android:layout_width="192px"
                     android:layout_height="192px"
                     android:layout_weight="1"
-                    app:srcCompat="@mipmap/ic_launcher" />
+                    android:ems="10"
+                    android:gravity="center"
+                    android:textSize="144px"
+                    android:text="16" />
 
                 <ImageView
                     android:id="@+id/profile_pic_15"
@@ -496,7 +547,7 @@
                     android:ems="10"
                     android:gravity="center_vertical"
                     android:inputType="textMultiLine"
-                    android:text="Temporary" />
+                    android:text="" />
             </LinearLayout>
 
             <LinearLayout
@@ -504,12 +555,15 @@
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
 
-                <ImageView
+                <TextView
                     android:id="@+id/ranking_16"
                     android:layout_width="192px"
                     android:layout_height="192px"
                     android:layout_weight="1"
-                    app:srcCompat="@mipmap/ic_launcher" />
+                    android:ems="10"
+                    android:gravity="center"
+                    android:textSize="144px"
+                    android:text="17" />
 
                 <ImageView
                     android:id="@+id/profile_pic_16"
@@ -526,7 +580,7 @@
                     android:ems="10"
                     android:gravity="center_vertical"
                     android:inputType="textMultiLine"
-                    android:text="Temporary" />
+                    android:text="" />
             </LinearLayout>
 
             <LinearLayout
@@ -534,12 +588,15 @@
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
 
-                <ImageView
+                <TextView
                     android:id="@+id/ranking_17"
                     android:layout_width="192px"
                     android:layout_height="192px"
                     android:layout_weight="1"
-                    app:srcCompat="@mipmap/ic_launcher" />
+                    android:ems="10"
+                    android:gravity="center"
+                    android:textSize="144px"
+                    android:text="18" />
 
                 <ImageView
                     android:id="@+id/profile_pic_17"
@@ -556,7 +613,7 @@
                     android:ems="10"
                     android:gravity="center_vertical"
                     android:inputType="textMultiLine"
-                    android:text="Temporary" />
+                    android:text="" />
             </LinearLayout>
 
             <LinearLayout
@@ -564,12 +621,15 @@
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
 
-                <ImageView
+                <TextView
                     android:id="@+id/ranking_18"
                     android:layout_width="192px"
                     android:layout_height="192px"
                     android:layout_weight="1"
-                    app:srcCompat="@mipmap/ic_launcher" />
+                    android:ems="10"
+                    android:gravity="center"
+                    android:textSize="144px"
+                    android:text="19" />
 
                 <ImageView
                     android:id="@+id/profile_pic_18"
@@ -586,7 +646,7 @@
                     android:ems="10"
                     android:gravity="center_vertical"
                     android:inputType="textMultiLine"
-                    android:text="Temporary" />
+                    android:text="" />
             </LinearLayout>
 
             <LinearLayout
@@ -594,12 +654,15 @@
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
 
-                <ImageView
+                <TextView
                     android:id="@+id/ranking_19"
                     android:layout_width="192px"
                     android:layout_height="192px"
                     android:layout_weight="1"
-                    app:srcCompat="@mipmap/ic_launcher" />
+                    android:ems="10"
+                    android:gravity="center"
+                    android:textSize="144px"
+                    android:text="20" />
 
                 <ImageView
                     android:id="@+id/profile_pic_19"
@@ -616,7 +679,7 @@
                     android:ems="10"
                     android:gravity="center_vertical"
                     android:inputType="textMultiLine"
-                    android:text="Temporary" />
+                    android:text="" />
             </LinearLayout>
         </LinearLayout>
 

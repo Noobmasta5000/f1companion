@@ -37,43 +37,23 @@ public class login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        Request request = new Request.Builder()
-                .url("https://api-formula-1.p.rapidapi.com/drivers?name=lando%20norris")
-                .get()
-                .addHeader("X-RapidAPI-Key", "0801c0f8camshbbda9eeceafe698p181139jsn5ca56dcbfb99")
-                .addHeader("X-RapidAPI-Host", "api-formula-1.p.rapidapi.com")
-                .build();
-        client.newCall(request).enqueue(new Callback() {
-            @Override
-            public void onFailure(@NonNull Call call, @NonNull IOException e) {
-                e.printStackTrace();
-                Log.d("MESSAGE", "FAILURE");
-            }
-
-            @Override
-            public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
-                try {
-                    JSONObject jsonobject = new JSONObject(response.body().string());
-                    String name = jsonobject.getJSONArray("response").getJSONObject(0).getString("name");
-
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            TextView textView = findViewById(R.id.textview1);
-                            textView.setText(name);
-                        }
-                    });
-                    Log.d("NAME", name);
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-
-            }
-        });
     }
 
     public void goto_drivers(View view) {
         Intent intent = new Intent(this, drivers.class);
         startActivity(intent);
     }
+    public void goto_teams(View view) {
+        Intent intent = new Intent(this, teams.class);
+        startActivity(intent);
+    }
+
+    public void goto_tracks(View view) {
+        Intent intent = new Intent(this, tracks.class);
+        startActivity(intent);
+    }
 }
+
+
+
+

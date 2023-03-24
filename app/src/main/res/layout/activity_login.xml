@@ -25,7 +25,7 @@
         android:layout_marginEnd="149dp"
         android:layout_marginBottom="152dp"
         android:text="Button"
-        android:onClick="goto_drivers"
+        android:onClick="goto_teams"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

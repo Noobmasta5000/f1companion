@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
@@ -52,33 +53,34 @@ public class drivers extends AppCompatActivity {
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            for (int i = 0; i <= 19; i++) {
-                                try {
-                                    //Get id of profile pic imageview
-                                    String id = "profile_pic_" + i;
-                                    int resID = getResources().getIdentifier(id, "id", getPackageName());
-                                    ImageView profile_pic = findViewById(resID);
+                            try {
+                                for (int i = 0; i <= Integer.parseInt(data.getString("results")); i++) {
+                                    try {
+                                        //Get id of profile pic imageview
+                                        String id = "profile_pic_" + i;
+                                        int resID = getResources().getIdentifier(id, "id", getPackageName());
+                                        ImageView profile_pic = findViewById(resID);
 
-                                    //Get id of profile pic imageview
-                                    id = "ranking_" + i;
-                                    resID = getResources().getIdentifier(id, "id", getPackageName());
-                                    ImageView ranking = findViewById(resID);
+                                        //Get id of basic driver info
+                                        id = "basic_driver_info_" + i;
+                                        resID = getResources().getIdentifier(id, "id", getPackageName());
+                                        TextView textView = findViewById(resID);
 
-                                    //Get id of basic
-                                    id = "basic_driver_info_" + i;
-                                    resID = getResources().getIdentifier(id, "id", getPackageName());
-                                    TextView textView = findViewById(resID);
-
-                                    //Get data from api and load into appropriate locations
-                                    String driver_name = data.getJSONArray("response").getJSONObject(i).getJSONObject("driver").getString("name");
-                                    String driver_team =data.getJSONArray("response").getJSONObject(i).getJSONObject("team").getString("name");
-                                    String driver_number =data.getJSONArray("response").getJSONObject(i).getJSONObject("driver").getString("number");
-                                    textView.setText(driver_name + "\n" + driver_team + "\nDriver number: " + driver_number);
-                                    Picasso.get().load("https://media-2.api-sports.io/formula-1/drivers/25.png").into(profile_pic);
-                                    Log.d("MESSAGE", driver_name + driver_team + driver_number);
-                                } catch (JSONException e) {
-                                    e.printStackTrace();
+                                        //Get data from JSON and load into appropriate locations
+                                        String driver_name = data.getJSONArray("response").getJSONObject(i).getJSONObject("driver").getString("name");
+                                        String driver_team = data.getJSONArray("response").getJSONObject(i).getJSONObject("team").getString("name");
+                                        String driver_points = data.getJSONArray("response").getJSONObject(i).getString("points");
+                                        if (driver_points == "null")
+                                            driver_points = "0";
+                                        String driver_image_url = data.getJSONArray("response").getJSONObject(i).getJSONObject("driver").getString("image");
+                                        textView.setText(driver_name + "\n" + driver_team + "\n" + driver_points + " pts");
+                                        Picasso.get().load(driver_image_url).resize(192, 192).into(profile_pic);
+                                    } catch (JSONException e) {
+                                        e.printStackTrace();
+                                    }
                                 }
+                            } catch (JSONException e) {
+                                e.printStackTrace();
                             }
                         }
                     });
