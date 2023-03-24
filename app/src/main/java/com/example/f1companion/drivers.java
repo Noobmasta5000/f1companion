@@ -27,6 +27,7 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 public class drivers extends AppCompatActivity implements View.OnClickListener {
+    static JSONObject data = new JSONObject();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,47 +35,7 @@ public class drivers extends AppCompatActivity implements View.OnClickListener {
         setContentView(R.layout.activity_drivers);
         Intent intent = getIntent();
 
-        // Add onclick functionality to favorite buttons
-        CheckBox favorite_0 = findViewById(R.id.favorite_0);
-        favorite_0.setOnClickListener(this);
-        CheckBox favorite_1 = findViewById(R.id.favorite_1);
-        favorite_1.setOnClickListener(this);
-        CheckBox favorite_2 = findViewById(R.id.favorite_2);
-        favorite_2.setOnClickListener(this);
-        CheckBox favorite_3 = findViewById(R.id.favorite_3);
-        favorite_3.setOnClickListener(this);
-        CheckBox favorite_4 = findViewById(R.id.favorite_4);
-        favorite_4.setOnClickListener(this);
-        CheckBox favorite_5 = findViewById(R.id.favorite_5);
-        favorite_5.setOnClickListener(this);
-        CheckBox favorite_6 = findViewById(R.id.favorite_6);
-        favorite_6.setOnClickListener(this);
-        CheckBox favorite_7 = findViewById(R.id.favorite_7);
-        favorite_7.setOnClickListener(this);
-        CheckBox favorite_8 = findViewById(R.id.favorite_8);
-        favorite_8.setOnClickListener(this);
-        CheckBox favorite_9 = findViewById(R.id.favorite_9);
-        favorite_9.setOnClickListener(this);
-        CheckBox favorite_10 = findViewById(R.id.favorite_10);
-        favorite_10.setOnClickListener(this);
-        CheckBox favorite_11 = findViewById(R.id.favorite_11);
-        favorite_11.setOnClickListener(this);
-        CheckBox favorite_12 = findViewById(R.id.favorite_12);
-        favorite_12.setOnClickListener(this);
-        CheckBox favorite_13 = findViewById(R.id.favorite_13);
-        favorite_13.setOnClickListener(this);
-        CheckBox favorite_14 = findViewById(R.id.favorite_14);
-        favorite_14.setOnClickListener(this);
-        CheckBox favorite_15 = findViewById(R.id.favorite_15);
-        favorite_15.setOnClickListener(this);
-        CheckBox favorite_16 = findViewById(R.id.favorite_16);
-        favorite_16.setOnClickListener(this);
-        CheckBox favorite_17 = findViewById(R.id.favorite_17);
-        favorite_17.setOnClickListener(this);
-        CheckBox favorite_18 = findViewById(R.id.favorite_18);
-        favorite_18.setOnClickListener(this);
-        CheckBox favorite_19 = findViewById(R.id.favorite_19);
-        favorite_19.setOnClickListener(this);
+
 
         // Setup connection to API
         OkHttpClient client = new OkHttpClient();
@@ -94,7 +55,7 @@ public class drivers extends AppCompatActivity implements View.OnClickListener {
             @Override
             public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
                 try {
-                    JSONObject data = new JSONObject(response.body().string());
+                    data = new JSONObject(response.body().string());
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
@@ -134,89 +95,29 @@ public class drivers extends AppCompatActivity implements View.OnClickListener {
                 }
             }
         });
-
-        Button button= (Button)findViewById(R.id.favorite_0);
-        button.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view) {
-                // click handling code
-            }
-        });
     }
 
     @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.favorite_0:
-                Button favorite_0 = findViewById(R.id.favorite_0);
-                if (favorite_0.getBackground().equals(R.drawable.ic_baseline_favorite_24)) {
-                    favorite_0.setBackgroundResource(R.drawable.ic_baseline_favorite_border_24);
-                }
-                if (favorite_0.getBackground().equals(R.drawable.ic_baseline_favorite_border_24))
-                {
-                    favorite_0.setBackgroundResource(R.drawable.ic_baseline_favorite_24);
-                }
+    public void onClick(View view) {
 
-                break;
-            case R.id.favorite_1:
-                // do your code
-                break;
-            case R.id.favorite_2:
-                // do your code
-                break;
-            case R.id.favorite_3:
-                // do your code
-                break;
-            case R.id.favorite_4:
-                // do your code
-                break;
-            case R.id.favorite_5:
-                // do your code
-                break;
-            case R.id.favorite_6:
-                // do your code
-                break;
-            case R.id.favorite_7:
-                // do your code
-                break;
-            case R.id.favorite_8:
-                // do your code
-                break;
-            case R.id.favorite_9:
-                // do your code
-                break;
-            case R.id.favorite_10:
-                // do your code
-                break;
-            case R.id.favorite_11:
-                // do your code
-                break;
-            case R.id.favorite_12:
-                // do your code
-                break;
-            case R.id.favorite_13:
-                // do your code
-                break;
-            case R.id.favorite_14:
-                // do your code
-                break;
-            case R.id.favorite_15:
-                // do your code
-                break;
-            case R.id.favorite_16:
-                // do your code
-                break;
-            case R.id.favorite_17:
-                // do your code
-                break;
-            case R.id.favorite_18:
-                // do your code
-                break;
-            case R.id.favorite_19:
-                // do your code
-                break;
-            default:
-                break;
+        CheckBox cb = (CheckBox) view;
+
+        boolean[] favorites = new boolean[20];
+
+        if(cb.isChecked()) {
+            cb.setBackgroundResource(R.drawable.ic_baseline_favorite_24);
+            String name = getResources().getResourceEntryName(view.getId());
+
+            for (int i = 0; i < 20; i++)
+            {
+                if (name.contains(Integer.toString(i)))
+                {
+                    favorites[i] = true;
+                }
+            }
+
+        } else {
+            cb.setBackgroundResource(R.drawable.ic_baseline_favorite_border_24);
         }
     }
 }
