@@ -50,12 +50,13 @@
                     android:gravity="center_vertical"
                     android:inputType="textMultiLine" />
 
-                <Button
+                <CheckBox
                     android:id="@+id/favorite_0"
                     android:layout_width="0dp"
                     android:layout_height="24dp"
                     android:layout_gravity="center"
                     android:layout_weight="1"
+                    android:button="@android:color/transparent"
                     android:background="@drawable/ic_baseline_favorite_border_24" />
             </LinearLayout>
 
@@ -90,12 +91,13 @@
                     android:gravity="center_vertical"
                     android:inputType="textMultiLine" />
 
-                <Button
+                <CheckBox
                     android:id="@+id/favorite_1"
                     android:layout_width="0dp"
                     android:layout_height="24dp"
                     android:layout_gravity="center"
                     android:layout_weight="1"
+                    android:button="@android:color/transparent"
                     android:background="@drawable/ic_baseline_favorite_border_24" />
             </LinearLayout>
 
@@ -130,12 +132,13 @@
                     android:gravity="center_vertical"
                     android:inputType="textMultiLine" />
 
-                <Button
+                <CheckBox
                     android:id="@+id/favorite_2"
                     android:layout_width="0dp"
                     android:layout_height="24dp"
                     android:layout_gravity="center"
                     android:layout_weight="1"
+                    android:button="@android:color/transparent"
                     android:background="@drawable/ic_baseline_favorite_border_24" />
             </LinearLayout>
 
@@ -169,12 +172,13 @@
                     android:gravity="center_vertical"
                     android:inputType="textMultiLine" />
 
-                <Button
+                <CheckBox
                     android:id="@+id/favorite_3"
                     android:layout_width="0dp"
                     android:layout_height="24dp"
                     android:layout_gravity="center"
                     android:layout_weight="1"
+                    android:button="@android:color/transparent"
                     android:background="@drawable/ic_baseline_favorite_border_24" />
             </LinearLayout>
 
@@ -208,12 +212,13 @@
                     android:gravity="center_vertical"
                     android:inputType="textMultiLine" />
 
-                <Button
+                <CheckBox
                     android:id="@+id/favorite_4"
                     android:layout_width="0dp"
                     android:layout_height="24dp"
                     android:layout_gravity="center"
                     android:layout_weight="1"
+                    android:button="@android:color/transparent"
                     android:background="@drawable/ic_baseline_favorite_border_24" />
             </LinearLayout>
 
@@ -247,12 +252,13 @@
                     android:gravity="center_vertical"
                     android:inputType="textMultiLine" />
 
-                <Button
+                <CheckBox
                     android:id="@+id/favorite_5"
                     android:layout_width="0dp"
                     android:layout_height="24dp"
                     android:layout_gravity="center"
                     android:layout_weight="1"
+                    android:button="@android:color/transparent"
                     android:background="@drawable/ic_baseline_favorite_border_24" />
             </LinearLayout>
 
@@ -286,12 +292,13 @@
                     android:gravity="center_vertical"
                     android:inputType="textMultiLine" />
 
-                <Button
+                <CheckBox
                     android:id="@+id/favorite_6"
                     android:layout_width="0dp"
                     android:layout_height="24dp"
                     android:layout_gravity="center"
                     android:layout_weight="1"
+                    android:button="@android:color/transparent"
                     android:background="@drawable/ic_baseline_favorite_border_24" />
             </LinearLayout>
 
@@ -325,12 +332,13 @@
                     android:gravity="center_vertical"
                     android:inputType="textMultiLine" />
 
-                <Button
+                <CheckBox
                     android:id="@+id/favorite_7"
                     android:layout_width="0dp"
                     android:layout_height="24dp"
                     android:layout_gravity="center"
                     android:layout_weight="1"
+                    android:button="@android:color/transparent"
                     android:background="@drawable/ic_baseline_favorite_border_24" />
             </LinearLayout>
 
@@ -364,12 +372,13 @@
                     android:gravity="center_vertical"
                     android:inputType="textMultiLine" />
 
-                <Button
+                <CheckBox
                     android:id="@+id/favorite_8"
                     android:layout_width="0dp"
                     android:layout_height="24dp"
                     android:layout_gravity="center"
                     android:layout_weight="1"
+                    android:button="@android:color/transparent"
                     android:background="@drawable/ic_baseline_favorite_border_24" />
             </LinearLayout>
 
@@ -403,12 +412,13 @@
                     android:gravity="center_vertical"
                     android:inputType="textMultiLine" />
 
-                <Button
+                <CheckBox
                     android:id="@+id/favorite_9"
                     android:layout_width="0dp"
                     android:layout_height="24dp"
                     android:layout_gravity="center"
                     android:layout_weight="1"
+                    android:button="@android:color/transparent"
                     android:background="@drawable/ic_baseline_favorite_border_24" />
             </LinearLayout>
 
@@ -442,12 +452,13 @@
                     android:gravity="center_vertical"
                     android:inputType="textMultiLine" />
 
-                <Button
+                <CheckBox
                     android:id="@+id/favorite_10"
                     android:layout_width="0dp"
                     android:layout_height="24dp"
                     android:layout_gravity="center"
                     android:layout_weight="1"
+                    android:button="@android:color/transparent"
                     android:background="@drawable/ic_baseline_favorite_border_24" />
             </LinearLayout>
 
@@ -481,12 +492,13 @@
                     android:gravity="center_vertical"
                     android:inputType="textMultiLine" />
 
-                <Button
+                <CheckBox
                     android:id="@+id/favorite_11"
                     android:layout_width="0dp"
                     android:layout_height="24dp"
                     android:layout_gravity="center"
                     android:layout_weight="1"
+                    android:button="@android:color/transparent"
                     android:background="@drawable/ic_baseline_favorite_border_24" />
             </LinearLayout>
 
@@ -520,12 +532,13 @@
                     android:gravity="center_vertical"
                     android:inputType="textMultiLine" />
 
-                <Button
+                <CheckBox
                     android:id="@+id/favorite_12"
                     android:layout_width="0dp"
                     android:layout_height="24dp"
                     android:layout_gravity="center"
                     android:layout_weight="1"
+                    android:button="@android:color/transparent"
                     android:background="@drawable/ic_baseline_favorite_border_24" />
             </LinearLayout>
 
@@ -559,12 +572,13 @@
                     android:gravity="center_vertical"
                     android:inputType="textMultiLine" />
 
-                <Button
+                <CheckBox
                     android:id="@+id/favorite_13"
                     android:layout_width="0dp"
                     android:layout_height="24dp"
                     android:layout_gravity="center"
                     android:layout_weight="1"
+                    android:button="@android:color/transparent"
                     android:background="@drawable/ic_baseline_favorite_border_24" />
             </LinearLayout>
 
@@ -598,12 +612,13 @@
                     android:gravity="center_vertical"
                     android:inputType="textMultiLine" />
 
-                <Button
+                <CheckBox
                     android:id="@+id/favorite_14"
                     android:layout_width="0dp"
                     android:layout_height="24dp"
                     android:layout_gravity="center"
                     android:layout_weight="1"
+                    android:button="@android:color/transparent"
                     android:background="@drawable/ic_baseline_favorite_border_24" />
             </LinearLayout>
 
@@ -637,12 +652,13 @@
                     android:gravity="center_vertical"
                     android:inputType="textMultiLine" />
 
-                <Button
+                <CheckBox
                     android:id="@+id/favorite_15"
                     android:layout_width="0dp"
                     android:layout_height="24dp"
                     android:layout_gravity="center"
                     android:layout_weight="1"
+                    android:button="@android:color/transparent"
                     android:background="@drawable/ic_baseline_favorite_border_24" />
             </LinearLayout>
 
@@ -676,12 +692,13 @@
                     android:gravity="center_vertical"
                     android:inputType="textMultiLine" />
 
-                <Button
+                <CheckBox
                     android:id="@+id/favorite_16"
                     android:layout_width="0dp"
                     android:layout_height="24dp"
                     android:layout_gravity="center"
                     android:layout_weight="1"
+                    android:button="@android:color/transparent"
                     android:background="@drawable/ic_baseline_favorite_border_24" />
             </LinearLayout>
 
@@ -715,12 +732,13 @@
                     android:gravity="center_vertical"
                     android:inputType="textMultiLine" />
 
-                <Button
+                <CheckBox
                     android:id="@+id/favorite_17"
                     android:layout_width="0dp"
                     android:layout_height="24dp"
                     android:layout_gravity="center"
                     android:layout_weight="1"
+                    android:button="@android:color/transparent"
                     android:background="@drawable/ic_baseline_favorite_border_24" />
             </LinearLayout>
 
@@ -754,12 +772,13 @@
                     android:gravity="center_vertical"
                     android:inputType="textMultiLine" />
 
-                <Button
+                <CheckBox
                     android:id="@+id/favorite_18"
                     android:layout_width="0dp"
                     android:layout_height="24dp"
                     android:layout_gravity="center"
                     android:layout_weight="1"
+                    android:button="@android:color/transparent"
                     android:background="@drawable/ic_baseline_favorite_border_24" />
             </LinearLayout>
 
@@ -793,12 +812,13 @@
                     android:gravity="center_vertical"
                     android:inputType="textMultiLine" />
 
-                <Button
+                <CheckBox
                     android:id="@+id/favorite_19"
                     android:layout_width="0dp"
                     android:layout_height="24dp"
                     android:layout_gravity="center"
                     android:layout_weight="1"
+                    android:button="@android:color/transparent"
                     android:background="@drawable/ic_baseline_favorite_border_24" />
             </LinearLayout>
         </LinearLayout>

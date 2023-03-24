@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -34,45 +35,45 @@ public class drivers extends AppCompatActivity implements View.OnClickListener {
         Intent intent = getIntent();
 
         // Add onclick functionality to favorite buttons
-        Button favorite_0 = findViewById(R.id.favorite_0);
+        CheckBox favorite_0 = findViewById(R.id.favorite_0);
         favorite_0.setOnClickListener(this);
-        Button favorite_1 = findViewById(R.id.favorite_1);
+        CheckBox favorite_1 = findViewById(R.id.favorite_1);
         favorite_1.setOnClickListener(this);
-        Button favorite_2 = findViewById(R.id.favorite_2);
+        CheckBox favorite_2 = findViewById(R.id.favorite_2);
         favorite_2.setOnClickListener(this);
-        Button favorite_3 = findViewById(R.id.favorite_3);
+        CheckBox favorite_3 = findViewById(R.id.favorite_3);
         favorite_3.setOnClickListener(this);
-        Button favorite_4 = findViewById(R.id.favorite_4);
+        CheckBox favorite_4 = findViewById(R.id.favorite_4);
         favorite_4.setOnClickListener(this);
-        Button favorite_5 = findViewById(R.id.favorite_5);
+        CheckBox favorite_5 = findViewById(R.id.favorite_5);
         favorite_5.setOnClickListener(this);
-        Button favorite_6 = findViewById(R.id.favorite_6);
+        CheckBox favorite_6 = findViewById(R.id.favorite_6);
         favorite_6.setOnClickListener(this);
-        Button favorite_7 = findViewById(R.id.favorite_7);
+        CheckBox favorite_7 = findViewById(R.id.favorite_7);
         favorite_7.setOnClickListener(this);
-        Button favorite_8 = findViewById(R.id.favorite_8);
+        CheckBox favorite_8 = findViewById(R.id.favorite_8);
         favorite_8.setOnClickListener(this);
-        Button favorite_9 = findViewById(R.id.favorite_9);
+        CheckBox favorite_9 = findViewById(R.id.favorite_9);
         favorite_9.setOnClickListener(this);
-        Button favorite_10 = findViewById(R.id.favorite_10);
+        CheckBox favorite_10 = findViewById(R.id.favorite_10);
         favorite_10.setOnClickListener(this);
-        Button favorite_11 = findViewById(R.id.favorite_11);
+        CheckBox favorite_11 = findViewById(R.id.favorite_11);
         favorite_11.setOnClickListener(this);
-        Button favorite_12 = findViewById(R.id.favorite_12);
+        CheckBox favorite_12 = findViewById(R.id.favorite_12);
         favorite_12.setOnClickListener(this);
-        Button favorite_13 = findViewById(R.id.favorite_13);
+        CheckBox favorite_13 = findViewById(R.id.favorite_13);
         favorite_13.setOnClickListener(this);
-        Button favorite_14 = findViewById(R.id.favorite_14);
+        CheckBox favorite_14 = findViewById(R.id.favorite_14);
         favorite_14.setOnClickListener(this);
-        Button favorite_15 = findViewById(R.id.favorite_15);
+        CheckBox favorite_15 = findViewById(R.id.favorite_15);
         favorite_15.setOnClickListener(this);
-        Button favorite_16 = findViewById(R.id.favorite_16);
+        CheckBox favorite_16 = findViewById(R.id.favorite_16);
         favorite_16.setOnClickListener(this);
-        Button favorite_17 = findViewById(R.id.favorite_17);
+        CheckBox favorite_17 = findViewById(R.id.favorite_17);
         favorite_17.setOnClickListener(this);
-        Button favorite_18 = findViewById(R.id.favorite_18);
+        CheckBox favorite_18 = findViewById(R.id.favorite_18);
         favorite_18.setOnClickListener(this);
-        Button favorite_19 = findViewById(R.id.favorite_19);
+        CheckBox favorite_19 = findViewById(R.id.favorite_19);
         favorite_19.setOnClickListener(this);
 
         // Setup connection to API
@@ -148,7 +149,14 @@ public class drivers extends AppCompatActivity implements View.OnClickListener {
         switch (v.getId()) {
             case R.id.favorite_0:
                 Button favorite_0 = findViewById(R.id.favorite_0);
-                favorite_0.setBackgroundResource(R.drawable.ic_baseline_favorite_24);
+                if (favorite_0.getBackground().equals(R.drawable.ic_baseline_favorite_24)) {
+                    favorite_0.setBackgroundResource(R.drawable.ic_baseline_favorite_border_24);
+                }
+                if (favorite_0.getBackground().equals(R.drawable.ic_baseline_favorite_border_24))
+                {
+                    favorite_0.setBackgroundResource(R.drawable.ic_baseline_favorite_24);
+                }
+
                 break;
             case R.id.favorite_1:
                 // do your code
