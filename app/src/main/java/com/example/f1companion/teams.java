@@ -32,6 +32,7 @@ public class teams extends AppCompatActivity {
         setContentView(R.layout.activity_teams);
         Intent intent = getIntent();
 
+        // Setup connection to API
         OkHttpClient client = new OkHttpClient();
         Request request = new Request.Builder()
                 .url("https://api-formula-1.p.rapidapi.com/rankings/teams?season=2023")
@@ -61,7 +62,7 @@ public class teams extends AppCompatActivity {
                                     int resID = getResources().getIdentifier(id, "id", getPackageName());
                                     ImageView profile_pic = findViewById(resID);
 
-                                    //Get id of basic driver info
+                                    //Get id of basic driver info textview
                                     id = "basic_team_info_" + i;
                                     resID = getResources().getIdentifier(id, "id", getPackageName());
                                     TextView textView = findViewById(resID);
@@ -87,35 +88,3 @@ public class teams extends AppCompatActivity {
         });
     }
 }
-
-
-
-
-/*
-                            for (int i = 0; i <= 17; i++) {
-                                    try {
-                                    //Get id of profile pic imageview
-                                    String id = "profile_pic_" + i;
-                                    int resID = getResources().getIdentifier(id, "id", getPackageName());
-                                    ImageView profile_pic = findViewById(resID);
-
-                                    //Get id of basic driver info
-                                    id = "basic_driver_info_" + i;
-                                    resID = getResources().getIdentifier(id, "id", getPackageName());
-                                    TextView textView = findViewById(resID);
-
-                                    //Get data from JSON and load into appropriate locations
-                                    String driver_name = data.getJSONArray("response").getJSONObject(i).getJSONObject("driver").getString("name");
-                                    String driver_team = data.getJSONArray("response").getJSONObject(i).getJSONObject("team").getString("name");
-                                    String driver_points = data.getJSONArray("response").getJSONObject(i).getString("points");
-                                    if (driver_points == "null")
-                                    driver_points = "0";
-                                    String driver_image_url = data.getJSONArray("response").getJSONObject(i).getJSONObject("driver").getString("image");
-                                    textView.setText(driver_name + "\n" + driver_team + "\n" + driver_points + " pts");
-                                    Picasso.get().load(driver_image_url).resize(192,192).into(profile_pic);
-                                    Log.d("MESSAGE", driver_name + driver_team + driver_points);
-                                    } catch (JSONException e) {
-                                    e.printStackTrace();
-                                    }
-
- */

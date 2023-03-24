@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -23,7 +25,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-public class drivers extends AppCompatActivity {
+public class drivers extends AppCompatActivity implements View.OnClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +33,49 @@ public class drivers extends AppCompatActivity {
         setContentView(R.layout.activity_drivers);
         Intent intent = getIntent();
 
+        // Add onclick functionality to favorite buttons
+        Button favorite_0 = findViewById(R.id.favorite_0);
+        favorite_0.setOnClickListener(this);
+        Button favorite_1 = findViewById(R.id.favorite_1);
+        favorite_1.setOnClickListener(this);
+        Button favorite_2 = findViewById(R.id.favorite_2);
+        favorite_2.setOnClickListener(this);
+        Button favorite_3 = findViewById(R.id.favorite_3);
+        favorite_3.setOnClickListener(this);
+        Button favorite_4 = findViewById(R.id.favorite_4);
+        favorite_4.setOnClickListener(this);
+        Button favorite_5 = findViewById(R.id.favorite_5);
+        favorite_5.setOnClickListener(this);
+        Button favorite_6 = findViewById(R.id.favorite_6);
+        favorite_6.setOnClickListener(this);
+        Button favorite_7 = findViewById(R.id.favorite_7);
+        favorite_7.setOnClickListener(this);
+        Button favorite_8 = findViewById(R.id.favorite_8);
+        favorite_8.setOnClickListener(this);
+        Button favorite_9 = findViewById(R.id.favorite_9);
+        favorite_9.setOnClickListener(this);
+        Button favorite_10 = findViewById(R.id.favorite_10);
+        favorite_10.setOnClickListener(this);
+        Button favorite_11 = findViewById(R.id.favorite_11);
+        favorite_11.setOnClickListener(this);
+        Button favorite_12 = findViewById(R.id.favorite_12);
+        favorite_12.setOnClickListener(this);
+        Button favorite_13 = findViewById(R.id.favorite_13);
+        favorite_13.setOnClickListener(this);
+        Button favorite_14 = findViewById(R.id.favorite_14);
+        favorite_14.setOnClickListener(this);
+        Button favorite_15 = findViewById(R.id.favorite_15);
+        favorite_15.setOnClickListener(this);
+        Button favorite_16 = findViewById(R.id.favorite_16);
+        favorite_16.setOnClickListener(this);
+        Button favorite_17 = findViewById(R.id.favorite_17);
+        favorite_17.setOnClickListener(this);
+        Button favorite_18 = findViewById(R.id.favorite_18);
+        favorite_18.setOnClickListener(this);
+        Button favorite_19 = findViewById(R.id.favorite_19);
+        favorite_19.setOnClickListener(this);
 
+        // Setup connection to API
         OkHttpClient client = new OkHttpClient();
         Request request = new Request.Builder()
                 .url("https://api-formula-1.p.rapidapi.com/rankings/drivers?season=2023")
@@ -89,5 +133,82 @@ public class drivers extends AppCompatActivity {
                 }
             }
         });
+
+        Button button= (Button)findViewById(R.id.favorite_0);
+        button.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                // click handling code
+            }
+        });
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.favorite_0:
+                Button favorite_0 = findViewById(R.id.favorite_0);
+                favorite_0.setBackgroundResource(R.drawable.ic_baseline_favorite_24);
+                break;
+            case R.id.favorite_1:
+                // do your code
+                break;
+            case R.id.favorite_2:
+                // do your code
+                break;
+            case R.id.favorite_3:
+                // do your code
+                break;
+            case R.id.favorite_4:
+                // do your code
+                break;
+            case R.id.favorite_5:
+                // do your code
+                break;
+            case R.id.favorite_6:
+                // do your code
+                break;
+            case R.id.favorite_7:
+                // do your code
+                break;
+            case R.id.favorite_8:
+                // do your code
+                break;
+            case R.id.favorite_9:
+                // do your code
+                break;
+            case R.id.favorite_10:
+                // do your code
+                break;
+            case R.id.favorite_11:
+                // do your code
+                break;
+            case R.id.favorite_12:
+                // do your code
+                break;
+            case R.id.favorite_13:
+                // do your code
+                break;
+            case R.id.favorite_14:
+                // do your code
+                break;
+            case R.id.favorite_15:
+                // do your code
+                break;
+            case R.id.favorite_16:
+                // do your code
+                break;
+            case R.id.favorite_17:
+                // do your code
+                break;
+            case R.id.favorite_18:
+                // do your code
+                break;
+            case R.id.favorite_19:
+                // do your code
+                break;
+            default:
+                break;
+        }
     }
 }
