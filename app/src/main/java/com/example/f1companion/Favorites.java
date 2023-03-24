@@ -27,6 +27,7 @@ public class Favorites extends AppCompatActivity {
         auth = FirebaseAuth.getInstance();
         button = findViewById(R.id.btn_logout);
         user = auth.getCurrentUser();
+
         /*
         if(user == null){
             Intent intent = new Intent(getApplicationContext(), login.class);
