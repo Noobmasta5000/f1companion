@@ -52,13 +52,13 @@
 
                 <CheckBox
                     android:id="@+id/favorite_0"
-                    android:layout_width="0dp"
-                    android:layout_height="24dp"
+                    android:layout_width="96px"
+                    android:layout_height="96px"
                     android:layout_gravity="center"
-                    android:layout_weight="1"
-                    android:onClick="onClick"
+                    android:layout_weight="0"
+                    android:background="@drawable/ic_baseline_favorite_border_24"
                     android:button="@android:color/transparent"
-                    android:background="@drawable/ic_baseline_favorite_border_24" />
+                    android:onClick="onClick" />
             </LinearLayout>
 
             <LinearLayout

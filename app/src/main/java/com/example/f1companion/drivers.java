@@ -12,6 +12,7 @@ import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
@@ -19,6 +20,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -28,6 +31,7 @@ import okhttp3.Response;
 
 public class drivers extends AppCompatActivity implements View.OnClickListener {
     static JSONObject data = new JSONObject();
+    static List<String> favorites = new ArrayList<String>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,7 +64,7 @@ public class drivers extends AppCompatActivity implements View.OnClickListener {
                         @Override
                         public void run() {
                             try {
-                                for (int i = 0; i <= Integer.parseInt(data.getString("results")); i++) {
+                                for (int i = 0; i < Integer.parseInt(data.getString("results")); i++) {
                                     try {
                                         //Get id of profile pic imageview
                                         String id = "profile_pic_" + i;
@@ -101,23 +105,27 @@ public class drivers extends AppCompatActivity implements View.OnClickListener {
     public void onClick(View view) {
 
         CheckBox cb = (CheckBox) view;
-
-        boolean[] favorites = new boolean[20];
+        int num = Integer.parseInt(getResources().getResourceEntryName(view.getId()).replace("favorite_",""));
 
         if(cb.isChecked()) {
-            cb.setBackgroundResource(R.drawable.ic_baseline_favorite_24);
-            String name = getResources().getResourceEntryName(view.getId());
-
-            for (int i = 0; i < 20; i++)
-            {
-                if (name.contains(Integer.toString(i)))
-                {
-                    favorites[i] = true;
-                }
+            try {
+                favorites.add(data.getJSONArray("response").getJSONObject(num).getJSONObject("driver").getString("id"));
+                cb.setBackgroundResource(R.drawable.ic_baseline_favorite_24);
+                Toast.makeText(this, "Added " + data.getJSONArray("response").getJSONObject(num).getJSONObject("driver").getString("name") + " to favorites", Toast.LENGTH_SHORT).show();
+                Log.d("FAVORITES",favorites.toString());
+            } catch (JSONException e) {
+                e.printStackTrace();
             }
-
         } else {
-            cb.setBackgroundResource(R.drawable.ic_baseline_favorite_border_24);
+            try {
+                String id = data.getJSONArray("response").getJSONObject(num).getJSONObject("driver").getString("id");
+                favorites.remove(id);
+                cb.setBackgroundResource(R.drawable.ic_baseline_favorite_border_24);
+                Toast.makeText(this, "Removed " + data.getJSONArray("response").getJSONObject(num).getJSONObject("driver").getString("name")+ " from favorites", Toast.LENGTH_SHORT).show();
+                Log.d("FAVORITES",favorites.toString());
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
         }
     }
 }
