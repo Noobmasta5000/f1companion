@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "410896668497",
+    "project_id": "f1companion-firebase-54389",
+    "storage_bucket": "f1companion-firebase-54389.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:410896668497:android:388b857be7aec024e82570",
+        "android_client_info": {
+          "package_name": "com.example.f1companion"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "410896668497-l88umvjscn6lqus30qc2v2r2el7dhm1h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDq86jxgNMa6vIxN3rRXV5P7HiCuiBpAjE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "410896668497-l88umvjscn6lqus30qc2v2r2el7dhm1h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
