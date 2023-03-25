@@ -127,5 +127,8 @@ public class drivers extends AppCompatActivity implements View.OnClickListener {
                 e.printStackTrace();
             }
         }
+
+        // Add code to save favorites list to firebase
+
     }
 }
