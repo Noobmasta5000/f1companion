@@ -3,8 +3,12 @@ package com.example.f1companion;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
+import android.text.SpannableString;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -24,26 +28,38 @@ import okhttp3.Response;
 
 public class track_info extends AppCompatActivity {
     static JSONObject data = new JSONObject();
-    String id;
-    int matching_id;
+    private String id;
+    private int matching_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_track_info);
 
-        String string;
-        TextView textview;
-
         // Get data from bundle and load into appropriate locations
         Bundle bundle = getIntent().getExtras();
         try {
             data = new JSONObject(bundle.getString("Track"));
             id = data.getJSONObject("competition").getString("id");
+            TextView textview;
             Log.d("ID", id);
 
-            // Load fastest lap data
-            string = data.getJSONObject("circuit").getString("image");
+            // Load track fastest lap this season
+            String track_lap_record_season_time = data.getJSONObject("fastest_lap").getString("time");
+            if (track_lap_record_season_time.equals("null"))
+                track_lap_record_season_time = "No Record";
+            textview = findViewById(R.id.track_lap_best);
+            textview.setText(track_lap_record_season_time);
+
+            // Load track race day
+            String track_race_time = data.getString("date").substring(0, Math.min(data.getString("date").length(), 10));
+            textview = findViewById(R.id.track_race_time);
+            textview.setText(track_race_time);
+
+            // Load track race status
+            String track_race_status = data.getString("status");
+            textview = findViewById(R.id.track_race_status);
+            textview.setText(track_race_status);
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -93,20 +109,22 @@ public class track_info extends AppCompatActivity {
                                 Picasso.get().load(track_image_url).fit().into(track_image);
 
                                 // Load track name
-                                String track_name = data.getJSONArray("response").getJSONObject(matching_id).getJSONObject("competition").getString("name")
-                                        + "\n" +
+                                String track_name = " " +
+                                        data.getJSONArray("response").getJSONObject(matching_id).getJSONObject("competition").getString("name") +
+                                        "\n " +
                                         data.getJSONArray("response").getJSONObject(matching_id).getString("name");
                                 textview = findViewById(R.id.track_name);
                                 textview.setText(track_name);
 
                                 // Load track location
-                                String track_location = data.getJSONArray("response").getJSONObject(matching_id).getJSONObject("competition").getJSONObject("location").getString("city")
-                                        + ",\n" +
+                                String track_location =
+                                        data.getJSONArray("response").getJSONObject(matching_id).getJSONObject("competition").getJSONObject("location").getString("city") +
+                                        ",\n" +
                                         data.getJSONArray("response").getJSONObject(matching_id).getJSONObject("competition").getJSONObject("location").getString("country");
                                 textview = findViewById(R.id.track_location);
                                 textview.setText(track_location);
 
-                                // Load track length
+                                // Load race length
                                 String track_total_length = data.getJSONArray("response").getJSONObject(matching_id).getString("race_distance");
                                 textview = findViewById(R.id.track_total_length);
                                 textview.setText(track_total_length);
@@ -121,6 +139,21 @@ public class track_info extends AppCompatActivity {
                                 textview = findViewById(R.id.track_lap_count);
                                 textview.setText(track_lap_count);
 
+                                // Load track lap historical record
+                                String track_lap_record_historical_time = data.getJSONArray("response").getJSONObject(matching_id).getJSONObject("lap_record").getString("time");
+                                if (track_lap_record_historical_time.equals("null"))
+                                    track_lap_record_historical_time = "No Record";
+                                textview = findViewById(R.id.track_lap_record);
+                                textview.setText(track_lap_record_historical_time);
+
+                                String track_lap_record_historical_driver = data.getJSONArray("response").getJSONObject(matching_id).getJSONObject("lap_record").getString("driver")
+                                        + " ("
+                                        + data.getJSONArray("response").getJSONObject(matching_id).getJSONObject("lap_record").getString("year") + ")";
+                                if (track_lap_record_historical_driver.equals("null (null)"))
+                                    track_lap_record_historical_driver = "";
+                                textview = findViewById(R.id.track_lap_record_footer);
+                                textview.setText(track_lap_record_historical_driver);
+
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
@@ -131,5 +164,16 @@ public class track_info extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    public void goto_track_map(View view) {
+/*
+        Intent intent = new Intent(this, track_info.class);
+        Bundle bundle = new Bundle();
+        bundle.putString("", );
+        intent.putExtras(bundle);
+        startActivity(intent);
+
+ */
     }
 }
