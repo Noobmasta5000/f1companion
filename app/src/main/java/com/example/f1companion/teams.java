@@ -25,6 +25,7 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 public class teams extends AppCompatActivity {
+    static JSONObject data = new JSONObject();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +51,7 @@ public class teams extends AppCompatActivity {
             @Override
             public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
                 try {
-                    JSONObject data = new JSONObject(response.body().string());
+                    data = new JSONObject(response.body().string());
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
@@ -74,7 +75,7 @@ public class teams extends AppCompatActivity {
                                         team_points = "0";
                                     String driver_image_url = data.getJSONArray("response").getJSONObject(i).getJSONObject("team").getString("logo");
                                     textView.setText(team_name + "\n" + team_points + " pts");
-                                    Picasso.get().load(driver_image_url).resize(340,192).into(profile_pic);
+                                    Picasso.get().load(driver_image_url).fit().into(profile_pic);
                                 }
                             } catch (JSONException e) {
                                 e.printStackTrace();

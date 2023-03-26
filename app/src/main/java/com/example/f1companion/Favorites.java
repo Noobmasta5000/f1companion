@@ -57,4 +57,14 @@ public class Favorites extends AppCompatActivity {
         Intent intent = new Intent(this, drivers.class);
         startActivity(intent);
     }
+
+    public void goto_teams(View view) {
+        Intent intent = new Intent(this, teams.class);
+        startActivity(intent);
+    }
+
+    public void goto_tracks(View view) {
+        Intent intent = new Intent(this, tracks.class);
+        startActivity(intent);
+    }
 }
