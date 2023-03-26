@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">F1 Companion</string>
+    <string name="google_map_api_key">AIzaSyBy-FaCnfurEY_jxKLFh_xdyKztVo_xdLU</string>
 
     <string-array name="team_names">
         <item>Alfa Romeo</item>
@@ -28,4 +29,5 @@
     <string name="password">Password</string>
     <string name="login">login</string>
     <string name="logout">logout</string>
+    <string name="title_activity_track_map">track_map</string>
 </resources>

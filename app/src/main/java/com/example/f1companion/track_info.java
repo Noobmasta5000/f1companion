@@ -167,13 +167,11 @@ public class track_info extends AppCompatActivity {
     }
 
     public void goto_track_map(View view) {
-/*
-        Intent intent = new Intent(this, track_info.class);
-        Bundle bundle = new Bundle();
-        bundle.putString("", );
-        intent.putExtras(bundle);
+        Intent intent = new Intent(this, track_map.class);
+        //Bundle bundle = new Bundle();
+        //bundle.putString("", );
+        //intent.putExtras(bundle);
         startActivity(intent);
 
- */
     }
 }

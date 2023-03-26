@@ -40,6 +40,7 @@
             android:id="@+id/track_image"
             android:layout_width="match_parent"
             android:layout_height="606px"
+            android:onClick="goto_track_map"
             app:srcCompat="@drawable/track" />
 
         <LinearLayout
@@ -258,10 +259,7 @@
                         android:fontFamily="@font/formula1_regular"
                         android:textSize="48px" />
                 </LinearLayout>
-
             </LinearLayout>
-
         </LinearLayout>
-
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
