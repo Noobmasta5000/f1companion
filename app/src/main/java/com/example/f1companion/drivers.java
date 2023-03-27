@@ -31,15 +31,13 @@ import okhttp3.Response;
 
 public class drivers extends AppCompatActivity implements View.OnClickListener {
     static JSONObject data = new JSONObject();
-    static List<String> favorites = new ArrayList<String>();
+    static List<String> favorite_drivers = new ArrayList<String>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_drivers);
         Intent intent = getIntent();
-
-
 
         // Setup connection to API
         OkHttpClient client = new OkHttpClient();
@@ -84,7 +82,7 @@ public class drivers extends AppCompatActivity implements View.OnClickListener {
                                             driver_points = "0";
                                         String driver_image_url = data.getJSONArray("response").getJSONObject(i).getJSONObject("driver").getString("image");
                                         textView.setText(driver_name + "\n" + driver_team + "\n" + driver_points + " pts");
-                                        Picasso.get().load(driver_image_url).resize(192, 192).into(profile_pic);
+                                        Picasso.get().load(driver_image_url).fit().into(profile_pic);
                                     } catch (JSONException e) {
                                         e.printStackTrace();
                                     }
@@ -109,20 +107,20 @@ public class drivers extends AppCompatActivity implements View.OnClickListener {
 
         if(cb.isChecked()) {
             try {
-                favorites.add(data.getJSONArray("response").getJSONObject(num).getJSONObject("driver").getString("id"));
+                favorite_drivers.add(data.getJSONArray("response").getJSONObject(num).getJSONObject("driver").getString("id"));
                 cb.setBackgroundResource(R.drawable.ic_baseline_favorite_24);
                 Toast.makeText(this, "Added " + data.getJSONArray("response").getJSONObject(num).getJSONObject("driver").getString("name") + " to favorites", Toast.LENGTH_SHORT).show();
-                Log.d("FAVORITES",favorites.toString());
+                Log.d("FAVORITES",favorite_drivers.toString());
             } catch (JSONException e) {
                 e.printStackTrace();
             }
         } else {
             try {
                 String id = data.getJSONArray("response").getJSONObject(num).getJSONObject("driver").getString("id");
-                favorites.remove(id);
+                favorite_drivers.remove(id);
                 cb.setBackgroundResource(R.drawable.ic_baseline_favorite_border_24);
                 Toast.makeText(this, "Removed " + data.getJSONArray("response").getJSONObject(num).getJSONObject("driver").getString("name")+ " from favorites", Toast.LENGTH_SHORT).show();
-                Log.d("FAVORITES",favorites.toString());
+                Log.d("FAVORITES",favorite_drivers.toString());
             } catch (JSONException e) {
                 e.printStackTrace();
             }

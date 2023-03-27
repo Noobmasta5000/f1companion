@@ -28,8 +28,7 @@
                     android:id="@+id/ranking_0"
                     android:layout_width="192px"
                     android:layout_height="192px"
-                    android:layout_weight="1"
-                    android:ems="10"
+                    android:layout_weight="0"
                     android:gravity="center"
                     android:textSize="144px"
                     android:textColor="@color/gold"
@@ -45,8 +44,7 @@
                     android:id="@+id/basic_driver_info_0"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:ems="10"
+                    android:layout_weight="10"
                     android:gravity="center_vertical"
                     android:inputType="textMultiLine" />
 
@@ -70,8 +68,7 @@
                     android:id="@+id/ranking_1"
                     android:layout_width="192px"
                     android:layout_height="192px"
-                    android:layout_weight="1"
-                    android:ems="10"
+                    android:layout_weight="0"
                     android:gravity="center"
                     android:textSize="144px"
                     android:textColor="@color/silver"
@@ -87,17 +84,16 @@
                     android:id="@+id/basic_driver_info_1"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:ems="10"
+                    android:layout_weight="10"
                     android:gravity="center_vertical"
                     android:inputType="textMultiLine" />
 
                 <CheckBox
                     android:id="@+id/favorite_1"
-                    android:layout_width="0dp"
-                    android:layout_height="24dp"
+                    android:layout_width="96px"
+                    android:layout_height="96px"
                     android:layout_gravity="center"
-                    android:layout_weight="1"
+                    android:layout_weight="0"
                     android:onClick="onClick"
                     android:button="@android:color/transparent"
                     android:background="@drawable/ic_baseline_favorite_border_24" />
@@ -112,8 +108,7 @@
                     android:id="@+id/ranking_2"
                     android:layout_width="192px"
                     android:layout_height="192px"
-                    android:layout_weight="1"
-                    android:ems="10"
+                    android:layout_weight="0"
                     android:gravity="center"
                     android:textSize="144px"
                     android:textColor="@color/bronze"
@@ -129,17 +124,16 @@
                     android:id="@+id/basic_driver_info_2"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:ems="10"
+                    android:layout_weight="10"
                     android:gravity="center_vertical"
                     android:inputType="textMultiLine" />
 
                 <CheckBox
                     android:id="@+id/favorite_2"
-                    android:layout_width="0dp"
-                    android:layout_height="24dp"
+                    android:layout_width="96px"
+                    android:layout_height="96px"
                     android:layout_gravity="center"
-                    android:layout_weight="1"
+                    android:layout_weight="0"
                     android:onClick="onClick"
                     android:button="@android:color/transparent"
                     android:background="@drawable/ic_baseline_favorite_border_24" />
@@ -154,8 +148,7 @@
                     android:id="@+id/ranking_3"
                     android:layout_width="192px"
                     android:layout_height="192px"
-                    android:layout_weight="1"
-                    android:ems="10"
+                    android:layout_weight="0"
                     android:gravity="center"
                     android:textSize="144px"
                     android:text="4" />
@@ -170,17 +163,16 @@
                     android:id="@+id/basic_driver_info_3"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:ems="10"
+                    android:layout_weight="10"
                     android:gravity="center_vertical"
                     android:inputType="textMultiLine" />
 
                 <CheckBox
                     android:id="@+id/favorite_3"
-                    android:layout_width="0dp"
-                    android:layout_height="24dp"
+                    android:layout_width="96px"
+                    android:layout_height="96px"
                     android:layout_gravity="center"
-                    android:layout_weight="1"
+                    android:layout_weight="0"
                     android:onClick="onClick"
                     android:button="@android:color/transparent"
                     android:background="@drawable/ic_baseline_favorite_border_24" />
@@ -195,8 +187,7 @@
                     android:id="@+id/ranking_4"
                     android:layout_width="192px"
                     android:layout_height="192px"
-                    android:layout_weight="1"
-                    android:ems="10"
+                    android:layout_weight="0"
                     android:gravity="center"
                     android:textSize="144px"
                     android:text="5" />
@@ -211,17 +202,16 @@
                     android:id="@+id/basic_driver_info_4"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:ems="10"
+                    android:layout_weight="10"
                     android:gravity="center_vertical"
                     android:inputType="textMultiLine" />
 
                 <CheckBox
                     android:id="@+id/favorite_4"
-                    android:layout_width="0dp"
-                    android:layout_height="24dp"
+                    android:layout_width="96px"
+                    android:layout_height="96px"
                     android:layout_gravity="center"
-                    android:layout_weight="1"
+                    android:layout_weight="0"
                     android:onClick="onClick"
                     android:button="@android:color/transparent"
                     android:background="@drawable/ic_baseline_favorite_border_24" />
@@ -236,8 +226,7 @@
                     android:id="@+id/ranking_5"
                     android:layout_width="192px"
                     android:layout_height="192px"
-                    android:layout_weight="1"
-                    android:ems="10"
+                    android:layout_weight="0"
                     android:gravity="center"
                     android:textSize="144px"
                     android:text="6" />
@@ -252,17 +241,16 @@
                     android:id="@+id/basic_driver_info_5"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:ems="10"
+                    android:layout_weight="10"
                     android:gravity="center_vertical"
                     android:inputType="textMultiLine" />
 
                 <CheckBox
                     android:id="@+id/favorite_5"
-                    android:layout_width="0dp"
-                    android:layout_height="24dp"
+                    android:layout_width="96px"
+                    android:layout_height="96px"
                     android:layout_gravity="center"
-                    android:layout_weight="1"
+                    android:layout_weight="0"
                     android:onClick="onClick"
                     android:button="@android:color/transparent"
                     android:background="@drawable/ic_baseline_favorite_border_24" />
@@ -277,8 +265,7 @@
                     android:id="@+id/ranking_6"
                     android:layout_width="192px"
                     android:layout_height="192px"
-                    android:layout_weight="1"
-                    android:ems="10"
+                    android:layout_weight="0"
                     android:gravity="center"
                     android:textSize="144px"
                     android:text="7" />
@@ -293,17 +280,16 @@
                     android:id="@+id/basic_driver_info_6"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:ems="10"
+                    android:layout_weight="10"
                     android:gravity="center_vertical"
                     android:inputType="textMultiLine" />
 
                 <CheckBox
                     android:id="@+id/favorite_6"
-                    android:layout_width="0dp"
-                    android:layout_height="24dp"
+                    android:layout_width="96px"
+                    android:layout_height="96px"
                     android:layout_gravity="center"
-                    android:layout_weight="1"
+                    android:layout_weight="0"
                     android:onClick="onClick"
                     android:button="@android:color/transparent"
                     android:background="@drawable/ic_baseline_favorite_border_24" />
@@ -318,8 +304,7 @@
                     android:id="@+id/ranking_7"
                     android:layout_width="192px"
                     android:layout_height="192px"
-                    android:layout_weight="1"
-                    android:ems="10"
+                    android:layout_weight="0"
                     android:gravity="center"
                     android:textSize="144px"
                     android:text="8" />
@@ -334,17 +319,16 @@
                     android:id="@+id/basic_driver_info_7"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:ems="10"
+                    android:layout_weight="10"
                     android:gravity="center_vertical"
                     android:inputType="textMultiLine" />
 
                 <CheckBox
                     android:id="@+id/favorite_7"
-                    android:layout_width="0dp"
-                    android:layout_height="24dp"
+                    android:layout_width="96px"
+                    android:layout_height="96px"
                     android:layout_gravity="center"
-                    android:layout_weight="1"
+                    android:layout_weight="0"
                     android:onClick="onClick"
                     android:button="@android:color/transparent"
                     android:background="@drawable/ic_baseline_favorite_border_24" />
@@ -359,8 +343,7 @@
                     android:id="@+id/ranking_8"
                     android:layout_width="192px"
                     android:layout_height="192px"
-                    android:layout_weight="1"
-                    android:ems="10"
+                    android:layout_weight="0"
                     android:gravity="center"
                     android:textSize="144px"
                     android:text="9" />
@@ -375,17 +358,16 @@
                     android:id="@+id/basic_driver_info_8"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:ems="10"
+                    android:layout_weight="10"
                     android:gravity="center_vertical"
                     android:inputType="textMultiLine" />
 
                 <CheckBox
                     android:id="@+id/favorite_8"
-                    android:layout_width="0dp"
-                    android:layout_height="24dp"
+                    android:layout_width="96px"
+                    android:layout_height="96px"
                     android:layout_gravity="center"
-                    android:layout_weight="1"
+                    android:layout_weight="0"
                     android:onClick="onClick"
                     android:button="@android:color/transparent"
                     android:background="@drawable/ic_baseline_favorite_border_24" />
@@ -400,8 +382,7 @@
                     android:id="@+id/ranking_9"
                     android:layout_width="192px"
                     android:layout_height="192px"
-                    android:layout_weight="1"
-                    android:ems="10"
+                    android:layout_weight="0"
                     android:gravity="center"
                     android:textSize="144px"
                     android:text="10" />
@@ -416,17 +397,16 @@
                     android:id="@+id/basic_driver_info_9"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:ems="10"
+                    android:layout_weight="10"
                     android:gravity="center_vertical"
                     android:inputType="textMultiLine" />
 
                 <CheckBox
                     android:id="@+id/favorite_9"
-                    android:layout_width="0dp"
-                    android:layout_height="24dp"
+                    android:layout_width="96px"
+                    android:layout_height="96px"
                     android:layout_gravity="center"
-                    android:layout_weight="1"
+                    android:layout_weight="0"
                     android:onClick="onClick"
                     android:button="@android:color/transparent"
                     android:background="@drawable/ic_baseline_favorite_border_24" />
@@ -441,8 +421,7 @@
                     android:id="@+id/ranking_10"
                     android:layout_width="192px"
                     android:layout_height="192px"
-                    android:layout_weight="1"
-                    android:ems="10"
+                    android:layout_weight="0"
                     android:gravity="center"
                     android:textSize="144px"
                     android:text="11" />
@@ -457,17 +436,16 @@
                     android:id="@+id/basic_driver_info_10"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:ems="10"
+                    android:layout_weight="10"
                     android:gravity="center_vertical"
                     android:inputType="textMultiLine" />
 
                 <CheckBox
                     android:id="@+id/favorite_10"
-                    android:layout_width="0dp"
-                    android:layout_height="24dp"
+                    android:layout_width="96px"
+                    android:layout_height="96px"
                     android:layout_gravity="center"
-                    android:layout_weight="1"
+                    android:layout_weight="0"
                     android:onClick="onClick"
                     android:button="@android:color/transparent"
                     android:background="@drawable/ic_baseline_favorite_border_24" />
@@ -482,8 +460,7 @@
                     android:id="@+id/ranking_11"
                     android:layout_width="192px"
                     android:layout_height="192px"
-                    android:layout_weight="1"
-                    android:ems="10"
+                    android:layout_weight="0"
                     android:gravity="center"
                     android:textSize="144px"
                     android:text="12" />
@@ -498,17 +475,16 @@
                     android:id="@+id/basic_driver_info_11"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:ems="10"
+                    android:layout_weight="10"
                     android:gravity="center_vertical"
                     android:inputType="textMultiLine" />
 
                 <CheckBox
                     android:id="@+id/favorite_11"
-                    android:layout_width="0dp"
-                    android:layout_height="24dp"
+                    android:layout_width="96px"
+                    android:layout_height="96px"
                     android:layout_gravity="center"
-                    android:layout_weight="1"
+                    android:layout_weight="0"
                     android:onClick="onClick"
                     android:button="@android:color/transparent"
                     android:background="@drawable/ic_baseline_favorite_border_24" />
@@ -523,8 +499,7 @@
                     android:id="@+id/ranking_12"
                     android:layout_width="192px"
                     android:layout_height="192px"
-                    android:layout_weight="1"
-                    android:ems="10"
+                    android:layout_weight="0"
                     android:gravity="center"
                     android:textSize="144px"
                     android:text="13" />
@@ -539,17 +514,16 @@
                     android:id="@+id/basic_driver_info_12"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:ems="10"
+                    android:layout_weight="10"
                     android:gravity="center_vertical"
                     android:inputType="textMultiLine" />
 
                 <CheckBox
                     android:id="@+id/favorite_12"
-                    android:layout_width="0dp"
-                    android:layout_height="24dp"
+                    android:layout_width="96px"
+                    android:layout_height="96px"
                     android:layout_gravity="center"
-                    android:layout_weight="1"
+                    android:layout_weight="0"
                     android:onClick="onClick"
                     android:button="@android:color/transparent"
                     android:background="@drawable/ic_baseline_favorite_border_24" />
@@ -564,8 +538,7 @@
                     android:id="@+id/ranking_13"
                     android:layout_width="192px"
                     android:layout_height="192px"
-                    android:layout_weight="1"
-                    android:ems="10"
+                    android:layout_weight="0"
                     android:gravity="center"
                     android:textSize="144px"
                     android:text="14" />
@@ -580,17 +553,16 @@
                     android:id="@+id/basic_driver_info_13"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:ems="10"
+                    android:layout_weight="10"
                     android:gravity="center_vertical"
                     android:inputType="textMultiLine" />
 
                 <CheckBox
                     android:id="@+id/favorite_13"
-                    android:layout_width="0dp"
-                    android:layout_height="24dp"
+                    android:layout_width="96px"
+                    android:layout_height="96px"
                     android:layout_gravity="center"
-                    android:layout_weight="1"
+                    android:layout_weight="0"
                     android:onClick="onClick"
                     android:button="@android:color/transparent"
                     android:background="@drawable/ic_baseline_favorite_border_24" />
@@ -605,8 +577,7 @@
                     android:id="@+id/ranking_14"
                     android:layout_width="192px"
                     android:layout_height="192px"
-                    android:layout_weight="1"
-                    android:ems="10"
+                    android:layout_weight="0"
                     android:gravity="center"
                     android:textSize="144px"
                     android:text="15" />
@@ -621,17 +592,16 @@
                     android:id="@+id/basic_driver_info_14"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:ems="10"
+                    android:layout_weight="10"
                     android:gravity="center_vertical"
                     android:inputType="textMultiLine" />
 
                 <CheckBox
                     android:id="@+id/favorite_14"
-                    android:layout_width="0dp"
-                    android:layout_height="24dp"
+                    android:layout_width="96px"
+                    android:layout_height="96px"
                     android:layout_gravity="center"
-                    android:layout_weight="1"
+                    android:layout_weight="0"
                     android:onClick="onClick"
                     android:button="@android:color/transparent"
                     android:background="@drawable/ic_baseline_favorite_border_24" />
@@ -646,8 +616,7 @@
                     android:id="@+id/ranking_15"
                     android:layout_width="192px"
                     android:layout_height="192px"
-                    android:layout_weight="1"
-                    android:ems="10"
+                    android:layout_weight="0"
                     android:gravity="center"
                     android:textSize="144px"
                     android:text="16" />
@@ -662,17 +631,16 @@
                     android:id="@+id/basic_driver_info_15"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:ems="10"
+                    android:layout_weight="10"
                     android:gravity="center_vertical"
                     android:inputType="textMultiLine" />
 
                 <CheckBox
                     android:id="@+id/favorite_15"
-                    android:layout_width="0dp"
-                    android:layout_height="24dp"
+                    android:layout_width="96px"
+                    android:layout_height="96px"
                     android:layout_gravity="center"
-                    android:layout_weight="1"
+                    android:layout_weight="0"
                     android:onClick="onClick"
                     android:button="@android:color/transparent"
                     android:background="@drawable/ic_baseline_favorite_border_24" />
@@ -687,8 +655,7 @@
                     android:id="@+id/ranking_16"
                     android:layout_width="192px"
                     android:layout_height="192px"
-                    android:layout_weight="1"
-                    android:ems="10"
+                    android:layout_weight="0"
                     android:gravity="center"
                     android:textSize="144px"
                     android:text="17" />
@@ -703,17 +670,16 @@
                     android:id="@+id/basic_driver_info_16"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:ems="10"
+                    android:layout_weight="10"
                     android:gravity="center_vertical"
                     android:inputType="textMultiLine" />
 
                 <CheckBox
                     android:id="@+id/favorite_16"
-                    android:layout_width="0dp"
-                    android:layout_height="24dp"
+                    android:layout_width="96px"
+                    android:layout_height="96px"
                     android:layout_gravity="center"
-                    android:layout_weight="1"
+                    android:layout_weight="0"
                     android:onClick="onClick"
                     android:button="@android:color/transparent"
                     android:background="@drawable/ic_baseline_favorite_border_24" />
@@ -728,8 +694,7 @@
                     android:id="@+id/ranking_17"
                     android:layout_width="192px"
                     android:layout_height="192px"
-                    android:layout_weight="1"
-                    android:ems="10"
+                    android:layout_weight="0"
                     android:gravity="center"
                     android:textSize="144px"
                     android:text="18" />
@@ -744,17 +709,16 @@
                     android:id="@+id/basic_driver_info_17"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:ems="10"
+                    android:layout_weight="10"
                     android:gravity="center_vertical"
                     android:inputType="textMultiLine" />
 
                 <CheckBox
                     android:id="@+id/favorite_17"
-                    android:layout_width="0dp"
-                    android:layout_height="24dp"
+                    android:layout_width="96px"
+                    android:layout_height="96px"
                     android:layout_gravity="center"
-                    android:layout_weight="1"
+                    android:layout_weight="0"
                     android:onClick="onClick"
                     android:button="@android:color/transparent"
                     android:background="@drawable/ic_baseline_favorite_border_24" />
@@ -769,8 +733,7 @@
                     android:id="@+id/ranking_18"
                     android:layout_width="192px"
                     android:layout_height="192px"
-                    android:layout_weight="1"
-                    android:ems="10"
+                    android:layout_weight="0"
                     android:gravity="center"
                     android:textSize="144px"
                     android:text="19" />
@@ -785,17 +748,16 @@
                     android:id="@+id/basic_driver_info_18"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:ems="10"
+                    android:layout_weight="10"
                     android:gravity="center_vertical"
                     android:inputType="textMultiLine" />
 
                 <CheckBox
                     android:id="@+id/favorite_18"
-                    android:layout_width="0dp"
-                    android:layout_height="24dp"
+                    android:layout_width="96px"
+                    android:layout_height="96px"
                     android:layout_gravity="center"
-                    android:layout_weight="1"
+                    android:layout_weight="0"
                     android:onClick="onClick"
                     android:button="@android:color/transparent"
                     android:background="@drawable/ic_baseline_favorite_border_24" />
@@ -810,8 +772,7 @@
                     android:id="@+id/ranking_19"
                     android:layout_width="192px"
                     android:layout_height="192px"
-                    android:layout_weight="1"
-                    android:ems="10"
+                    android:layout_weight="0"
                     android:gravity="center"
                     android:textSize="144px"
                     android:text="20" />
@@ -826,17 +787,16 @@
                     android:id="@+id/basic_driver_info_19"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:ems="10"
+                    android:layout_weight="10"
                     android:gravity="center_vertical"
                     android:inputType="textMultiLine" />
 
                 <CheckBox
                     android:id="@+id/favorite_19"
-                    android:layout_width="0dp"
-                    android:layout_height="24dp"
+                    android:layout_width="96px"
+                    android:layout_height="96px"
                     android:layout_gravity="center"
-                    android:layout_weight="1"
+                    android:layout_weight="0"
                     android:onClick="onClick"
                     android:button="@android:color/transparent"
                     android:background="@drawable/ic_baseline_favorite_border_24" />
