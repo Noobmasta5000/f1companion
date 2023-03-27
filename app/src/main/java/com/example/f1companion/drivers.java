@@ -37,7 +37,6 @@ public class drivers extends AppCompatActivity implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_drivers);
-        Intent intent = getIntent();
 
         // Setup connection to API
         OkHttpClient client = new OkHttpClient();

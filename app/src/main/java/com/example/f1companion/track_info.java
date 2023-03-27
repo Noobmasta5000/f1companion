@@ -102,6 +102,9 @@ public class track_info extends AppCompatActivity {
                             }
 
                             try {
+                                // Set title to circuit name
+                                setTitle(data.getJSONArray("response").getJSONObject(matching_id).getJSONObject("competition").getString("name"));
+
                                 TextView textview;
                                 // Load track image
                                 String track_image_url = data.getJSONArray("response").getJSONObject(matching_id).getString("image");
