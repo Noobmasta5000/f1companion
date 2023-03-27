@@ -8,6 +8,10 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
+    <color name="gold">#FFD700</color>
+    <color name="silver">#c0c0c0</color>
+    <color name="bronze">#CD7F32</color>
+
     <color name="redbull_red">#E21B4D</color>
     <color name="redbull_yellow">#FFD300</color>
     <color name="redbull_white">#F4EBEE</color>

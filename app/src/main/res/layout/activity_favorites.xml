@@ -6,17 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".Favorites">
 
-
-    <Button
-        android:id="@+id/btn_logout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/logout"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <ImageView
         android:id="@+id/imageView3"
         android:layout_width="94dp"
@@ -33,6 +22,7 @@
     <ImageView
         android:layout_width="104dp"
         android:layout_height="74dp"
+        android:onClick="goto_tracks"
         android:src="@drawable/track"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/imageView2"
@@ -46,6 +36,7 @@
         android:layout_width="104dp"
         android:layout_height="74dp"
         android:layout_marginStart="156dp"
+        android:onClick="goto_teams"
         android:src="@drawable/teams"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

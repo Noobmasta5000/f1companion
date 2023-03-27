@@ -6,4 +6,353 @@
     android:layout_height="match_parent"
     tools:context=".teams">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/ranking_0"
+                    android:layout_width="192px"
+                    android:layout_height="192px"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:gravity="center"
+                    android:textSize="144px"
+                    android:textColor="@color/gold"
+                    android:text="1" />
+
+                <ImageView
+                    android:id="@+id/profile_pic_0"
+                    android:layout_width="340px"
+                    android:layout_height="192px"
+                    android:layout_weight="1"
+                    app:srcCompat="@mipmap/ic_launcher" />
+
+                <TextView
+                    android:id="@+id/basic_team_info_0"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:gravity="center_vertical"
+                    android:inputType="textMultiLine"
+                    android:text="" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/ranking_1"
+                    android:layout_width="192px"
+                    android:layout_height="192px"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:gravity="center"
+                    android:textSize="144px"
+                    android:textColor="@color/silver"
+                    android:text="2" />
+
+                <ImageView
+                    android:id="@+id/profile_pic_1"
+                    android:layout_width="340px"
+                    android:layout_height="192px"
+                    android:layout_weight="1"
+                    app:srcCompat="@mipmap/ic_launcher" />
+
+                <TextView
+                    android:id="@+id/basic_team_info_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text=""
+                    android:ems="10"
+                    android:gravity="center_vertical"
+                    android:inputType="textMultiLine" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/ranking_2"
+                    android:layout_width="192px"
+                    android:layout_height="192px"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:gravity="center"
+                    android:textSize="144px"
+                    android:textColor="@color/bronze"
+                    android:text="3" />
+
+                <ImageView
+                    android:id="@+id/profile_pic_2"
+                    android:layout_width="340px"
+                    android:layout_height="192px"
+                    android:layout_weight="1"
+                    app:srcCompat="@mipmap/ic_launcher" />
+
+                <TextView
+                    android:id="@+id/basic_team_info_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:gravity="center_vertical"
+                    android:inputType="textMultiLine"
+                    android:text="" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/ranking_3"
+                    android:layout_width="192px"
+                    android:layout_height="192px"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:gravity="center"
+                    android:textSize="144px"
+                    android:text="4" />
+
+                <ImageView
+                    android:id="@+id/profile_pic_3"
+                    android:layout_width="340px"
+                    android:layout_height="192px"
+                    android:layout_weight="1"
+                    app:srcCompat="@mipmap/ic_launcher" />
+
+                <TextView
+                    android:id="@+id/basic_team_info_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:gravity="center_vertical"
+                    android:inputType="textMultiLine"
+                    android:text="" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/ranking_4"
+                    android:layout_width="192px"
+                    android:layout_height="192px"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:gravity="center"
+                    android:textSize="144px"
+                    android:text="5" />
+
+                <ImageView
+                    android:id="@+id/profile_pic_4"
+                    android:layout_width="340px"
+                    android:layout_height="192px"
+                    android:layout_weight="1"
+                    app:srcCompat="@mipmap/ic_launcher" />
+
+                <TextView
+                    android:id="@+id/basic_team_info_4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:gravity="center_vertical"
+                    android:inputType="textMultiLine"
+                    android:text="" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/ranking_5"
+                    android:layout_width="192px"
+                    android:layout_height="192px"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:gravity="center"
+                    android:textSize="144px"
+                    android:text="6" />
+
+                <ImageView
+                    android:id="@+id/profile_pic_5"
+                    android:layout_width="340px"
+                    android:layout_height="192px"
+                    android:layout_weight="1"
+                    app:srcCompat="@mipmap/ic_launcher" />
+
+                <TextView
+                    android:id="@+id/basic_team_info_5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:gravity="center_vertical"
+                    android:inputType="textMultiLine"
+                    android:text="" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/ranking_6"
+                    android:layout_width="192px"
+                    android:layout_height="192px"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:gravity="center"
+                    android:textSize="144px"
+                    android:text="7" />
+
+                <ImageView
+                    android:id="@+id/profile_pic_6"
+                    android:layout_width="340px"
+                    android:layout_height="192px"
+                    android:layout_weight="1"
+                    app:srcCompat="@mipmap/ic_launcher" />
+
+                <TextView
+                    android:id="@+id/basic_team_info_6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:gravity="center_vertical"
+                    android:inputType="textMultiLine"
+                    android:text="" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/ranking_7"
+                    android:layout_width="192px"
+                    android:layout_height="192px"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:gravity="center"
+                    android:textSize="144px"
+                    android:text="8" />
+
+                <ImageView
+                    android:id="@+id/profile_pic_7"
+                    android:layout_width="340px"
+                    android:layout_height="192px"
+                    android:layout_weight="1"
+                    app:srcCompat="@mipmap/ic_launcher" />
+
+                <TextView
+                    android:id="@+id/basic_team_info_7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:gravity="center_vertical"
+                    android:inputType="textMultiLine"
+                    android:text="" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/ranking_8"
+                    android:layout_width="192px"
+                    android:layout_height="192px"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:gravity="center"
+                    android:textSize="144px"
+                    android:text="9" />
+
+                <ImageView
+                    android:id="@+id/profile_pic_8"
+                    android:layout_width="340px"
+                    android:layout_height="192px"
+                    android:layout_weight="1"
+                    app:srcCompat="@mipmap/ic_launcher" />
+
+                <TextView
+                    android:id="@+id/basic_team_info_8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:gravity="center_vertical"
+                    android:inputType="textMultiLine"
+                    android:text="" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/ranking_9"
+                    android:layout_width="192px"
+                    android:layout_height="192px"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:gravity="center"
+                    android:textSize="144px"
+                    android:text="10" />
+
+                <ImageView
+                    android:id="@+id/profile_pic_9"
+                    android:layout_width="340px"
+                    android:layout_height="192px"
+                    android:layout_weight="1"
+                    app:srcCompat="@mipmap/ic_launcher" />
+
+                <TextView
+                    android:id="@+id/basic_team_info_9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:gravity="center_vertical"
+                    android:inputType="textMultiLine"
+                    android:text="" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -15,7 +15,6 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -48,6 +47,10 @@ public class login extends AppCompatActivity {
     Button buttonLogin;
     FirebaseAuth mAuth;
 
+
+
+
+
     // ZACHS CODE//
     // Firebase - is user already logged in code
 
@@ -65,6 +68,9 @@ public class login extends AppCompatActivity {
 
 
 
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,9 +81,12 @@ public class login extends AppCompatActivity {
         editTextPassword = findViewById(R.id.password);
         buttonLogin = findViewById(R.id.btn_login);
 
+
         // ZACHS CODE //
 
+
         buttonLogin.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
                 String email, password;
@@ -97,6 +106,8 @@ public class login extends AppCompatActivity {
                 }
 
 
+
+
                 // Firebase sign in code
                 mAuth.signInWithEmailAndPassword(email, password)
                         .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -114,50 +125,21 @@ public class login extends AppCompatActivity {
                                 }
                             }
                         });
+
+
             }
         });
 
 
-
-
-        // EVANS CODE //
-        Request request = new Request.Builder()
-                .url("https://api-formula-1.p.rapidapi.com/drivers?name=lando%20norris")
-                .get()
-                .addHeader("X-RapidAPI-Key", "0801c0f8camshbbda9eeceafe698p181139jsn5ca56dcbfb99")
-                .addHeader("X-RapidAPI-Host", "api-formula-1.p.rapidapi.com")
-                .build();
-        client.newCall(request).enqueue(new Callback() {
-            @Override
-            public void onFailure(@NonNull Call call, @NonNull IOException e) {
-                e.printStackTrace();
-                Log.d("MESSAGE", "FAILURE");
-            }
-
-            @Override
-            public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
-                try {
-                    JSONObject jsonobject = new JSONObject(response.body().string());
-                    String name = jsonobject.getJSONArray("response").getJSONObject(0).getString("name");
-
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            TextView textView = findViewById(R.id.textview1);
-                            textView.setText(name);
-                        }
-                    });
-                    Log.d("NAME", name);
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-
-            }
-        });
     }
+
+
+
 
     public void goto_drivers(View view) {
         Intent intent = new Intent(this, drivers.class);
         startActivity(intent);
     }
+
+
 }

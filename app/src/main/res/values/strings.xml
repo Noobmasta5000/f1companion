@@ -1,41 +1,20 @@
 <resources>
     <string name="app_name">F1 Companion</string>
+    <string name="google_map_api_key">AIzaSyBy-FaCnfurEY_jxKLFh_xdyKztVo_xdLU</string>
 
     <string-array name="team_names">
         <item>Alfa Romeo</item>
-        <item>AlphaTauri</item>
-        <item>Alpine</item>
-        <item>Aston Martin</item>
-        <item>Ferrari</item>
-        <item>Haas</item>
-        <item>Mclaren</item>
-        <item>Mercedes</item>
-        <item>Red Bull</item>
-        <item>Williams</item>
+        <item>Scuderia AlphaTauri Honda</item>
+        <item>Alpine F1 Team</item>
+        <item>Aston Martin F1 Team</item>
+        <item>Scuderia Ferrari</item>
+        <item>Haas F1 Team</item>
+        <item>McLaren Racing</item>
+        <item>Mercedes-AMG Petronas</item>
+        <item>Red Bull Racing</item>
+        <item>Williams F1 Team</item>
     </string-array>
 
-    <string-array name="driver_names">
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-    </string-array>
     <string name="title_activity_resgister">Resgister</string>
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
@@ -50,4 +29,5 @@
     <string name="password">Password</string>
     <string name="login">login</string>
     <string name="logout">logout</string>
+    <string name="title_activity_track_map">track_map</string>
 </resources>

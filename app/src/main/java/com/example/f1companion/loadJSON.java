@@ -14,7 +14,7 @@ public class loadJSON {
     public static JSONObject getAssetJsonData(Context context) throws JSONException {
         String json = null;
         try {
-            InputStream is = context.getAssets().open("rankings.json");
+            InputStream is = context.getAssets().open("teams.json");
             int size = is.available();
             byte[] buffer = new byte[size];
             is.read(buffer);
@@ -25,7 +25,6 @@ public class loadJSON {
             return null;
         }
 
-        Log.e("data", json);
         JSONObject jsonObject = new JSONObject(json);
         return jsonObject;
 
