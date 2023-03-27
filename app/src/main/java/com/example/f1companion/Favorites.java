@@ -39,7 +39,6 @@ public class Favorites extends AppCompatActivity {
         actionBar.setDisplayShowHomeEnabled(true);
 
         auth = FirebaseAuth.getInstance();
-        button = findViewById(R.id.btn_logout);
         user = auth.getCurrentUser();
 
         /*
@@ -52,18 +51,6 @@ public class Favorites extends AppCompatActivity {
             textView.setText(user.getEmail());
         }
         */
-
-        // Firebase sign out code
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                FirebaseAuth.getInstance().signOut();
-                Intent intent = new Intent(getApplicationContext(), login.class);
-                startActivity(intent);
-                finish();
-            }
-        });
-
 
     }
 
@@ -86,7 +73,12 @@ public class Favorites extends AppCompatActivity {
                 Toast.makeText(this, "Settings Clicked", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.logout:
-                Toast.makeText(this, "Logout Clicked", Toast.LENGTH_SHORT).show();
+                // Firebase sign out code
+                FirebaseAuth.getInstance().signOut();
+                Intent intent = new Intent(getApplicationContext(), login.class);
+                startActivity(intent);
+                finish();
+                Toast.makeText(this, "Logout Successful", Toast.LENGTH_SHORT).show();
                 break;
         }
         return super.onOptionsItemSelected(item);
