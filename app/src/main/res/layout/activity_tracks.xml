@@ -148,9 +148,11 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/track_4"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:onClick="goto_track_info">
 
                 <TextView
                     android:id="@+id/ranking_4"
@@ -178,9 +180,11 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/track_5"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:onClick="goto_track_info">
 
                 <TextView
                     android:id="@+id/ranking_5"
@@ -208,9 +212,11 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/track_6"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:onClick="goto_track_info">
 
                 <TextView
                     android:id="@+id/ranking_6"
@@ -238,9 +244,11 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/track_7"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:onClick="goto_track_info">
 
                 <TextView
                     android:id="@+id/ranking_7"
@@ -268,9 +276,11 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/track_8"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:onClick="goto_track_info">
 
                 <TextView
                     android:id="@+id/ranking_8"
@@ -298,9 +308,11 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/track_9"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:onClick="goto_track_info">
 
                 <TextView
                     android:id="@+id/ranking_9"
@@ -328,9 +340,11 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/track_10"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:onClick="goto_track_info">
 
                 <TextView
                     android:id="@+id/ranking_10"
@@ -358,9 +372,11 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/track_11"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:onClick="goto_track_info">
 
                 <TextView
                     android:id="@+id/ranking_11"
@@ -388,9 +404,11 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/track_12"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:onClick="goto_track_info">
 
                 <TextView
                     android:id="@+id/ranking_12"
@@ -418,9 +436,11 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/track_13"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:onClick="goto_track_info">
 
                 <TextView
                     android:id="@+id/ranking_13"
@@ -448,9 +468,11 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/track_14"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:onClick="goto_track_info">
 
                 <TextView
                     android:id="@+id/ranking_14"
@@ -478,9 +500,11 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/track_15"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:onClick="goto_track_info">
 
                 <TextView
                     android:id="@+id/ranking_15"
@@ -508,9 +532,11 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/track_16"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:onClick="goto_track_info">
 
                 <TextView
                     android:id="@+id/ranking_16"
@@ -538,9 +564,11 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/track_17"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:onClick="goto_track_info">
 
                 <TextView
                     android:id="@+id/ranking_17"
@@ -568,9 +596,11 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/track_18"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:onClick="goto_track_info">
 
                 <TextView
                     android:id="@+id/ranking_18"
@@ -598,9 +628,11 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/track_19"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:onClick="goto_track_info">
 
                 <TextView
                     android:id="@+id/ranking_19"
@@ -628,9 +660,11 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/track_20"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:onClick="goto_track_info">
 
                 <TextView
                     android:id="@+id/ranking_20"
@@ -658,9 +692,11 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/track_21"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:onClick="goto_track_info">
 
                 <TextView
                     android:id="@+id/ranking_21"
@@ -688,9 +724,11 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/track_22"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:onClick="goto_track_info">
 
                 <TextView
                     android:id="@+id/ranking_22"
