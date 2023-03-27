@@ -168,10 +168,13 @@ public class track_info extends AppCompatActivity {
 
     public void goto_track_map(View view) {
         Intent intent = new Intent(this, track_map.class);
-        //Bundle bundle = new Bundle();
-        //bundle.putString("", );
-        //intent.putExtras(bundle);
-        startActivity(intent);
-
+        Bundle bundle = new Bundle();
+        try {
+            bundle.putString("Track name", data.getJSONArray("response").getJSONObject(matching_id).getString("name"));
+            intent.putExtras(bundle);
+            startActivity(intent);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 }
