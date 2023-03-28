@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class team_info extends AppCompatActivity {
+public class team_info extends menu {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

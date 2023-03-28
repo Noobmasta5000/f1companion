@@ -24,7 +24,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-public class teams extends AppCompatActivity {
+public class teams extends menu {
     static JSONObject data = new JSONObject();
 
     @Override

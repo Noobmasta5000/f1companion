@@ -29,7 +29,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-public class drivers extends AppCompatActivity implements View.OnClickListener {
+public class drivers extends menu implements View.OnClickListener {
     static JSONObject data = new JSONObject();
     static List<String> favorite_drivers = new ArrayList<String>();
 
