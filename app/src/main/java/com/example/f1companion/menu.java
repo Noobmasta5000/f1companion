@@ -3,6 +3,7 @@ package com.example.f1companion;
 import android.content.Intent;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -24,15 +25,20 @@ public class menu extends AppCompatActivity {
     // happen when user clicks on the action buttons
     @Override
     public boolean onOptionsItemSelected( @NonNull MenuItem item ) {
+        Intent intent;
 
         switch (item.getItemId()){
+            case R.id.home:
+                intent = new Intent(this, Favorites.class);
+                startActivity(intent);
+                break;
             case R.id.settings:
                 Toast.makeText(this, "Settings Clicked", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.logout:
                 // Firebase sign out code
                 FirebaseAuth.getInstance().signOut();
-                Intent intent = new Intent(getApplicationContext(), login.class);
+                intent = new Intent(getApplicationContext(), login.class);
                 startActivity(intent);
                 finish();
                 Toast.makeText(this, "Logout Successful", Toast.LENGTH_SHORT).show();

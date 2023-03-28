@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -87,5 +88,20 @@ public class teams extends menu {
                 }
             }
         });
+    }
+
+    public void goto_drivers(View view) {
+        Intent intent = new Intent(this, drivers.class);
+        startActivity(intent);
+    }
+
+    public void goto_teams(View view) {
+        Intent intent = new Intent(this, teams.class);
+        startActivity(intent);
+    }
+
+    public void goto_tracks(View view) {
+        Intent intent = new Intent(this, tracks.class);
+        startActivity(intent);
     }
 }
