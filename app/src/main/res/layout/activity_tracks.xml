@@ -41,8 +41,7 @@
                         android:id="@+id/profile_pic_0"
                         android:layout_width="340px"
                         android:layout_height="192px"
-                        android:layout_weight="0"
-                        app:srcCompat="@mipmap/ic_launcher" />
+                        android:layout_weight="0" />
 
                     <TextView
                         android:id="@+id/basic_track_info_0"
@@ -73,8 +72,7 @@
                         android:id="@+id/profile_pic_1"
                         android:layout_width="340px"
                         android:layout_height="192px"
-                        android:layout_weight="0"
-                        app:srcCompat="@mipmap/ic_launcher" />
+                        android:layout_weight="0" />
 
                     <TextView
                         android:id="@+id/basic_track_info_1"
@@ -105,8 +103,7 @@
                         android:id="@+id/profile_pic_2"
                         android:layout_width="340px"
                         android:layout_height="192px"
-                        android:layout_weight="0"
-                        app:srcCompat="@mipmap/ic_launcher" />
+                        android:layout_weight="0" />
 
                     <TextView
                         android:id="@+id/basic_track_info_2"
@@ -137,8 +134,7 @@
                         android:id="@+id/profile_pic_3"
                         android:layout_width="340px"
                         android:layout_height="192px"
-                        android:layout_weight="0"
-                        app:srcCompat="@mipmap/ic_launcher" />
+                        android:layout_weight="0" />
 
                     <TextView
                         android:id="@+id/basic_track_info_3"
@@ -169,8 +165,7 @@
                         android:id="@+id/profile_pic_4"
                         android:layout_width="340px"
                         android:layout_height="192px"
-                        android:layout_weight="0"
-                        app:srcCompat="@mipmap/ic_launcher" />
+                        android:layout_weight="0" />
 
                     <TextView
                         android:id="@+id/basic_track_info_4"
@@ -201,8 +196,7 @@
                         android:id="@+id/profile_pic_5"
                         android:layout_width="340px"
                         android:layout_height="192px"
-                        android:layout_weight="0"
-                        app:srcCompat="@mipmap/ic_launcher" />
+                        android:layout_weight="0" />
 
                     <TextView
                         android:id="@+id/basic_track_info_5"
@@ -233,8 +227,7 @@
                         android:id="@+id/profile_pic_6"
                         android:layout_width="340px"
                         android:layout_height="192px"
-                        android:layout_weight="0"
-                        app:srcCompat="@mipmap/ic_launcher" />
+                        android:layout_weight="0" />
 
                     <TextView
                         android:id="@+id/basic_track_info_6"
@@ -265,8 +258,7 @@
                         android:id="@+id/profile_pic_7"
                         android:layout_width="340px"
                         android:layout_height="192px"
-                        android:layout_weight="0"
-                        app:srcCompat="@mipmap/ic_launcher" />
+                        android:layout_weight="0" />
 
                     <TextView
                         android:id="@+id/basic_track_info_7"
@@ -297,8 +289,7 @@
                         android:id="@+id/profile_pic_8"
                         android:layout_width="340px"
                         android:layout_height="192px"
-                        android:layout_weight="0"
-                        app:srcCompat="@mipmap/ic_launcher" />
+                        android:layout_weight="0" />
 
                     <TextView
                         android:id="@+id/basic_track_info_8"
@@ -329,8 +320,7 @@
                         android:id="@+id/profile_pic_9"
                         android:layout_width="340px"
                         android:layout_height="192px"
-                        android:layout_weight="0"
-                        app:srcCompat="@mipmap/ic_launcher" />
+                        android:layout_weight="0" />
 
                     <TextView
                         android:id="@+id/basic_track_info_9"
@@ -361,8 +351,7 @@
                         android:id="@+id/profile_pic_10"
                         android:layout_width="340px"
                         android:layout_height="192px"
-                        android:layout_weight="0"
-                        app:srcCompat="@mipmap/ic_launcher" />
+                        android:layout_weight="0" />
 
                     <TextView
                         android:id="@+id/basic_track_info_10"
@@ -393,8 +382,7 @@
                         android:id="@+id/profile_pic_11"
                         android:layout_width="340px"
                         android:layout_height="192px"
-                        android:layout_weight="0"
-                        app:srcCompat="@mipmap/ic_launcher" />
+                        android:layout_weight="0" />
 
                     <TextView
                         android:id="@+id/basic_track_info_11"
@@ -425,8 +413,7 @@
                         android:id="@+id/profile_pic_12"
                         android:layout_width="340px"
                         android:layout_height="192px"
-                        android:layout_weight="0"
-                        app:srcCompat="@mipmap/ic_launcher" />
+                        android:layout_weight="0" />
 
                     <TextView
                         android:id="@+id/basic_track_info_12"
@@ -457,8 +444,7 @@
                         android:id="@+id/profile_pic_13"
                         android:layout_width="340px"
                         android:layout_height="192px"
-                        android:layout_weight="0"
-                        app:srcCompat="@mipmap/ic_launcher" />
+                        android:layout_weight="0" />
 
                     <TextView
                         android:id="@+id/basic_track_info_13"
@@ -489,8 +475,7 @@
                         android:id="@+id/profile_pic_14"
                         android:layout_width="340px"
                         android:layout_height="192px"
-                        android:layout_weight="0"
-                        app:srcCompat="@mipmap/ic_launcher" />
+                        android:layout_weight="0" />
 
                     <TextView
                         android:id="@+id/basic_track_info_14"
@@ -521,8 +506,7 @@
                         android:id="@+id/profile_pic_15"
                         android:layout_width="340px"
                         android:layout_height="192px"
-                        android:layout_weight="0"
-                        app:srcCompat="@mipmap/ic_launcher" />
+                        android:layout_weight="0" />
 
                     <TextView
                         android:id="@+id/basic_track_info_15"
@@ -553,8 +537,7 @@
                         android:id="@+id/profile_pic_16"
                         android:layout_width="340px"
                         android:layout_height="192px"
-                        android:layout_weight="0"
-                        app:srcCompat="@mipmap/ic_launcher" />
+                        android:layout_weight="0" />
 
                     <TextView
                         android:id="@+id/basic_track_info_16"
@@ -585,8 +568,7 @@
                         android:id="@+id/profile_pic_17"
                         android:layout_width="340px"
                         android:layout_height="192px"
-                        android:layout_weight="0"
-                        app:srcCompat="@mipmap/ic_launcher" />
+                        android:layout_weight="0" />
 
                     <TextView
                         android:id="@+id/basic_track_info_17"
@@ -617,8 +599,7 @@
                         android:id="@+id/profile_pic_18"
                         android:layout_width="340px"
                         android:layout_height="192px"
-                        android:layout_weight="0"
-                        app:srcCompat="@mipmap/ic_launcher" />
+                        android:layout_weight="0" />
 
                     <TextView
                         android:id="@+id/basic_track_info_18"
@@ -649,8 +630,7 @@
                         android:id="@+id/profile_pic_19"
                         android:layout_width="340px"
                         android:layout_height="192px"
-                        android:layout_weight="0"
-                        app:srcCompat="@mipmap/ic_launcher" />
+                        android:layout_weight="0" />
 
                     <TextView
                         android:id="@+id/basic_track_info_19"
@@ -681,8 +661,7 @@
                         android:id="@+id/profile_pic_20"
                         android:layout_width="340px"
                         android:layout_height="192px"
-                        android:layout_weight="0"
-                        app:srcCompat="@mipmap/ic_launcher" />
+                        android:layout_weight="0" />
 
                     <TextView
                         android:id="@+id/basic_track_info_20"
@@ -713,8 +692,7 @@
                         android:id="@+id/profile_pic_21"
                         android:layout_width="340px"
                         android:layout_height="192px"
-                        android:layout_weight="0"
-                        app:srcCompat="@mipmap/ic_launcher" />
+                        android:layout_weight="0" />
 
                     <TextView
                         android:id="@+id/basic_track_info_21"
@@ -745,8 +723,7 @@
                         android:id="@+id/profile_pic_22"
                         android:layout_width="340px"
                         android:layout_height="192px"
-                        android:layout_weight="0"
-                        app:srcCompat="@mipmap/ic_launcher" />
+                        android:layout_weight="0" />
 
                     <TextView
                         android:id="@+id/basic_track_info_22"

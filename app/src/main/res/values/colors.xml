@@ -12,10 +12,44 @@
     <color name="silver">#c0c0c0</color>
     <color name="bronze">#CD7F32</color>
 
-    <color name="redbull_red">#E21B4D</color>
-    <color name="redbull_yellow">#FFD300</color>
-    <color name="redbull_white">#F4EBEE</color>
-    <color name="redbull_gray">#D9D4CE</color>
-    <color name="redbull_blue">#000B8D</color>
-    <color name="redbull_light_blue">#1D19AC</color>
+    <!--Alfa Romeo-->
+    <color name='alfa_romea_red'>#A50F2D</color>
+    <color name='alfa_romea_black'>#000E22</color>
+
+    <!--Scuderia AlphaTauri Honda-->
+    <color name='alphatauri_blue'>#041F3D</color>
+    <color name='alphatauri_gray'>#F1F3F4</color>
+
+    <!--Alpine F1 Team-->
+    <color name='alpine_blue'>#0078C1</color>
+    <color name='alpine_pink'>#FD4BC7</color>
+
+    <!--Aston Martin F1 Team-->
+    <color name='aston_martin_green'>#00665E</color>
+    <color name='aston_martin_yellow'>#CEDC00</color>
+
+    <!--Scuderia Ferrari-->
+    <color name='ferrari_red'>#A6051A</color>
+    <color name='ferrari_yellow'>#FFEB00</color>
+
+    <!--Haas F1 Team-->
+    <color name='haas_gray'>#EFEFEF</color>
+    <color name='haas_black'>#111111</color>
+
+    <!--McLaren Racing-->
+    <color name='mclaren_orange'>#FF8000</color>
+    <color name='mclaren_blue'>#47C7FC</color>
+
+    <!--Mercedes colors-->
+    <color name='mercedes_teal'> #00A19C</color>
+    <color name='mercedes_gray'> #C6C6C6</color>
+
+    <!--Red Bull colors-->
+    <color name='redbull_blue'>#002448</color>
+    <color name='redbull_red'>#E63154</color>
+
+    <!--Williams F1 Team-->
+    <color name='williams_light_blue'>#00A3E0</color>
+    <color name='williams_dark_blue'>#041E42</color>
+
 </resources>

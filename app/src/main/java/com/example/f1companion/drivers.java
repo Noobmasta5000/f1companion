@@ -2,11 +2,17 @@ package com.example.f1companion;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.TypedValue;
+import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageView;
@@ -21,6 +27,7 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import okhttp3.Call;
@@ -29,14 +36,19 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-public class drivers extends menu implements View.OnClickListener {
+public class drivers extends menu {
     static JSONObject data = new JSONObject();
-    static List<String> favorite_drivers = new ArrayList<String>();
+    static ArrayList<String> favorite_drivers = new ArrayList<String>();
+    static ArrayList<String> favorite_teams = new ArrayList<String>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_drivers);
+
+        Bundle bundle = getIntent().getExtras();
+        favorite_drivers = bundle.getStringArrayList("Favorite drivers");
+        favorite_teams = bundle.getStringArrayList("Favorite teams");
 
         // Setup connection to API
         OkHttpClient client = new OkHttpClient();
@@ -63,25 +75,102 @@ public class drivers extends menu implements View.OnClickListener {
                             try {
                                 for (int i = 0; i < Integer.parseInt(data.getString("results")); i++) {
                                     try {
-                                        //Get id of profile pic imageview
-                                        String id = "profile_pic_" + i;
-                                        int resID = getResources().getIdentifier(id, "id", getPackageName());
-                                        ImageView profile_pic = findViewById(resID);
+                                        Context context = getApplicationContext();
 
-                                        //Get id of basic driver info
-                                        id = "basic_driver_info_" + i;
-                                        resID = getResources().getIdentifier(id, "id", getPackageName());
-                                        TextView textView = findViewById(resID);
+                                        // Setup Linear Layout
+                                        LinearLayout linearLayout = new LinearLayout(context);
+                                        LinearLayout.LayoutParams linearlayout_layoutparams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+                                        linearLayout.setOrientation(LinearLayout.HORIZONTAL);
+                                        linearLayout.setLayoutParams(linearlayout_layoutparams);
 
-                                        //Get data from JSON and load into appropriate locations
+                                        // Setup driver position
+                                        TextView driver_position = new TextView(context);
+                                        ViewGroup.LayoutParams driver_postion_layoutparams = new ViewGroup.LayoutParams(192, 192);
+                                        driver_position.setTextSize(TypedValue.COMPLEX_UNIT_PX,144);
+                                        driver_position.setGravity(Gravity.CENTER);
+                                        driver_position.setLayoutParams(driver_postion_layoutparams);
+                                        driver_position.setText(Integer.toString(i+1));
+                                        switch(i+1) {
+                                            case 1:
+                                                driver_position.setTextColor(ContextCompat.getColor(context, R.color.gold));
+                                                break;
+                                            case 2:
+                                                driver_position.setTextColor(ContextCompat.getColor(context, R.color.silver));
+                                                break;
+                                            case 3:
+                                                driver_position.setTextColor(ContextCompat.getColor(context, R.color.bronze));
+                                                break;
+                                            default:
+                                        }
+
+                                        // Setup driver image
+                                        ImageView driver_image = new ImageView(context);
+                                        ViewGroup.LayoutParams driver_image_layoutparams = new ViewGroup.LayoutParams(288, 192);
+                                        driver_image.setLayoutParams(driver_image_layoutparams);
+                                        String driver_image_url = data.getJSONArray("response").getJSONObject(i).getJSONObject("driver").getString("image");
+                                        Picasso.get().load(driver_image_url).resize(192,192).into(driver_image);
+
+                                        // Setup driver info
+                                        TextView driver_info = new TextView(context);
+                                        ViewGroup.LayoutParams driver_info_layoutparams = new ViewGroup.LayoutParams(504, ViewGroup.LayoutParams.MATCH_PARENT);
+                                        driver_info.setGravity(Gravity.CENTER_VERTICAL);
+                                        driver_info.setLayoutParams(driver_info_layoutparams);
                                         String driver_name = data.getJSONArray("response").getJSONObject(i).getJSONObject("driver").getString("name");
                                         String driver_team = data.getJSONArray("response").getJSONObject(i).getJSONObject("team").getString("name");
                                         String driver_points = data.getJSONArray("response").getJSONObject(i).getString("points");
                                         if (driver_points == "null")
                                             driver_points = "0";
-                                        String driver_image_url = data.getJSONArray("response").getJSONObject(i).getJSONObject("driver").getString("image");
-                                        textView.setText(driver_name + "\n" + driver_team + "\n" + driver_points + " pts");
-                                        Picasso.get().load(driver_image_url).fit().into(profile_pic);
+                                        driver_info.setText(driver_name + "\n" + driver_team + "\n" + driver_points + " pts");
+
+                                        // Setup favorite checkbox
+                                        CheckBox favorite_button = new CheckBox(context);
+                                        ViewGroup.LayoutParams favorite_button_layoutparams = new ViewGroup.LayoutParams(96, ViewGroup.LayoutParams.MATCH_PARENT);
+                                        favorite_button.setGravity(Gravity.CENTER);
+                                        favorite_button.setLayoutParams(favorite_button_layoutparams);
+                                        if (favorite_drivers.contains(data.getJSONArray("response").getJSONObject(i).getJSONObject("driver").getString("id")))
+                                        {
+                                            favorite_button.setChecked(true);
+                                            favorite_button.setButtonDrawable(getResources().getDrawable(R.drawable.ic_baseline_favorite_24));
+                                        } else {
+                                            favorite_button.setButtonDrawable(getResources().getDrawable(R.drawable.ic_baseline_favorite_border_24));
+                                        }
+                                        int finalI = i;
+                                        favorite_button.setOnClickListener(new View.OnClickListener() {
+
+                                            @Override
+                                            public void onClick(View v) {
+                                                if(favorite_button.isChecked()) {
+                                                    try {
+                                                        favorite_drivers.add(data.getJSONArray("response").getJSONObject(finalI).getJSONObject("driver").getString("id"));
+                                                        favorite_button.setButtonDrawable(getResources().getDrawable(R.drawable.ic_baseline_favorite_24));
+                                                        //Toast.makeText(this, "Added " + data.getJSONArray("response").getJSONObject(finalI).getJSONObject("driver").getString("name") + " to favorites", Toast.LENGTH_SHORT).show();
+                                                    } catch (JSONException e) {
+                                                        e.printStackTrace();
+                                                    }
+                                                } else {
+                                                    String id = null;
+                                                    try {
+                                                        id = data.getJSONArray("response").getJSONObject(finalI).getJSONObject("driver").getString("id");
+                                                        favorite_drivers.remove(id);
+                                                        favorite_button.setButtonDrawable(getResources().getDrawable(R.drawable.ic_baseline_favorite_border_24));
+                                                        //Toast.makeText(this, "Added " + data.getJSONArray("response").getJSONObject(finalI).getJSONObject("driver").getString("name") + " to favorites", Toast.LENGTH_SHORT).show();
+                                                    } catch (JSONException e) {
+                                                        throw new RuntimeException(e);
+                                                    }
+                                                }
+                                                // Add code to save favorites list to firebase
+
+                                                Log.d("FAVORITES",favorite_drivers.toString());
+                                            }
+                                        });
+
+                                        // Add views to linearlayout and scrollview
+                                        linearLayout.addView(driver_position);
+                                        linearLayout.addView(driver_image);
+                                        linearLayout.addView(driver_info);
+                                        linearLayout.addView(favorite_button);
+                                        LinearLayout ll = findViewById(R.id.driver_list);
+                                        ll.addView(linearLayout);
                                     } catch (JSONException e) {
                                         e.printStackTrace();
                                     }
@@ -98,49 +187,33 @@ public class drivers extends menu implements View.OnClickListener {
         });
     }
 
-    @Override
-    public void onClick(View view) {
-
-        CheckBox cb = (CheckBox) view;
-        int num = Integer.parseInt(getResources().getResourceEntryName(view.getId()).replace("favorite_",""));
-
-        if(cb.isChecked()) {
-            try {
-                favorite_drivers.add(data.getJSONArray("response").getJSONObject(num).getJSONObject("driver").getString("id"));
-                cb.setBackgroundResource(R.drawable.ic_baseline_favorite_24);
-                Toast.makeText(this, "Added " + data.getJSONArray("response").getJSONObject(num).getJSONObject("driver").getString("name") + " to favorites", Toast.LENGTH_SHORT).show();
-                Log.d("FAVORITES",favorite_drivers.toString());
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-        } else {
-            try {
-                String id = data.getJSONArray("response").getJSONObject(num).getJSONObject("driver").getString("id");
-                favorite_drivers.remove(id);
-                cb.setBackgroundResource(R.drawable.ic_baseline_favorite_border_24);
-                Toast.makeText(this, "Removed " + data.getJSONArray("response").getJSONObject(num).getJSONObject("driver").getString("name")+ " from favorites", Toast.LENGTH_SHORT).show();
-                Log.d("FAVORITES",favorite_drivers.toString());
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-        }
-
-        // Add code to save favorites list to firebase
-
-    }
-
     public void goto_drivers(View view) {
         Intent intent = new Intent(this, drivers.class);
+        Bundle bundle = new Bundle();
+        bundle.putStringArrayList("Favorite drivers", favorite_drivers);
+        intent.putExtras(bundle);
+        bundle.putStringArrayList("Favorite teams", favorite_teams);
+        intent.putExtras(bundle);
         startActivity(intent);
     }
 
     public void goto_teams(View view) {
         Intent intent = new Intent(this, teams.class);
+        Bundle bundle = new Bundle();
+        bundle.putStringArrayList("Favorite drivers", favorite_drivers);
+        intent.putExtras(bundle);
+        bundle.putStringArrayList("Favorite teams", favorite_teams);
+        intent.putExtras(bundle);
         startActivity(intent);
     }
 
     public void goto_tracks(View view) {
         Intent intent = new Intent(this, tracks.class);
+        Bundle bundle = new Bundle();
+        bundle.putStringArrayList("Favorite drivers", favorite_drivers);
+        intent.putExtras(bundle);
+        bundle.putStringArrayList("Favorite teams", favorite_teams);
+        intent.putExtras(bundle);
         startActivity(intent);
     }
 }
