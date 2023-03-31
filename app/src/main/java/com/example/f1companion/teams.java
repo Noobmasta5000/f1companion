@@ -2,11 +2,19 @@ package com.example.f1companion;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.TypedValue;
+import android.view.Gravity;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
@@ -16,7 +24,9 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -24,14 +34,20 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-public class teams extends AppCompatActivity {
+public class teams extends menu {
     static JSONObject data = new JSONObject();
+    static ArrayList<String> favorite_drivers = new ArrayList<String>();
+    static ArrayList<String> favorite_teams = new ArrayList<String>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_teams);
-        Intent intent = getIntent();
+
+        Bundle bundle = getIntent().getExtras();
+        favorite_drivers = bundle.getStringArrayList("Favorite drivers");
+        favorite_teams = bundle.getStringArrayList("Favorite teams");
 
         // Setup connection to API
         OkHttpClient client = new OkHttpClient();
@@ -58,24 +74,101 @@ public class teams extends AppCompatActivity {
                             try {
                                 for (int i = 0; i < Integer.parseInt(data.getString("results")); i++)
                                 {
-                                    //Get id of profile pic imageview
-                                    String id = "profile_pic_" + i;
-                                    int resID = getResources().getIdentifier(id, "id", getPackageName());
-                                    ImageView profile_pic = findViewById(resID);
+                                    Context context = getApplicationContext();
 
-                                    //Get id of basic driver info textview
-                                    id = "basic_team_info_" + i;
-                                    resID = getResources().getIdentifier(id, "id", getPackageName());
-                                    TextView textView = findViewById(resID);
+                                    // Setup Linear Layout
+                                    LinearLayout linearLayout = new LinearLayout(context);
+                                    LinearLayout.LayoutParams linearlayout_layoutparams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+                                    linearLayout.setOrientation(LinearLayout.HORIZONTAL);
+                                    linearLayout.setLayoutParams(linearlayout_layoutparams);
 
-                                    //Get data from JSON and load into appropriate locations
+                                    // Setup team position
+                                    TextView team_position = new TextView(context);
+                                    ViewGroup.LayoutParams driver_postion_layoutparams = new ViewGroup.LayoutParams(192, 192);
+                                    team_position.setTextSize(TypedValue.COMPLEX_UNIT_PX,144);
+                                    team_position.setGravity(Gravity.CENTER);
+                                    team_position.setLayoutParams(driver_postion_layoutparams);
+                                    team_position.setText(Integer.toString(i+1));
+                                    switch(i+1) {
+                                        case 1:
+                                            team_position.setTextColor(ContextCompat.getColor(context, R.color.gold));
+                                            break;
+                                        case 2:
+                                            team_position.setTextColor(ContextCompat.getColor(context, R.color.silver));
+                                            break;
+                                        case 3:
+                                            team_position.setTextColor(ContextCompat.getColor(context, R.color.bronze));
+                                            break;
+                                        default:
+                                    }
+
+                                    // Setup team image
+                                    ImageView team_image = new ImageView(context);
+                                    ViewGroup.LayoutParams driver_image_layoutparams = new ViewGroup.LayoutParams(436, 192);
+                                    team_image.setLayoutParams(driver_image_layoutparams);
+                                    String team_image_url = data.getJSONArray("response").getJSONObject(i).getJSONObject("team").getString("logo");
+                                    Picasso.get().load(team_image_url).resize(340,192).into(team_image);
+
+                                    // Setup team info
+                                    TextView team_info = new TextView(context);
+                                    ViewGroup.LayoutParams driver_info_layoutparams = new ViewGroup.LayoutParams(356, ViewGroup.LayoutParams.MATCH_PARENT);
+                                    team_info.setGravity(Gravity.CENTER_VERTICAL);
+                                    team_info.setLayoutParams(driver_info_layoutparams);
                                     String team_name = data.getJSONArray("response").getJSONObject(i).getJSONObject("team").getString("name");
                                     String team_points = data.getJSONArray("response").getJSONObject(i).getString("points");
                                     if (team_points == "null")
                                         team_points = "0";
-                                    String driver_image_url = data.getJSONArray("response").getJSONObject(i).getJSONObject("team").getString("logo");
-                                    textView.setText(team_name + "\n" + team_points + " pts");
-                                    Picasso.get().load(driver_image_url).fit().into(profile_pic);
+                                    team_info.setText(team_name + "\n" + team_points + " pts");
+
+                                    // Setup favorite checkbox
+                                    CheckBox favorite_button = new CheckBox(context);
+                                    ViewGroup.LayoutParams favorite_button_layoutparams = new ViewGroup.LayoutParams(96, ViewGroup.LayoutParams.MATCH_PARENT);
+                                    favorite_button.setGravity(Gravity.CENTER);
+                                    favorite_button.setLayoutParams(favorite_button_layoutparams);
+                                    if (favorite_teams.contains(data.getJSONArray("response").getJSONObject(i).getJSONObject("team").getString("id")))
+                                    {
+                                        favorite_button.setChecked(true);
+                                        favorite_button.setButtonDrawable(getResources().getDrawable(R.drawable.ic_baseline_favorite_24));
+                                    } else {
+                                        favorite_button.setButtonDrawable(getResources().getDrawable(R.drawable.ic_baseline_favorite_border_24));
+                                    }
+                                    int finalI = i;
+                                    favorite_button.setOnClickListener(new View.OnClickListener() {
+
+                                        @Override
+                                        public void onClick(View v) {
+                                            if(favorite_button.isChecked()) {
+                                                try {
+                                                    favorite_teams.add(data.getJSONArray("response").getJSONObject(finalI).getJSONObject("team").getString("id"));
+                                                    favorite_button.setButtonDrawable(getResources().getDrawable(R.drawable.ic_baseline_favorite_24));
+                                                    //Toast.makeText(this, "Added " + data.getJSONArray("response").getJSONObject(finalI).getJSONObject("driver").getString("name") + " to favorites", Toast.LENGTH_SHORT).show();
+                                                } catch (JSONException e) {
+                                                    e.printStackTrace();
+                                                }
+                                            } else {
+                                                String id = null;
+                                                try {
+                                                    id = data.getJSONArray("response").getJSONObject(finalI).getJSONObject("team").getString("id");
+                                                    favorite_teams.remove(id);
+                                                    favorite_button.setButtonDrawable(getResources().getDrawable(R.drawable.ic_baseline_favorite_border_24));
+                                                    //Toast.makeText(this, "Added " + data.getJSONArray("response").getJSONObject(finalI).getJSONObject("driver").getString("name") + " to favorites", Toast.LENGTH_SHORT).show();
+                                                } catch (JSONException e) {
+                                                    throw new RuntimeException(e);
+                                                }
+                                            }
+                                            // Add code to save favorites list to firebase
+
+                                            Log.d("FAVORITES",favorite_teams.toString());
+                                        }
+                                    });
+
+                                    // Add views to linearlayout and scrollview
+                                    linearLayout.addView(team_position);
+                                    linearLayout.addView(team_image);
+                                    linearLayout.addView(team_info);
+                                    linearLayout.addView(favorite_button);
+                                    LinearLayout ll = findViewById(R.id.team_list);
+                                    ll.addView(linearLayout);
                                 }
                             } catch (JSONException e) {
                                 e.printStackTrace();
@@ -87,5 +180,35 @@ public class teams extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    public void goto_drivers(View view) {
+        Intent intent = new Intent(this, drivers.class);
+        Bundle bundle = new Bundle();
+        bundle.putStringArrayList("Favorite drivers", favorite_drivers);
+        intent.putExtras(bundle);
+        bundle.putStringArrayList("Favorite teams", favorite_teams);
+        intent.putExtras(bundle);
+        startActivity(intent);
+    }
+
+    public void goto_teams(View view) {
+        Intent intent = new Intent(this, teams.class);
+        Bundle bundle = new Bundle();
+        bundle.putStringArrayList("Favorite drivers", favorite_drivers);
+        intent.putExtras(bundle);
+        bundle.putStringArrayList("Favorite teams", favorite_teams);
+        intent.putExtras(bundle);
+        startActivity(intent);
+    }
+
+    public void goto_tracks(View view) {
+        Intent intent = new Intent(this, tracks.class);
+        Bundle bundle = new Bundle();
+        bundle.putStringArrayList("Favorite drivers", favorite_drivers);
+        intent.putExtras(bundle);
+        bundle.putStringArrayList("Favorite teams", favorite_teams);
+        intent.putExtras(bundle);
+        startActivity(intent);
     }
 }

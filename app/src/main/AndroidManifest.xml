@@ -76,8 +76,7 @@
         <activity
             android:name=".Favorites"
             android:label="Homepage"
-            android:exported="false"
-            android:parentActivityName=".Home" >
+            android:exported="false" >
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />

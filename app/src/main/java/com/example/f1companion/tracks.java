@@ -18,6 +18,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -25,13 +26,19 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-public class tracks extends AppCompatActivity {
+public class tracks extends menu {
     static JSONObject data = new JSONObject();
+    static ArrayList<String> favorite_drivers = new ArrayList<String>();
+    static ArrayList<String> favorite_teams = new ArrayList<String>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tracks);
+
+        Bundle bundle = getIntent().getExtras();
+        favorite_drivers = bundle.getStringArrayList("Favorite drivers");
+        favorite_teams = bundle.getStringArrayList("Favorite teams");
 
         // Setup connection to API
         OkHttpClient client = new OkHttpClient();
@@ -102,5 +109,35 @@ public class tracks extends AppCompatActivity {
         } catch (JSONException e) {
             e.printStackTrace();
         }
+    }
+
+    public void goto_drivers(View view) {
+        Intent intent = new Intent(this, drivers.class);
+        Bundle bundle = new Bundle();
+        bundle.putStringArrayList("Favorite drivers", favorite_drivers);
+        intent.putExtras(bundle);
+        bundle.putStringArrayList("Favorite teams", favorite_teams);
+        intent.putExtras(bundle);
+        startActivity(intent);
+    }
+
+    public void goto_teams(View view) {
+        Intent intent = new Intent(this, teams.class);
+        Bundle bundle = new Bundle();
+        bundle.putStringArrayList("Favorite drivers", favorite_drivers);
+        intent.putExtras(bundle);
+        bundle.putStringArrayList("Favorite teams", favorite_teams);
+        intent.putExtras(bundle);
+        startActivity(intent);
+    }
+
+    public void goto_tracks(View view) {
+        Intent intent = new Intent(this, tracks.class);
+        Bundle bundle = new Bundle();
+        bundle.putStringArrayList("Favorite drivers", favorite_drivers);
+        intent.putExtras(bundle);
+        bundle.putStringArrayList("Favorite teams", favorite_teams);
+        intent.putExtras(bundle);
+        startActivity(intent);
     }
 }
