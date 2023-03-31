@@ -1,5 +1,6 @@
 package com.example.f1companion;
 
+import android.content.Context;
 import android.content.Intent;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -26,6 +27,7 @@ public class menu extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected( @NonNull MenuItem item ) {
         Intent intent;
+        Context context = getApplicationContext();
 
         switch (item.getItemId()){
             case R.id.home:
@@ -33,7 +35,7 @@ public class menu extends AppCompatActivity {
                 startActivity(intent);
                 break;
             case R.id.settings:
-                Toast.makeText(this, "Settings Clicked", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Choose a theme", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.logout:
                 // Firebase sign out code
@@ -42,6 +44,37 @@ public class menu extends AppCompatActivity {
                 startActivity(intent);
                 finish();
                 Toast.makeText(this, "Logout Successful", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.theme_1:
+
+                break;
+            case R.id.theme_2:
+
+                break;
+            case R.id.theme_3:
+
+                break;
+            case R.id.theme_4:
+
+                break;
+            case R.id.theme_5:
+
+                break;
+            case R.id.theme_6:
+
+                break;
+            case R.id.theme_7:
+
+                break;
+            case R.id.theme_8:
+                setTheme(R.style.mercedes);
+                Toast.makeText(this, "Mercedes Theme Selected", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.theme_9:
+
+                break;
+            case R.id.theme_10:
+
                 break;
         }
         return super.onOptionsItemSelected(item);

@@ -50,7 +50,6 @@ public class Favorites extends menu {
     // Remove premade list later
     static ArrayList<String> favorite_drivers = new ArrayList<String>() {
         {
-            add("25");
             add("49");
             add("4");
             add("83");
@@ -184,6 +183,103 @@ public class Favorites extends menu {
             }
         });
 
+        // Setup connection to API
+        client = new OkHttpClient();
+        request = new Request.Builder()
+                .url("https://api-formula-1.p.rapidapi.com/rankings/teams?season=2023")
+                .get()
+                .addHeader("X-RapidAPI-Key", "0801c0f8camshbbda9eeceafe698p181139jsn5ca56dcbfb99")
+                .addHeader("X-RapidAPI-Host", "api-formula-1.p.rapidapi.com")
+                .build();
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(@NonNull Call call, @NonNull IOException e) {
+                e.printStackTrace();
+                Log.d("MESSAGE", "FAILURE");
+            }
+
+            @Override
+            public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
+                try {
+                    data = new JSONObject(response.body().string());
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            try {
+                                for (int j = 0; j < favorite_teams.size(); j++)
+                                {
+                                    for (int i = 0; i < Integer.parseInt(data.getString("results")); i++) {
+                                        try {
+                                            if (favorite_teams.get(j).equals(data.getJSONArray("response").getJSONObject(i).getJSONObject("team").getString("id")))
+                                            {
+                                                Context context = getApplicationContext();
+
+                                                // Setup Linear Layout
+                                                LinearLayout linearLayout = new LinearLayout(context);
+                                                LinearLayout.LayoutParams linearlayout_layoutparams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+                                                linearLayout.setOrientation(LinearLayout.HORIZONTAL);
+                                                linearLayout.setLayoutParams(linearlayout_layoutparams);
+
+                                                // Setup team position
+                                                TextView team_position = new TextView(context);
+                                                ViewGroup.LayoutParams driver_postion_layoutparams = new ViewGroup.LayoutParams(192, 192);
+                                                team_position.setTextSize(TypedValue.COMPLEX_UNIT_PX,144);
+                                                team_position.setGravity(Gravity.CENTER);
+                                                team_position.setLayoutParams(driver_postion_layoutparams);
+                                                team_position.setText(Integer.toString(i+1));
+                                                switch(i+1) {
+                                                    case 1:
+                                                        team_position.setTextColor(ContextCompat.getColor(context, R.color.gold));
+                                                        break;
+                                                    case 2:
+                                                        team_position.setTextColor(ContextCompat.getColor(context, R.color.silver));
+                                                        break;
+                                                    case 3:
+                                                        team_position.setTextColor(ContextCompat.getColor(context, R.color.bronze));
+                                                        break;
+                                                    default:
+                                                }
+
+                                                // Setup team image
+                                                ImageView team_image = new ImageView(context);
+                                                ViewGroup.LayoutParams driver_image_layoutparams = new ViewGroup.LayoutParams(436, 192);
+                                                team_image.setLayoutParams(driver_image_layoutparams);
+                                                String team_image_url = data.getJSONArray("response").getJSONObject(i).getJSONObject("team").getString("logo");
+                                                Picasso.get().load(team_image_url).resize(340,192).into(team_image);
+
+                                                // Setup team info
+                                                TextView team_info = new TextView(context);
+                                                ViewGroup.LayoutParams driver_info_layoutparams = new ViewGroup.LayoutParams(452, ViewGroup.LayoutParams.MATCH_PARENT);
+                                                team_info.setGravity(Gravity.CENTER_VERTICAL);
+                                                team_info.setLayoutParams(driver_info_layoutparams);
+                                                String team_name = data.getJSONArray("response").getJSONObject(i).getJSONObject("team").getString("name");
+                                                String team_points = data.getJSONArray("response").getJSONObject(i).getString("points");
+                                                if (team_points == "null")
+                                                    team_points = "0";
+                                                team_info.setText(team_name + "\n" + team_points + " pts");
+
+                                                // Add views to linearlayout and scrollview
+                                                linearLayout.addView(team_position);
+                                                linearLayout.addView(team_image);
+                                                linearLayout.addView(team_info);
+                                                LinearLayout ll = findViewById(R.id.favorite_teams_linearlayout);
+                                                ll.addView(linearLayout);
+                                            }
+                                        } catch (JSONException e) {
+                                            e.printStackTrace();
+                                        }
+                                    }
+                                }
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    });
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
     }
 
     public void goto_drivers(View view) {

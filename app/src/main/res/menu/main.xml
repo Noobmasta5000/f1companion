@@ -12,7 +12,39 @@
         android:id="@+id/settings"
         android:title="Settings"
         app:showAsAction="ifRoom"
-        android:icon="@drawable/baseline_settings_24" />
+        android:icon="@drawable/baseline_theme_24">
+        <menu>
+            <item android:id="@+id/theme_1"
+                android:title="Alfa Romeo" />
+
+            <item android:id="@+id/theme_2"
+                android:title="Scuderia AlphaTauri Honda" />
+
+            <item android:id="@+id/theme_3"
+                android:title="Alpine F1 Team" />
+
+            <item android:id="@+id/theme_4"
+                android:title="Aston Martin F1 Team" />
+
+            <item android:id="@+id/theme_5"
+                android:title="Scuderia Ferrari" />
+
+            <item android:id="@+id/theme_6"
+                android:title="Haas F1 Team" />
+
+            <item android:id="@+id/theme_7"
+                android:title="McLaren Racing" />
+
+            <item android:id="@+id/theme_8"
+                android:title="Mercedes-AMG Petronas" />
+
+            <item android:id="@+id/theme_9"
+                android:title="Red Bull Racing" />
+
+            <item android:id="@+id/theme_10"
+                android:title="Williams F1 Team" />
+        </menu>
+    </item>
 
     <item
         android:id="@+id/logout"
