@@ -16,28 +16,16 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class Register extends AppCompatActivity {
 
     TextInputEditText editTextEmail, editTextPassword;
     Button buttonReg;
     FirebaseAuth mAuth;
-
-    // ZACHS CODE//
-    // Firebase - is user already logged in code
-    /*
-    @Override
-    public void onStart() {
-        super.onStart();
-        // Check if user is signed in (non-null) and update UI accordingly.
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        if(currentUser != null){
-            Intent intent = new Intent(getApplicationContext(), drivers.class);
-            startActivity(intent);
-            finish();
-        }
-    }
-    */
+    FirebaseDatabase database;
+    DatabaseReference myRef;
 
 
     @Override
@@ -45,6 +33,8 @@ public class Register extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
         mAuth = FirebaseAuth.getInstance();
+        database = FirebaseDatabase.getInstance();
+        myRef = database.getReference();
         editTextEmail = findViewById(R.id.email);
         editTextPassword = findViewById(R.id.password);
         buttonReg = findViewById(R.id.btn_register);
@@ -75,7 +65,11 @@ public class Register extends AppCompatActivity {
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
                                     // Sign in success, update UI with the signed-in user's information
-                                    //FirebaseUser user = mAuth.getCurrentUser();
+                                    FirebaseUser user = mAuth.getCurrentUser();
+                                    String userID = user.getUid();
+                                    myRef.child(userID);
+                                    myRef.child(userID).child("Favorite Drivers").setValue("");
+                                    myRef.child(userID).child("Favorite Teams").setValue("");
                                     Toast.makeText(Register.this, "Account created.",
                                             Toast.LENGTH_SHORT).show();
                                 } else {
