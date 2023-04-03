@@ -14,6 +14,7 @@ public class Home extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTheme(R.style.Theme_F1companion);
         setContentView(R.layout.activity_home);
 
         loginBtn = findViewById(R.id.login);

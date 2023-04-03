@@ -34,6 +34,7 @@ public class track_info extends menu {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Utils.onActivityCreateSetTheme(this);
         setContentView(R.layout.activity_track_info);
 
         // Get data from bundle and load into appropriate locations

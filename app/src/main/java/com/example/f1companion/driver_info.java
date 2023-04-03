@@ -24,20 +24,36 @@ import okhttp3.Response;
 
 public class driver_info extends menu {
 
-    static JSONObject data = new JSONObject();
-    String first_name, last_name;
-    private int matching_id;
+    private static JSONObject data = new JSONObject();
     private String id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Utils.onActivityCreateSetTheme(this);
         setContentView(R.layout.activity_driver_info);
         Bundle bundle = getIntent().getExtras();
 
         try {
+            // Get driver data
             data = new JSONObject(bundle.getString("Driver"));
-            // Get driver id and other meaninful data
+            id = data.getJSONObject("driver").getString("id");
+
+            // Load season results
+            TextView text;
+            String content;
+            text = findViewById(R.id.season_points);
+            content = data.getString("points");
+            if (content == "null")
+                content = "0";
+            text.setText("\n" + content + " pts\n");
+
+            text = findViewById(R.id.season_wins);
+            content = data.getString("wins");
+            if (content == "null")
+                content = "0";
+            text.setText(content + " wins\n");
+
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -65,29 +81,78 @@ public class driver_info extends menu {
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            // Find track that matches id
-                            try {
-                                for (int i = 0; i < Integer.parseInt(data.getString("results")); i++)
-                                {
-                                    if (id.equals(data.getJSONArray("response").getJSONObject(i).getJSONObject("competition").getString("id")))
-                                    {
-                                        matching_id = i;
-                                        Log.d("MATCHING", Integer.toString(matching_id));
-                                    }
-                                }
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
-
                             try {
                                 // Set title to driver name
-                                setTitle(data.getJSONArray("response").getJSONObject(matching_id).getJSONObject("competition").getString("name"));
+                                setTitle(data.getJSONArray("response").getJSONObject(0).getString("name"));
 
-                                TextView textview;
+                                ImageView image;
+                                TextView text;
+                                String content;
+
                                 // Load driver image
-                                String track_image_url = data.getJSONArray("response").getJSONObject(matching_id).getString("image");
-                                ImageView driver_image = findViewById(R.id.track_image);
-                                Picasso.get().load(track_image_url).fit().into(driver_image);
+                                image = findViewById(R.id.driver_image);
+                                content = data.getJSONArray("response").getJSONObject(0).getString("image");
+                                Picasso.get().load(content).fit().into(image);
+
+                                // Load team image
+                                image = findViewById(R.id.team_image);
+                                content = data.getJSONArray("response").getJSONObject(0).getJSONArray("teams").getJSONObject(0).getJSONObject("team").getString("logo");
+                                Picasso.get().load(content).fit().into(image);
+
+                                // Load driver name, abbreviation, number, team
+                                text = findViewById(R.id.driver_name);
+                                content = data.getJSONArray("response").getJSONObject(0).getString("name") + "\n\n"
+                                        + data.getJSONArray("response").getJSONObject(0).getString("abbr") + " | " + data.getJSONArray("response").getJSONObject(0).getString("number") + "\n\n"
+                                        + data.getJSONArray("response").getJSONObject(0).getJSONArray("teams").getJSONObject(0).getJSONObject("team").getString("name");
+                                text.setText(content);
+
+                                // Load historical results (points, wins, podiums, championships, races)
+                                text = findViewById(R.id.historical_points);
+                                content = data.getJSONArray("response").getJSONObject(0).getString("career_points");
+                                if (content == "null")
+                                    content = "0";
+                                text.setText("\n" + content + " pts\n");
+
+                                text = findViewById(R.id.historical_wins);
+                                if (data.getJSONArray("response").getJSONObject(0).getJSONObject("highest_race_finish").getString("position") == "1")
+                                    content = data.getJSONArray("response").getJSONObject(0).getJSONObject("highest_race_finish").getString("number");
+                                else
+                                    content = "0";
+                                text.setText(content + " wins\n");
+
+                                text = findViewById(R.id.historical_podiums);
+                                content = data.getJSONArray("response").getJSONObject(0).getString("podiums");
+                                if (content == "null")
+                                    content = "0";
+                                text.setText(content + " podiums\n");
+
+                                text = findViewById(R.id.historical_races);
+                                content = data.getJSONArray("response").getJSONObject(0).getString("grands_prix_entered");
+                                if (content == "null")
+                                    content = "0";
+                                text.setText(content + " Races\n");
+
+                                text = findViewById(R.id.historical_championships);
+                                content = data.getJSONArray("response").getJSONObject(0).getString("world_championships");
+                                text.setText(content + " Championships\n");
+
+                                // Load birth info (nationality, birthdate, birthplace, country)
+                                text = findViewById(R.id.nationality);
+                                content = data.getJSONArray("response").getJSONObject(0).getString("nationality");
+                                text.setText("\n" + content + "\n");
+
+                                text = findViewById(R.id.birthdate);
+                                content = data.getJSONArray("response").getJSONObject(0).getString("birthdate");
+                                text.setText(content + "\n");
+
+                                text = findViewById(R.id.birthplace);
+                                content = data.getJSONArray("response").getJSONObject(0).getString("birthplace");
+                                text.setText(content + "\n");
+
+                                text = findViewById(R.id.country);
+                                content = data.getJSONArray("response").getJSONObject(0).getJSONObject("country").getString("name") + " | "
+                                        + data.getJSONArray("response").getJSONObject(0).getJSONObject("country").getString("code");
+                                text.setText(content + "\n");
 
                             } catch (JSONException e) {
                                 e.printStackTrace();

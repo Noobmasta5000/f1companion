@@ -34,6 +34,7 @@ public class tracks extends menu {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Utils.onActivityCreateSetTheme(this);
         setContentView(R.layout.activity_tracks);
 
         // Setup connection to API
