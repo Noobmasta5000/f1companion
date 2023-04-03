@@ -3,6 +3,7 @@ package com.example.f1companion;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 
@@ -68,6 +69,8 @@ public class Favorites extends menu {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        Utils.onActivityCreateSetTheme(this);
         setContentView(R.layout.activity_favorites);
 
         auth = FirebaseAuth.getInstance();

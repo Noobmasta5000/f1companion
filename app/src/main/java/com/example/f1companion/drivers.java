@@ -44,6 +44,7 @@ public class drivers extends menu {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Utils.onActivityCreateSetTheme(this);
         setContentView(R.layout.activity_drivers);
 
         Bundle bundle = getIntent().getExtras();
@@ -81,7 +82,15 @@ public class drivers extends menu {
                                         LinearLayout linearLayout = new LinearLayout(context);
                                         LinearLayout.LayoutParams linearlayout_layoutparams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
                                         linearLayout.setOrientation(LinearLayout.HORIZONTAL);
+                                        linearLayout.setId(i);
                                         linearLayout.setLayoutParams(linearlayout_layoutparams);
+
+                                        linearLayout.setOnClickListener(new LinearLayout.OnClickListener() {
+                                            @Override
+                                            public void onClick(View view) {
+                                                goto_driver_info(view);
+                                            }
+                                        });
 
                                         // Setup driver position
                                         TextView driver_position = new TextView(context);
@@ -185,6 +194,23 @@ public class drivers extends menu {
                 }
             }
         });
+    }
+
+    public void goto_driver_info(View view) {
+
+        int num = view.getId();
+        Log.d("NUM", Integer.toString(num));
+
+        try {
+            String driver_info = data.getJSONArray("response").getJSONObject(num).toString();
+            Intent intent = new Intent(this, driver_info.class);
+            Bundle bundle = new Bundle();
+            bundle.putString("Driver", driver_info);
+            intent.putExtras(bundle);
+            startActivity(intent);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 
     public void goto_drivers(View view) {

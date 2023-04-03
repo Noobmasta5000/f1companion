@@ -43,6 +43,7 @@ public class teams extends menu {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Utils.onActivityCreateSetTheme(this);
         setContentView(R.layout.activity_teams);
 
         Bundle bundle = getIntent().getExtras();

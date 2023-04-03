@@ -1,7 +1,7 @@
 {
   "get": "drivers",
   "parameters": {
-    "name": "Lando Norris"
+    "id": "49"
   },
   "errors": [],
   "results": 1,
@@ -10,7 +10,7 @@
       "id": 49,
       "name": "Lando Norris",
       "abbr": "NOR",
-      "image": "https://media-2.api-sports.io/formula-1/drivers/49.png",
+      "image": "https://media-3.api-sports.io/formula-1/drivers/49.png",
       "nationality": "British",
       "country": {
         "name": "United Kingdom",
@@ -34,7 +34,7 @@
           "team": {
             "id": 2,
             "name": "McLaren Racing",
-            "logo": "https://media-2.api-sports.io/formula-1/teams/2.png"
+            "logo": "https://media-1.api-sports.io/formula-1/teams/2.png"
           }
         },
         {
@@ -42,7 +42,7 @@
           "team": {
             "id": 2,
             "name": "McLaren Racing",
-            "logo": "https://media-2.api-sports.io/formula-1/teams/2.png"
+            "logo": "https://media-1.api-sports.io/formula-1/teams/2.png"
           }
         },
         {
@@ -50,7 +50,7 @@
           "team": {
             "id": 2,
             "name": "McLaren Racing",
-            "logo": "https://media-2.api-sports.io/formula-1/teams/2.png"
+            "logo": "https://media-1.api-sports.io/formula-1/teams/2.png"
           }
         },
         {
@@ -58,7 +58,7 @@
           "team": {
             "id": 2,
             "name": "McLaren Racing",
-            "logo": "https://media-2.api-sports.io/formula-1/teams/2.png"
+            "logo": "https://media-1.api-sports.io/formula-1/teams/2.png"
           }
         },
         {
@@ -66,7 +66,7 @@
           "team": {
             "id": 2,
             "name": "McLaren Racing",
-            "logo": "https://media-2.api-sports.io/formula-1/teams/2.png"
+            "logo": "https://media-1.api-sports.io/formula-1/teams/2.png"
           }
         }
       ]
