@@ -24,7 +24,7 @@ import okhttp3.Response;
 
 public class driver_info extends menu {
 
-    static JSONObject data = new JSONObject();
+    private static JSONObject data = new JSONObject();
     private String id;
 
     @Override

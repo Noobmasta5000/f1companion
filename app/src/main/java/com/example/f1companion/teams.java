@@ -83,6 +83,13 @@ public class teams extends menu {
                                     linearLayout.setOrientation(LinearLayout.HORIZONTAL);
                                     linearLayout.setLayoutParams(linearlayout_layoutparams);
 
+                                    linearLayout.setOnClickListener(new LinearLayout.OnClickListener() {
+                                        @Override
+                                        public void onClick(View view) {
+                                            goto_team_info(view);
+                                        }
+                                    });
+
                                     // Setup team position
                                     TextView team_position = new TextView(context);
                                     ViewGroup.LayoutParams driver_postion_layoutparams = new ViewGroup.LayoutParams(192, 192);
@@ -181,6 +188,23 @@ public class teams extends menu {
                 }
             }
         });
+    }
+
+    public void goto_team_info(View view) {
+
+        int num = view.getId();
+        Log.d("NUM", Integer.toString(num));
+
+        try {
+            String team_info = data.getJSONArray("response").getJSONObject(num).toString();
+            Intent intent = new Intent(this, driver_info.class);
+            Bundle bundle = new Bundle();
+            bundle.putString("Team", team_info);
+            intent.putExtras(bundle);
+            startActivity(intent);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 
     public void goto_drivers(View view) {
