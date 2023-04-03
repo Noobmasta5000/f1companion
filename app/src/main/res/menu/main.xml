@@ -9,8 +9,8 @@
         android:icon="@drawable/baseline_home_24" />
 
     <item
-        android:id="@+id/settings"
-        android:title="Settings"
+        android:id="@+id/themes"
+        android:title="Themes"
         app:showAsAction="ifRoom"
         android:icon="@drawable/baseline_theme_24">
         <menu>

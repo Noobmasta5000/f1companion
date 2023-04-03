@@ -22,8 +22,11 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONException;
@@ -41,22 +44,58 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 public class drivers extends menu {
-    static JSONObject data = new JSONObject();
+    private static JSONObject data = new JSONObject();
     static ArrayList<String> favorite_drivers = new ArrayList<String>();
     static ArrayList<String> favorite_teams = new ArrayList<String>();
 
     FirebaseDatabase database;
-    FirebaseAuth mAuth;
+    FirebaseAuth auth;
     DatabaseReference myRef;
     FirebaseUser user;
+    String userID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Utils.onActivityCreateSetTheme(this);
         setContentView(R.layout.activity_drivers);
 
-        // Read favorites list from firebase
+        auth = FirebaseAuth.getInstance();
+        user = auth.getCurrentUser();
+        database = FirebaseDatabase.getInstance();
+        myRef = database.getReference();
+        userID = user.getUid();
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
 
+                // Retrieve Favorite Drivers list
+                String receivedDrivers = dataSnapshot.child(userID).child("Favorite Drivers").getValue(String.class);
+                String[] receivedArr = receivedDrivers.split(", ");
+
+                ArrayList<String> receivedList = new ArrayList<String>();
+
+                for(String s : receivedArr){
+                    receivedList.add(s);
+                }
+
+                // Set favorite_drivers and favorite_teams to respective ArrayList<String>
+                favorite_drivers = receivedList;
+
+                // Log.d for debugging
+                Log.d("RETRIEVED DRIVERS DATA", receivedDrivers);
+                Log.d("CONVERTED DRIVERS LIST", receivedList.toString());
+                Log.d("DRIVERS LIST DATA", favorite_drivers.toString());
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+                Log.w("ERROR", "Failed to read value.", error.toException());
+            }
+        });
 
         // Setup connection to API
         OkHttpClient client = new OkHttpClient();
@@ -89,7 +128,15 @@ public class drivers extends menu {
                                         LinearLayout linearLayout = new LinearLayout(context);
                                         LinearLayout.LayoutParams linearlayout_layoutparams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
                                         linearLayout.setOrientation(LinearLayout.HORIZONTAL);
+                                        linearLayout.setId(i);
                                         linearLayout.setLayoutParams(linearlayout_layoutparams);
+
+                                        linearLayout.setOnClickListener(new LinearLayout.OnClickListener() {
+                                            @Override
+                                            public void onClick(View view) {
+                                                goto_driver_info(view);
+                                            }
+                                        });
 
                                         // Setup driver position
                                         TextView driver_position = new TextView(context);
@@ -167,10 +214,10 @@ public class drivers extends menu {
                                                     }
                                                 }
                                                 // Add code to save favorites list to firebase
-                                                mAuth = FirebaseAuth.getInstance();
+                                                auth = FirebaseAuth.getInstance();
                                                 database = FirebaseDatabase.getInstance();
                                                 myRef = database.getReference();
-                                                user = mAuth.getCurrentUser();
+                                                user = auth.getCurrentUser();
                                                 String userID = user.getUid();
                                                 String new_drivers = favorite_drivers.toString();
                                                 new_drivers = new_drivers.replace("[", "");
@@ -210,6 +257,23 @@ public class drivers extends menu {
                 }
             }
         });
+    }
+
+    public void goto_driver_info(View view) {
+
+        int num = view.getId();
+        Log.d("NUM", Integer.toString(num));
+
+        try {
+            String driver_info = data.getJSONArray("response").getJSONObject(num).toString();
+            Intent intent = new Intent(this, driver_info.class);
+            Bundle bundle = new Bundle();
+            bundle.putString("Driver", driver_info);
+            intent.putExtras(bundle);
+            startActivity(intent);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 
     public void goto_drivers(View view) {
