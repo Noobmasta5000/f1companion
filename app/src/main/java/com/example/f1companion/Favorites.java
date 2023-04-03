@@ -27,6 +27,11 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONException;
@@ -35,6 +40,7 @@ import org.w3c.dom.Text;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import okhttp3.Call;
@@ -47,8 +53,14 @@ public class Favorites extends menu {
 
     FirebaseAuth auth;
     FirebaseUser user;
+    FirebaseDatabase database;
+    DatabaseReference myRef;
+    String userID;
+
 
     // Remove premade list later
+
+    /*
     static ArrayList<String> favorite_drivers = new ArrayList<String>() {
         {
             add("49");
@@ -56,6 +68,8 @@ public class Favorites extends menu {
             add("83");
         }
     };
+
+
     static ArrayList<String> favorite_teams = new ArrayList<String>() {
         {
             add("2");
@@ -64,6 +78,12 @@ public class Favorites extends menu {
             add("7");
         }
     };
+
+     */
+
+
+    static ArrayList<String> favorite_drivers = new ArrayList<String>();
+    static ArrayList<String> favorite_teams = new ArrayList<String>();;
     JSONObject data = new JSONObject();
 
     @Override
@@ -75,6 +95,64 @@ public class Favorites extends menu {
 
         auth = FirebaseAuth.getInstance();
         user = auth.getCurrentUser();
+        database = FirebaseDatabase.getInstance();
+        myRef = database.getReference();
+        userID = user.getUid();
+
+
+
+        // Read from the database
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+
+                // Retrieve Favorite Drivers list
+                String receivedDrivers = dataSnapshot.child(userID).child("Favorite Drivers").getValue(String.class);
+                String[] receivedArr = receivedDrivers.split(", ");
+
+                ArrayList<String> receivedList = new ArrayList<String>();
+
+                for(String s : receivedArr){
+                    receivedList.add(s);
+                }
+
+                // Retrieve Favorite Teams list
+                String receivedTeams = dataSnapshot.child(userID).child("Favorite Teams").getValue(String.class);
+                String[] teamsArr = receivedTeams.split(", ");
+
+                ArrayList<String> teamsList = new ArrayList<String>();
+
+                for(String s : teamsArr){
+                    teamsList.add(s);
+                }
+
+                // Set favorite_drivers and favorite_teams to respective ArrayList<String>
+                favorite_drivers = receivedList;
+                favorite_teams = teamsList;
+
+                // Log.d for debugging
+                Log.d("RETRIEVED DRIVERS DATA", receivedDrivers);
+                Log.d("CONVERTED DRIVERS LIST", receivedList.toString());
+                Log.d("DRIVERS LIST DATA", favorite_drivers.toString());
+
+                Log.d("RETRIEVED TEAMS DATA", receivedTeams);
+                Log.d("CONVERTED TEAMS LIST", teamsList.toString());
+                Log.d("TEAMS LIST DATA", favorite_teams.toString());
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+                Log.w("ERROR", "Failed to read value.", error.toException());
+            }
+        });
+
+        //Log.d("LIST DATA", favorite_drivers.toString());
+
+
+
 
         /*
         if(user == null){
@@ -287,31 +365,16 @@ public class Favorites extends menu {
 
     public void goto_drivers(View view) {
         Intent intent = new Intent(this, drivers.class);
-        Bundle bundle = new Bundle();
-        bundle.putStringArrayList("Favorite drivers", favorite_drivers);
-        intent.putExtras(bundle);
-        bundle.putStringArrayList("Favorite teams", favorite_teams);
-        intent.putExtras(bundle);
         startActivity(intent);
     }
 
     public void goto_teams(View view) {
         Intent intent = new Intent(this, teams.class);
-        Bundle bundle = new Bundle();
-        bundle.putStringArrayList("Favorite drivers", favorite_drivers);
-        intent.putExtras(bundle);
-        bundle.putStringArrayList("Favorite teams", favorite_teams);
-        intent.putExtras(bundle);
         startActivity(intent);
     }
 
     public void goto_tracks(View view) {
         Intent intent = new Intent(this, tracks.class);
-        Bundle bundle = new Bundle();
-        bundle.putStringArrayList("Favorite drivers", favorite_drivers);
-        intent.putExtras(bundle);
-        bundle.putStringArrayList("Favorite teams", favorite_teams);
-        intent.putExtras(bundle);
         startActivity(intent);
     }
 }

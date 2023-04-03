@@ -20,6 +20,10 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONException;
@@ -41,15 +45,19 @@ public class drivers extends menu {
     static ArrayList<String> favorite_drivers = new ArrayList<String>();
     static ArrayList<String> favorite_teams = new ArrayList<String>();
 
+    FirebaseDatabase database;
+    FirebaseAuth mAuth;
+    DatabaseReference myRef;
+    FirebaseUser user;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Utils.onActivityCreateSetTheme(this);
         setContentView(R.layout.activity_drivers);
 
-        Bundle bundle = getIntent().getExtras();
-        favorite_drivers = bundle.getStringArrayList("Favorite drivers");
-        favorite_teams = bundle.getStringArrayList("Favorite teams");
+        // Read favorites list from firebase
+
 
         // Setup connection to API
         OkHttpClient client = new OkHttpClient();
@@ -168,10 +176,27 @@ public class drivers extends menu {
                                                     }
                                                 }
                                                 // Add code to save favorites list to firebase
+                                                mAuth = FirebaseAuth.getInstance();
+                                                database = FirebaseDatabase.getInstance();
+                                                myRef = database.getReference();
+                                                user = mAuth.getCurrentUser();
+                                                String userID = user.getUid();
+                                                String new_drivers = favorite_drivers.toString();
+                                                new_drivers = new_drivers.replace("[", "");
+                                                new_drivers = new_drivers.replace("]", "");
 
+                                                //myRef.setValue(new_drivers);
+                                                myRef.child(userID).child("Favorite Drivers").setValue(new_drivers);
+
+                                                Log.d("USER ID", userID);
                                                 Log.d("FAVORITES",favorite_drivers.toString());
+                                                Log.d("new drivers",new_drivers);
+
+
                                             }
                                         });
+
+
 
                                         // Add views to linearlayout and scrollview
                                         linearLayout.addView(driver_position);
@@ -215,31 +240,16 @@ public class drivers extends menu {
 
     public void goto_drivers(View view) {
         Intent intent = new Intent(this, drivers.class);
-        Bundle bundle = new Bundle();
-        bundle.putStringArrayList("Favorite drivers", favorite_drivers);
-        intent.putExtras(bundle);
-        bundle.putStringArrayList("Favorite teams", favorite_teams);
-        intent.putExtras(bundle);
         startActivity(intent);
     }
 
     public void goto_teams(View view) {
         Intent intent = new Intent(this, teams.class);
-        Bundle bundle = new Bundle();
-        bundle.putStringArrayList("Favorite drivers", favorite_drivers);
-        intent.putExtras(bundle);
-        bundle.putStringArrayList("Favorite teams", favorite_teams);
-        intent.putExtras(bundle);
         startActivity(intent);
     }
 
     public void goto_tracks(View view) {
         Intent intent = new Intent(this, tracks.class);
-        Bundle bundle = new Bundle();
-        bundle.putStringArrayList("Favorite drivers", favorite_drivers);
-        intent.putExtras(bundle);
-        bundle.putStringArrayList("Favorite teams", favorite_teams);
-        intent.putExtras(bundle);
         startActivity(intent);
     }
 }

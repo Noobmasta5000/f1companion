@@ -37,10 +37,6 @@ public class tracks extends menu {
         Utils.onActivityCreateSetTheme(this);
         setContentView(R.layout.activity_tracks);
 
-        Bundle bundle = getIntent().getExtras();
-        favorite_drivers = bundle.getStringArrayList("Favorite drivers");
-        favorite_teams = bundle.getStringArrayList("Favorite teams");
-
         // Setup connection to API
         OkHttpClient client = new OkHttpClient();
         Request request = new Request.Builder()
@@ -114,31 +110,16 @@ public class tracks extends menu {
 
     public void goto_drivers(View view) {
         Intent intent = new Intent(this, drivers.class);
-        Bundle bundle = new Bundle();
-        bundle.putStringArrayList("Favorite drivers", favorite_drivers);
-        intent.putExtras(bundle);
-        bundle.putStringArrayList("Favorite teams", favorite_teams);
-        intent.putExtras(bundle);
         startActivity(intent);
     }
 
     public void goto_teams(View view) {
         Intent intent = new Intent(this, teams.class);
-        Bundle bundle = new Bundle();
-        bundle.putStringArrayList("Favorite drivers", favorite_drivers);
-        intent.putExtras(bundle);
-        bundle.putStringArrayList("Favorite teams", favorite_teams);
-        intent.putExtras(bundle);
         startActivity(intent);
     }
 
     public void goto_tracks(View view) {
         Intent intent = new Intent(this, tracks.class);
-        Bundle bundle = new Bundle();
-        bundle.putStringArrayList("Favorite drivers", favorite_drivers);
-        intent.putExtras(bundle);
-        bundle.putStringArrayList("Favorite teams", favorite_teams);
-        intent.putExtras(bundle);
         startActivity(intent);
     }
 }
