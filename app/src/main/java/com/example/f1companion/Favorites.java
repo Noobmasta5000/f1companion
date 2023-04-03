@@ -57,34 +57,10 @@ public class Favorites extends menu {
     DatabaseReference myRef;
     String userID;
 
-
-    // Remove premade list later
-
-    /*
-    static ArrayList<String> favorite_drivers = new ArrayList<String>() {
-        {
-            add("49");
-            add("4");
-            add("83");
-        }
-    };
-
-
-    static ArrayList<String> favorite_teams = new ArrayList<String>() {
-        {
-            add("2");
-            add("3");
-            add("17");
-            add("7");
-        }
-    };
-
-     */
-
-
     static ArrayList<String> favorite_drivers = new ArrayList<String>();
     static ArrayList<String> favorite_teams = new ArrayList<String>();;
-    JSONObject data = new JSONObject();
+    private JSONObject drivers = new JSONObject();
+    private JSONObject teams = new JSONObject();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -183,16 +159,16 @@ public class Favorites extends menu {
             @Override
             public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
                 try {
-                    data = new JSONObject(response.body().string());
+                    drivers = new JSONObject(response.body().string());
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
                             try {
                                 for (int j = 0; j < favorite_drivers.size(); j++)
                                 {
-                                    for (int i = 0; i < Integer.parseInt(data.getString("results")); i++) {
+                                    for (int i = 0; i < Integer.parseInt(drivers.getString("results")); i++) {
                                         try {
-                                            if (favorite_drivers.get(j).equals(data.getJSONArray("response").getJSONObject(i).getJSONObject("driver").getString("id")))
+                                            if (favorite_drivers.get(j).equals(drivers.getJSONArray("response").getJSONObject(i).getJSONObject("driver").getString("id")))
                                             {
                                                 Context context = getApplicationContext();
 
@@ -226,7 +202,7 @@ public class Favorites extends menu {
                                                 ImageView driver_image = new ImageView(context);
                                                 ViewGroup.LayoutParams driver_image_layoutparams = new ViewGroup.LayoutParams(288, 192);
                                                 driver_image.setLayoutParams(driver_image_layoutparams);
-                                                String driver_image_url = data.getJSONArray("response").getJSONObject(i).getJSONObject("driver").getString("image");
+                                                String driver_image_url = drivers.getJSONArray("response").getJSONObject(i).getJSONObject("driver").getString("image");
                                                 Picasso.get().load(driver_image_url).resize(192,192).into(driver_image);
 
                                                 // Setup driver info
@@ -234,9 +210,9 @@ public class Favorites extends menu {
                                                 ViewGroup.LayoutParams driver_info_layoutparams = new ViewGroup.LayoutParams(600, ViewGroup.LayoutParams.MATCH_PARENT);
                                                 driver_info.setGravity(Gravity.CENTER_VERTICAL);
                                                 driver_info.setLayoutParams(driver_info_layoutparams);
-                                                String driver_name = data.getJSONArray("response").getJSONObject(i).getJSONObject("driver").getString("name");
-                                                String driver_team = data.getJSONArray("response").getJSONObject(i).getJSONObject("team").getString("name");
-                                                String driver_points = data.getJSONArray("response").getJSONObject(i).getString("points");
+                                                String driver_name = drivers.getJSONArray("response").getJSONObject(i).getJSONObject("driver").getString("name");
+                                                String driver_team = drivers.getJSONArray("response").getJSONObject(i).getJSONObject("team").getString("name");
+                                                String driver_points = drivers.getJSONArray("response").getJSONObject(i).getString("points");
                                                 if (driver_points == "null")
                                                     driver_points = "0";
                                                 driver_info.setText(driver_name + "\n" + driver_team + "\n" + driver_points + " pts");
@@ -282,16 +258,16 @@ public class Favorites extends menu {
             @Override
             public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
                 try {
-                    data = new JSONObject(response.body().string());
+                    teams = new JSONObject(response.body().string());
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
                             try {
                                 for (int j = 0; j < favorite_teams.size(); j++)
                                 {
-                                    for (int i = 0; i < Integer.parseInt(data.getString("results")); i++) {
+                                    for (int i = 0; i < Integer.parseInt(teams.getString("results")); i++) {
                                         try {
-                                            if (favorite_teams.get(j).equals(data.getJSONArray("response").getJSONObject(i).getJSONObject("team").getString("id")))
+                                            if (favorite_teams.get(j).equals(teams.getJSONArray("response").getJSONObject(i).getJSONObject("team").getString("id")))
                                             {
                                                 Context context = getApplicationContext();
 
@@ -325,7 +301,7 @@ public class Favorites extends menu {
                                                 ImageView team_image = new ImageView(context);
                                                 ViewGroup.LayoutParams driver_image_layoutparams = new ViewGroup.LayoutParams(436, 192);
                                                 team_image.setLayoutParams(driver_image_layoutparams);
-                                                String team_image_url = data.getJSONArray("response").getJSONObject(i).getJSONObject("team").getString("logo");
+                                                String team_image_url = teams.getJSONArray("response").getJSONObject(i).getJSONObject("team").getString("logo");
                                                 Picasso.get().load(team_image_url).resize(340,192).into(team_image);
 
                                                 // Setup team info
@@ -333,8 +309,8 @@ public class Favorites extends menu {
                                                 ViewGroup.LayoutParams driver_info_layoutparams = new ViewGroup.LayoutParams(452, ViewGroup.LayoutParams.MATCH_PARENT);
                                                 team_info.setGravity(Gravity.CENTER_VERTICAL);
                                                 team_info.setLayoutParams(driver_info_layoutparams);
-                                                String team_name = data.getJSONArray("response").getJSONObject(i).getJSONObject("team").getString("name");
-                                                String team_points = data.getJSONArray("response").getJSONObject(i).getString("points");
+                                                String team_name = teams.getJSONArray("response").getJSONObject(i).getJSONObject("team").getString("name");
+                                                String team_points = teams.getJSONArray("response").getJSONObject(i).getString("points");
                                                 if (team_points == "null")
                                                     team_points = "0";
                                                 team_info.setText(team_name + "\n" + team_points + " pts");

@@ -34,7 +34,8 @@
         </activity>
         <activity
             android:name=".team_info"
-            android:exported="false" >
+            android:exported="false"
+            android:parentActivityName="teams">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />

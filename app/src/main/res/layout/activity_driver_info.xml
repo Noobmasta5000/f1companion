@@ -37,7 +37,6 @@
                         android:id="@+id/team_image"
                         android:layout_width="540px"
                         android:layout_height="300px"
-                        android:layout_weight="1"
                         app:srcCompat="@drawable/teams" />
                 </LinearLayout>
 

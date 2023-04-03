@@ -19,8 +19,11 @@ import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONException;
@@ -39,14 +42,15 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 public class teams extends menu {
-    static JSONObject data = new JSONObject();
+    private static JSONObject data = new JSONObject();
     static ArrayList<String> favorite_drivers = new ArrayList<String>();
     static ArrayList<String> favorite_teams = new ArrayList<String>();
 
     FirebaseDatabase database;
-    FirebaseAuth mAuth;
+    FirebaseAuth auth;
     DatabaseReference myRef;
     FirebaseUser user;
+    String userID;
 
 
     @Override
@@ -54,6 +58,43 @@ public class teams extends menu {
         super.onCreate(savedInstanceState);
         Utils.onActivityCreateSetTheme(this);
         setContentView(R.layout.activity_teams);
+
+        auth = FirebaseAuth.getInstance();
+        user = auth.getCurrentUser();
+        database = FirebaseDatabase.getInstance();
+        myRef = database.getReference();
+        userID = user.getUid();
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+
+                // Retrieve Favorite Teams list
+                String receivedTeams = dataSnapshot.child(userID).child("Favorite Teams").getValue(String.class);
+                String[] teamsArr = receivedTeams.split(", ");
+
+                ArrayList<String> receivedList = new ArrayList<String>();
+
+                for(String s : teamsArr){
+                    receivedList.add(s);
+                }
+
+                // Set favorite_teams to respective ArrayList<String>
+                favorite_teams = receivedList;
+
+                Log.d("RETRIEVED TEAMS DATA", receivedTeams);
+                Log.d("CONVERTED TEAMS LIST", receivedList.toString());
+                Log.d("TEAMS LIST DATA", favorite_teams.toString());
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+                Log.w("ERROR", "Failed to read value.", error.toException());
+            }
+        });
+
 
         // Setup connection to API
         OkHttpClient client = new OkHttpClient();
@@ -86,6 +127,7 @@ public class teams extends menu {
                                     LinearLayout linearLayout = new LinearLayout(context);
                                     LinearLayout.LayoutParams linearlayout_layoutparams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
                                     linearLayout.setOrientation(LinearLayout.HORIZONTAL);
+                                    linearLayout.setId(i);
                                     linearLayout.setLayoutParams(linearlayout_layoutparams);
 
                                     linearLayout.setOnClickListener(new LinearLayout.OnClickListener() {
@@ -170,10 +212,10 @@ public class teams extends menu {
                                                 }
                                             }
                                             // Add code to save favorites list to firebase
-                                            mAuth = FirebaseAuth.getInstance();
+                                            auth = FirebaseAuth.getInstance();
                                             database = FirebaseDatabase.getInstance();
                                             myRef = database.getReference();
-                                            user = mAuth.getCurrentUser();
+                                            user = auth.getCurrentUser();
                                             String userID = user.getUid();
                                             String new_teams = favorite_teams.toString();
                                             new_teams = new_teams.replace("[", "");
@@ -215,7 +257,7 @@ public class teams extends menu {
 
         try {
             String team_info = data.getJSONArray("response").getJSONObject(num).toString();
-            Intent intent = new Intent(this, driver_info.class);
+            Intent intent = new Intent(this, team_info.class);
             Bundle bundle = new Bundle();
             bundle.putString("Team", team_info);
             intent.putExtras(bundle);
