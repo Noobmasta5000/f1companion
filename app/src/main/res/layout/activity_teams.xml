@@ -29,6 +29,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0"
+            android:background="?android:attr/colorPrimary"
             android:orientation="horizontal">
 
             <ImageView
@@ -37,7 +38,8 @@
                 android:layout_height="73dp"
                 android:layout_weight="1"
                 android:onClick="goto_drivers"
-                android:src="@drawable/helmet" />
+                android:src="@drawable/helmet"
+                android:tint="?attr/colorPrimaryVariant"/>
 
             <ImageView
                 android:id="@+id/track_nav"
@@ -45,7 +47,8 @@
                 android:layout_height="74dp"
                 android:layout_weight="1"
                 android:onClick="goto_tracks"
-                android:src="@drawable/track" />
+                android:src="@drawable/track"
+                android:tint="?attr/colorPrimaryVariant"/>
 
             <ImageView
                 android:id="@+id/team_nav"
@@ -53,7 +56,8 @@
                 android:layout_height="74dp"
                 android:layout_weight="1"
                 android:onClick="goto_teams"
-                android:src="@drawable/teams" />
+                android:src="@drawable/teams"
+                android:tint="?attr/colorPrimaryVariant"/>
         </LinearLayout>
     </LinearLayout>
 
