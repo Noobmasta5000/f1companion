@@ -81,7 +81,7 @@ public class menu extends AppCompatActivity {
             case R.id.logout:
                 // Firebase sign out code
                 FirebaseAuth.getInstance().signOut();
-                intent = new Intent(getApplicationContext(), login.class);
+                intent = new Intent(getApplicationContext(), Home.class);
                 startActivity(intent);
                 finish();
                 Toast.makeText(this, "Logout Successful", Toast.LENGTH_SHORT).show();
