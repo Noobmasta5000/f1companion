@@ -105,26 +105,22 @@ public class track_info extends menu {
                             try {
                                 // Set title to circuit name
                                 setTitle(data.getJSONArray("response").getJSONObject(matching_id).getJSONObject("competition").getString("name"));
-
                                 TextView textview;
+
                                 // Load track image
                                 String track_image_url = data.getJSONArray("response").getJSONObject(matching_id).getString("image");
                                 ImageView track_image = findViewById(R.id.track_image);
                                 Picasso.get().load(track_image_url).fit().into(track_image);
 
                                 // Load track name
-                                String track_name = " " +
-                                        data.getJSONArray("response").getJSONObject(matching_id).getJSONObject("competition").getString("name") +
-                                        "\n " +
-                                        data.getJSONArray("response").getJSONObject(matching_id).getString("name");
+                                String track_name = data.getJSONArray("response").getJSONObject(matching_id).getJSONObject("competition").getString("name")
+                                        + "\n" + data.getJSONArray("response").getJSONObject(matching_id).getString("name");
                                 textview = findViewById(R.id.track_name);
                                 textview.setText(track_name);
 
                                 // Load track location
-                                String track_location =
-                                        data.getJSONArray("response").getJSONObject(matching_id).getJSONObject("competition").getJSONObject("location").getString("city") +
-                                        ",\n" +
-                                        data.getJSONArray("response").getJSONObject(matching_id).getJSONObject("competition").getJSONObject("location").getString("country");
+                                String track_location = data.getJSONArray("response").getJSONObject(matching_id).getJSONObject("competition").getJSONObject("location").getString("city")
+                                        + ",\n" + data.getJSONArray("response").getJSONObject(matching_id).getJSONObject("competition").getJSONObject("location").getString("country");
                                 textview = findViewById(R.id.track_location);
                                 textview.setText(track_location);
 

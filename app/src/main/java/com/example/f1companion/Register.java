@@ -70,6 +70,7 @@ public class Register extends AppCompatActivity {
                                     myRef.child(userID);
                                     myRef.child(userID).child("Favorite Drivers").setValue("");
                                     myRef.child(userID).child("Favorite Teams").setValue("");
+                                    myRef.child(userID).child("Theme").setValue(Integer.toString(Utils.THEME_RED_BULL));
                                     Toast.makeText(Register.this, "Account created.",
                                             Toast.LENGTH_SHORT).show();
                                 } else {
