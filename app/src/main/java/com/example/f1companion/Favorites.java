@@ -69,12 +69,12 @@ public class Favorites extends menu {
         Utils.onActivityCreateSetTheme(this);
         setContentView(R.layout.activity_favorites);
 
+
         auth = FirebaseAuth.getInstance();
         user = auth.getCurrentUser();
         database = FirebaseDatabase.getInstance();
         myRef = database.getReference();
         userID = user.getUid();
-
 
 
         // Read from the database
@@ -116,6 +116,10 @@ public class Favorites extends menu {
                 Log.d("RETRIEVED TEAMS DATA", receivedTeams);
                 Log.d("CONVERTED TEAMS LIST", teamsList.toString());
                 Log.d("TEAMS LIST DATA", favorite_teams.toString());
+
+                // Retrieve theme
+                Utils.sTheme = Integer.parseInt(dataSnapshot.child(userID).child("Theme").getValue(String.class));
+                Log.d("THEME", Integer.toString(Utils.sTheme));
             }
 
             @Override
@@ -126,8 +130,6 @@ public class Favorites extends menu {
         });
 
         //Log.d("LIST DATA", favorite_drivers.toString());
-
-
 
 
         /*
@@ -142,14 +144,14 @@ public class Favorites extends menu {
         */
 
         // Setup connection to API
-        OkHttpClient client = new OkHttpClient();
-        Request request = new Request.Builder()
+        OkHttpClient client1 = new OkHttpClient();
+        Request request1 = new Request.Builder()
                 .url("https://api-formula-1.p.rapidapi.com/rankings/drivers?season=2023")
                 .get()
                 .addHeader("X-RapidAPI-Key", "0801c0f8camshbbda9eeceafe698p181139jsn5ca56dcbfb99")
                 .addHeader("X-RapidAPI-Host", "api-formula-1.p.rapidapi.com")
                 .build();
-        client.newCall(request).enqueue(new Callback() {
+        client1.newCall(request1).enqueue(new Callback() {
             @Override
             public void onFailure(@NonNull Call call, @NonNull IOException e) {
                 e.printStackTrace();
@@ -241,14 +243,14 @@ public class Favorites extends menu {
         });
 
         // Setup connection to API
-        client = new OkHttpClient();
-        request = new Request.Builder()
+        OkHttpClient client2 = new OkHttpClient();
+        Request request2 = new Request.Builder()
                 .url("https://api-formula-1.p.rapidapi.com/rankings/teams?season=2023")
                 .get()
                 .addHeader("X-RapidAPI-Key", "0801c0f8camshbbda9eeceafe698p181139jsn5ca56dcbfb99")
                 .addHeader("X-RapidAPI-Host", "api-formula-1.p.rapidapi.com")
                 .build();
-        client.newCall(request).enqueue(new Callback() {
+        client2.newCall(request2).enqueue(new Callback() {
             @Override
             public void onFailure(@NonNull Call call, @NonNull IOException e) {
                 e.printStackTrace();
