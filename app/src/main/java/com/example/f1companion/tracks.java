@@ -2,13 +2,19 @@ package com.example.f1companion;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.TypedValue;
+import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -62,23 +68,52 @@ public class tracks extends menu {
                             try {
                                 for (int i = 0; i < Integer.parseInt(data.getString("results")); i++)
                                 {
-                                    // Get id of profile pic imageview
-                                    String id = "profile_pic_" + i;
-                                    int resID = getResources().getIdentifier(id, "id", getPackageName());
-                                    ImageView track_pic = findViewById(resID);
+                                    Context context = getApplicationContext();
 
-                                    // Get id of basic track info textview
-                                    id = "basic_track_info_" + i;
-                                    resID = getResources().getIdentifier(id, "id", getPackageName());
-                                    TextView textView = findViewById(resID);
+                                    // Setup Linear Layout
+                                    LinearLayout linearLayout = new LinearLayout(context);
+                                    LinearLayout.LayoutParams linearlayout_layoutparams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+                                    linearLayout.setOrientation(LinearLayout.HORIZONTAL);
+                                    linearLayout.setId(i);
+                                    linearLayout.setLayoutParams(linearlayout_layoutparams);
 
-                                    // Get data from JSON and load into appropriate locations
-                                    String competition_name = data.getJSONArray("response").getJSONObject(i).getJSONObject("competition").getString("name");
-                                    String track_name = data.getJSONArray("response").getJSONObject(i).getJSONObject("circuit").getString("name");
+                                    linearLayout.setOnClickListener(new LinearLayout.OnClickListener() {
+                                        @Override
+                                        public void onClick(View view) {
+                                            goto_track_info(view);
+                                        }
+                                    });
 
+                                    // Setup track number
+                                    TextView track_number = new TextView(context);
+                                    ViewGroup.LayoutParams track_number_layoutparams = new ViewGroup.LayoutParams(192, 192);
+                                    track_number.setTextSize(TypedValue.COMPLEX_UNIT_PX,144);
+                                    track_number.setGravity(Gravity.CENTER);
+                                    track_number.setLayoutParams(track_number_layoutparams);
+                                    track_number.setText(Integer.toString(i+1));
+
+                                    // Setup track image
+                                    ImageView track_image = new ImageView(context);
+                                    ViewGroup.LayoutParams track_image_layoutparams = new ViewGroup.LayoutParams(340, 192);
+                                    track_image.setLayoutParams(track_image_layoutparams);
                                     String track_image_url = data.getJSONArray("response").getJSONObject(i).getJSONObject("circuit").getString("image");
-                                    textView.setText(competition_name + "\n" + track_name);
-                                    Picasso.get().load(track_image_url).fit().into(track_pic);
+                                    Picasso.get().load(track_image_url).fit().into(track_image);
+
+                                    // Setup track info
+                                    TextView track_info = new TextView(context);
+                                    ViewGroup.LayoutParams track_info_layoutparams = new ViewGroup.LayoutParams(548, ViewGroup.LayoutParams.MATCH_PARENT);
+                                    track_info.setGravity(Gravity.CENTER_VERTICAL);
+                                    track_info.setLayoutParams(track_info_layoutparams);
+                                    String track_name = data.getJSONArray("response").getJSONObject(i).getJSONObject("competition").getString("name")
+                                            + "\n" + data.getJSONArray("response").getJSONObject(i).getJSONObject("circuit").getString("name");
+                                    track_info.setText(track_name);
+
+                                    // Add views to linearlayout and scrollview
+                                    linearLayout.addView(track_number);
+                                    linearLayout.addView(track_image);
+                                    linearLayout.addView(track_info);
+                                    LinearLayout ll = findViewById(R.id.track_list);
+                                    ll.addView(linearLayout);
                                 }
                             } catch (JSONException e) {
                                 e.printStackTrace();
