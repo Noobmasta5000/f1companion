@@ -31,6 +31,14 @@ public class track_info extends menu {
     private String id;
     private int matching_id;
 
+    // Weather API stuff
+    private String city;
+    private static final String API_KEY = "3cf9e8a57fe2dd27dfaab5dfdd1af28d";
+    //private static final String BASE_URL = "https://api.openweathermap.org/data/2.5/weather?q=London&appid=" + API_KEY;
+    private static final String BASE_URL = "https://api.openweathermap.org/data/2.5/weather?q=%s&appid=%s";
+    private TextView temperatureTextView;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,6 +52,9 @@ public class track_info extends menu {
             id = data.getJSONObject("competition").getString("id");
             TextView textview;
             Log.d("ID", id);
+
+            city = data.getJSONObject("competition").getJSONObject("location").getString("city");
+            Log.d("CITY", city);
 
             // Load track fastest lap this season
             String track_lap_record_season_time = data.getJSONObject("fastest_lap").getString("time");
@@ -74,6 +85,7 @@ public class track_info extends menu {
                 .addHeader("X-RapidAPI-Key", "0801c0f8camshbbda9eeceafe698p181139jsn5ca56dcbfb99")
                 .addHeader("X-RapidAPI-Host", "api-formula-1.p.rapidapi.com")
                 .build();
+
         client.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(@NonNull Call call, @NonNull IOException e) {
@@ -124,6 +136,11 @@ public class track_info extends menu {
                                 textview = findViewById(R.id.track_location);
                                 textview.setText(track_location);
 
+                                //////////////////////////////////
+                                //Get name of city for WeatherAPI
+                                //city = data.getJSONArray("response").getJSONObject(matching_id).getJSONObject("competition").getJSONObject("location").getString("city");
+                                //Log.d("CITY", city);
+
                                 // Load race length
                                 String track_total_length = data.getJSONArray("response").getJSONObject(matching_id).getString("race_distance");
                                 textview = findViewById(R.id.track_total_length);
@@ -164,7 +181,67 @@ public class track_info extends menu {
                 }
             }
         });
+
+
+        ///////////////////////////////////////////////////////////////////////////////////////////////
+        // Weather API stuff
+        temperatureTextView = findViewById(R.id.temperatureTextView);
+
+        // Testing city
+        //String cityName = "New York";
+        String cityName = city;
+        //Log.d("CITY2", city);
+        Log.d("CITY NAME", cityName);
+        String url = String.format(BASE_URL, cityName, API_KEY);
+
+        // Request http client
+        OkHttpClient client2 = new OkHttpClient();
+        Request request2 = new Request.Builder()
+                //.url(BASE_URL)
+                .url(url)
+                .build();
+
+        client2.newCall(request2).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                // handle network error
+                Log.e("MainActivity", "API request failed", e);
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                if (!response.isSuccessful()) {
+                    // handle API error
+                    return;
+                }
+                Log.d("CITY2", city);
+                String responseBody = response.body().string();
+
+                //function call
+                float temperature = parseTemperatureFromResponse(responseBody);
+
+                runOnUiThread(() -> temperatureTextView.setText(String.format("%.1f°C", temperature)));
+            }
+        });
+        /////////////////////////////////////////////////////////////////////////////////////////////////
+
+
     }
+
+    /////////////////////////////////////////////////////////////////////////////////////////////////
+    // Function for Weather API
+    private float parseTemperatureFromResponse(String responseBody) {
+        try {
+            JSONObject jsonObject = new JSONObject(responseBody);
+            JSONObject mainJsonObject = jsonObject.getJSONObject("main");
+            float temperatureKelvin = (float) mainJsonObject.getDouble("temp");
+            return temperatureKelvin - 273.15f; // convert from Kelvin to Celsius
+        } catch (JSONException e) {
+            e.printStackTrace();
+            return Float.NaN;
+        }
+    }
+    /////////////////////////////////////////////////////////////////////////////////////////////////
 
     public void goto_track_map(View view) {
         Intent intent = new Intent(this, track_map.class);
