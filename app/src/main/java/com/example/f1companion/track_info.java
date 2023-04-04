@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.w3c.dom.Text;
@@ -37,6 +38,7 @@ public class track_info extends menu {
     //private static final String BASE_URL = "https://api.openweathermap.org/data/2.5/weather?q=London&appid=" + API_KEY;
     private static final String BASE_URL = "https://api.openweathermap.org/data/2.5/weather?q=%s&appid=%s";
     private TextView temperatureTextView;
+    private ImageView weatherImageView;
 
 
     @Override
@@ -141,6 +143,7 @@ public class track_info extends menu {
                                 //city = data.getJSONArray("response").getJSONObject(matching_id).getJSONObject("competition").getJSONObject("location").getString("city");
                                 //Log.d("CITY", city);
 
+
                                 // Load race length
                                 String track_total_length = data.getJSONArray("response").getJSONObject(matching_id).getString("race_distance");
                                 textview = findViewById(R.id.track_total_length);
@@ -186,6 +189,7 @@ public class track_info extends menu {
         ///////////////////////////////////////////////////////////////////////////////////////////////
         // Weather API stuff
         temperatureTextView = findViewById(R.id.temperatureTextView);
+        weatherImageView = findViewById(R.id.weatherImageView);
 
         // Testing city
         //String cityName = "New York";
@@ -214,31 +218,87 @@ public class track_info extends menu {
                     // handle API error
                     return;
                 }
-                Log.d("CITY2", city);
-                String responseBody = response.body().string();
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Log.d("CITY2", city);
+                        String responseBody = null;
+                        try {
+                            responseBody = response.body().string();
+                            Log.d("RESPONSE BODY", responseBody);
+                            // Weather Icon function
+                            //String iconUrl = parseWeatherIconFromResponse(responseBody);
+                            //Log.d("ICON URL", iconUrl);
 
-                //function call
-                float temperature = parseTemperatureFromResponse(responseBody);
+                            // Picasso, Image fetch via URL did not work...downloading the images was the only option
+                            String iconCode = "a" + parseWeatherIconFromResponse(responseBody);
+                            Log.d("ICON CODE", iconCode);
+                            weatherImageView.setImageDrawable(getApplicationContext().getResources().getDrawable(getApplicationContext().getResources().getIdentifier(iconCode,
+                                    "drawable", getApplicationContext().getPackageName())));
 
-                runOnUiThread(() -> temperatureTextView.setText(String.format("%.1f°C", temperature)));
+
+                            // Function call for temperature and display temperature on UI
+                            float temperature = parseTemperatureFromResponse(responseBody);
+                            temperatureTextView.setText(String.format("%.1f°C", temperature));
+
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                });
             }
         });
+
         /////////////////////////////////////////////////////////////////////////////////////////////////
 
 
     }
 
     /////////////////////////////////////////////////////////////////////////////////////////////////
-    // Function for Weather API
+    // Temperature Function for Weather API
     private float parseTemperatureFromResponse(String responseBody) {
         try {
+
+            // Get temperature
             JSONObject jsonObject = new JSONObject(responseBody);
             JSONObject mainJsonObject = jsonObject.getJSONObject("main");
             float temperatureKelvin = (float) mainJsonObject.getDouble("temp");
             return temperatureKelvin - 273.15f; // convert from Kelvin to Celsius
+
+
         } catch (JSONException e) {
             e.printStackTrace();
             return Float.NaN;
+        }
+    }
+
+    // Weather Icon Function for Weather API
+    private String parseWeatherIconFromResponse(String responseBody) {
+        try {
+
+            JSONObject jsonObject = new JSONObject(responseBody);
+
+            // Get the weather array from the API response
+            JSONArray weatherArray = jsonObject.getJSONArray("weather");
+
+            // Get the first object in the weather array
+            JSONObject weatherObject = weatherArray.getJSONObject(0);
+
+            // Extract the weather condition ID from the weather object
+            String iconCode = weatherObject.getString("icon");
+
+            // Use the iconCode to get the appropriate weather icon URL
+            Log.d("ICON CODE", iconCode);
+            String iconUrl = "http://openweathermap.org/img/w/" + iconCode + ".png";
+
+            //return iconUrl;
+            return iconCode;
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+            String failed_icon = "http://openweathermap.org/img/w/01d.png";
+            return failed_icon;
         }
     }
     /////////////////////////////////////////////////////////////////////////////////////////////////

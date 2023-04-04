@@ -1,0 +1,212 @@
+Index: app/src/main/java/com/example/f1companion/Favorites.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.f1companion;\r\n\r\nimport androidx.annotation.NonNull;\r\nimport androidx.appcompat.app.ActionBar;\r\nimport androidx.appcompat.app.AppCompatActivity;\r\n\r\nimport android.content.Intent;\r\nimport android.os.Bundle;\r\nimport android.view.Menu;\r\nimport android.view.MenuItem;\r\nimport android.view.View;\r\nimport android.widget.Button;\r\nimport android.widget.TextView;\r\nimport android.widget.Toast;\r\n\r\nimport com.google.firebase.auth.FirebaseAuth;\r\nimport com.google.firebase.auth.FirebaseUser;\r\n\r\npublic class Favorites extends AppCompatActivity {\r\n\r\n    FirebaseAuth auth;\r\n    Button button;\r\n    TextView textView;\r\n    FirebaseUser user;\r\n    @Override\r\n    protected void onCreate(Bundle savedInstanceState) {\r\n        super.onCreate(savedInstanceState);\r\n        setContentView(R.layout.activity_favorites);\r\n\r\n        // calling this activity's function to\r\n        // use ActionBar utility methods\r\n        ActionBar actionBar = getSupportActionBar();\r\n\r\n        // adding icon in the ActionBar\r\n        // actionBar.setIcon(R.drawable.app_logo);\r\n\r\n        // methods to display the icon in the ActionBar\r\n        actionBar.setDisplayUseLogoEnabled(true);\r\n        actionBar.setDisplayShowHomeEnabled(true);\r\n\r\n        auth = FirebaseAuth.getInstance();\r\n        user = auth.getCurrentUser();\r\n\r\n        /*\r\n        if(user == null){\r\n            Intent intent = new Intent(getApplicationContext(), login.class);\r\n            startActivity(intent);\r\n            finish();\r\n        }\r\n        else{\r\n            textView.setText(user.getEmail());\r\n        }\r\n        */\r\n\r\n    }\r\n\r\n    // method to inflate the options menu when\r\n    // the user opens the menu for the first time\r\n    @Override\r\n    public boolean onCreateOptionsMenu( Menu menu ) {\r\n\r\n        getMenuInflater().inflate(R.menu.main, menu);\r\n        return super.onCreateOptionsMenu(menu);\r\n    }\r\n\r\n    // methods to control the operations that will\r\n    // happen when user clicks on the action buttons\r\n    @Override\r\n    public boolean onOptionsItemSelected( @NonNull MenuItem item ) {\r\n\r\n        switch (item.getItemId()){\r\n            case R.id.settings:\r\n                Toast.makeText(this, \"Settings Clicked\", Toast.LENGTH_SHORT).show();\r\n                break;\r\n            case R.id.logout:\r\n                // Firebase sign out code\r\n                FirebaseAuth.getInstance().signOut();\r\n                Intent intent = new Intent(getApplicationContext(), login.class);\r\n                startActivity(intent);\r\n                finish();\r\n                Toast.makeText(this, \"Logout Successful\", Toast.LENGTH_SHORT).show();\r\n                break;\r\n        }\r\n        return super.onOptionsItemSelected(item);\r\n    }\r\n\r\n    public void goto_drivers(View view) {\r\n        Intent intent = new Intent(this, drivers.class);\r\n        startActivity(intent);\r\n    }\r\n\r\n    public void goto_teams(View view) {\r\n        Intent intent = new Intent(this, teams.class);\r\n        startActivity(intent);\r\n    }\r\n\r\n    public void goto_tracks(View view) {\r\n        Intent intent = new Intent(this, tracks.class);\r\n        startActivity(intent);\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/f1companion/Favorites.java b/app/src/main/java/com/example/f1companion/Favorites.java
+--- a/app/src/main/java/com/example/f1companion/Favorites.java	
++++ b/app/src/main/java/com/example/f1companion/Favorites.java	
+@@ -6,6 +6,7 @@
+ 
+ import android.content.Intent;
+ import android.os.Bundle;
++import android.util.Log;
+ import android.view.Menu;
+ import android.view.MenuItem;
+ import android.view.View;
+@@ -15,6 +16,16 @@
+ 
+ import com.google.firebase.auth.FirebaseAuth;
+ import com.google.firebase.auth.FirebaseUser;
++import com.google.firebase.auth.UserInfo;
++import com.google.firebase.database.DataSnapshot;
++import com.google.firebase.database.DatabaseError;
++import com.google.firebase.database.DatabaseReference;
++import com.google.firebase.database.FirebaseDatabase;
++import com.google.firebase.database.ValueEventListener;
++
++import java.util.ArrayList;
++import java.util.Arrays;
++import java.util.List;
+ 
+ public class Favorites extends AppCompatActivity {
+ 
+@@ -22,6 +33,11 @@
+     Button button;
+     TextView textView;
+     FirebaseUser user;
++    FirebaseDatabase database;
++    DatabaseReference myParent;
++    DatabaseReference myRef;
++    List<String> favoritesList;
++
+     @Override
+     protected void onCreate(Bundle savedInstanceState) {
+         super.onCreate(savedInstanceState);
+@@ -40,6 +56,39 @@
+ 
+         auth = FirebaseAuth.getInstance();
+         user = auth.getCurrentUser();
++        database = FirebaseDatabase.getInstance();
++        String userID = user.getUid();
++        myRef = FirebaseDatabase.getInstance().getReference().child(userID).child("Favorite Drivers");
++
++
++        /*
++        // Read from the database
++        myRef.addValueEventListener(new ValueEventListener() {
++            @Override
++            public void onDataChange(DataSnapshot dataSnapshot) {
++                // This method is called once with the initial value and again
++                // whenever data at this location is updated.
++                /*
++                String drivers = dataSnapshot.getValue(String.class);
++                //Convert String into List
++                favoritesList = Arrays.asList(drivers.split(","));
++
++                Log.d("SAVED FAVORITES LIST:", favoritesList.toString());
++            }
++
++            @Override
++            public void onCancelled(DatabaseError error) {
++                // Failed to read value
++                Toast.makeText(Favorites.this, "Failed to retrieve data", Toast.LENGTH_SHORT).show();
++            }
++        });
++        */
++
++
++
++
++
++
+ 
+         /*
+         if(user == null){
+@@ -98,4 +147,6 @@
+         Intent intent = new Intent(this, tracks.class);
+         startActivity(intent);
+     }
++
++
+ }
+\ No newline at end of file
+Index: app/src/main/java/com/example/f1companion/drivers.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.f1companion;\r\n\r\nimport androidx.annotation.NonNull;\r\nimport androidx.appcompat.app.AppCompatActivity;\r\n\r\nimport android.content.Intent;\r\nimport android.os.Bundle;\r\nimport android.util.Log;\r\nimport android.view.View;\r\nimport android.widget.Button;\r\nimport android.widget.CheckBox;\r\nimport android.widget.ImageView;\r\nimport android.widget.LinearLayout;\r\nimport android.widget.TextView;\r\nimport android.widget.Toast;\r\n\r\nimport com.squareup.picasso.Picasso;\r\n\r\nimport org.json.JSONException;\r\nimport org.json.JSONObject;\r\n\r\nimport java.io.IOException;\r\nimport java.util.ArrayList;\r\nimport java.util.List;\r\n\r\nimport okhttp3.Call;\r\nimport okhttp3.Callback;\r\nimport okhttp3.OkHttpClient;\r\nimport okhttp3.Request;\r\nimport okhttp3.Response;\r\n\r\npublic class drivers extends AppCompatActivity implements View.OnClickListener {\r\n    static JSONObject data = new JSONObject();\r\n    static List<String> favorite_drivers = new ArrayList<String>();\r\n\r\n    @Override\r\n    protected void onCreate(Bundle savedInstanceState) {\r\n        super.onCreate(savedInstanceState);\r\n        setContentView(R.layout.activity_drivers);\r\n\r\n        // Setup connection to API\r\n        OkHttpClient client = new OkHttpClient();\r\n        Request request = new Request.Builder()\r\n                .url(\"https://api-formula-1.p.rapidapi.com/rankings/drivers?season=2023\")\r\n                .get()\r\n                .addHeader(\"X-RapidAPI-Key\", \"0801c0f8camshbbda9eeceafe698p181139jsn5ca56dcbfb99\")\r\n                .addHeader(\"X-RapidAPI-Host\", \"api-formula-1.p.rapidapi.com\")\r\n                .build();\r\n        client.newCall(request).enqueue(new Callback() {\r\n            @Override\r\n            public void onFailure(@NonNull Call call, @NonNull IOException e) {\r\n                e.printStackTrace();\r\n                Log.d(\"MESSAGE\", \"FAILURE\");\r\n            }\r\n\r\n            @Override\r\n            public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {\r\n                try {\r\n                    data = new JSONObject(response.body().string());\r\n                    runOnUiThread(new Runnable() {\r\n                        @Override\r\n                        public void run() {\r\n                            try {\r\n                                for (int i = 0; i < Integer.parseInt(data.getString(\"results\")); i++) {\r\n                                    try {\r\n                                        //Get id of profile pic imageview\r\n                                        String id = \"profile_pic_\" + i;\r\n                                        int resID = getResources().getIdentifier(id, \"id\", getPackageName());\r\n                                        ImageView profile_pic = findViewById(resID);\r\n\r\n                                        //Get id of basic driver info\r\n                                        id = \"basic_driver_info_\" + i;\r\n                                        resID = getResources().getIdentifier(id, \"id\", getPackageName());\r\n                                        TextView textView = findViewById(resID);\r\n\r\n                                        //Get data from JSON and load into appropriate locations\r\n                                        String driver_name = data.getJSONArray(\"response\").getJSONObject(i).getJSONObject(\"driver\").getString(\"name\");\r\n                                        String driver_team = data.getJSONArray(\"response\").getJSONObject(i).getJSONObject(\"team\").getString(\"name\");\r\n                                        String driver_points = data.getJSONArray(\"response\").getJSONObject(i).getString(\"points\");\r\n                                        if (driver_points == \"null\")\r\n                                            driver_points = \"0\";\r\n                                        String driver_image_url = data.getJSONArray(\"response\").getJSONObject(i).getJSONObject(\"driver\").getString(\"image\");\r\n                                        textView.setText(driver_name + \"\\n\" + driver_team + \"\\n\" + driver_points + \" pts\");\r\n                                        Picasso.get().load(driver_image_url).fit().into(profile_pic);\r\n                                    } catch (JSONException e) {\r\n                                        e.printStackTrace();\r\n                                    }\r\n                                }\r\n                            } catch (JSONException e) {\r\n                                e.printStackTrace();\r\n                            }\r\n                        }\r\n                    });\r\n                } catch (JSONException e) {\r\n                    e.printStackTrace();\r\n                }\r\n            }\r\n        });\r\n    }\r\n\r\n    @Override\r\n    public void onClick(View view) {\r\n\r\n        CheckBox cb = (CheckBox) view;\r\n        int num = Integer.parseInt(getResources().getResourceEntryName(view.getId()).replace(\"favorite_\",\"\"));\r\n\r\n        if(cb.isChecked()) {\r\n            try {\r\n                favorite_drivers.add(data.getJSONArray(\"response\").getJSONObject(num).getJSONObject(\"driver\").getString(\"id\"));\r\n                cb.setBackgroundResource(R.drawable.ic_baseline_favorite_24);\r\n                Toast.makeText(this, \"Added \" + data.getJSONArray(\"response\").getJSONObject(num).getJSONObject(\"driver\").getString(\"name\") + \" to favorites\", Toast.LENGTH_SHORT).show();\r\n                Log.d(\"FAVORITES\",favorite_drivers.toString());\r\n            } catch (JSONException e) {\r\n                e.printStackTrace();\r\n            }\r\n        } else {\r\n            try {\r\n                String id = data.getJSONArray(\"response\").getJSONObject(num).getJSONObject(\"driver\").getString(\"id\");\r\n                favorite_drivers.remove(id);\r\n                cb.setBackgroundResource(R.drawable.ic_baseline_favorite_border_24);\r\n                Toast.makeText(this, \"Removed \" + data.getJSONArray(\"response\").getJSONObject(num).getJSONObject(\"driver\").getString(\"name\")+ \" from favorites\", Toast.LENGTH_SHORT).show();\r\n                Log.d(\"FAVORITES\",favorite_drivers.toString());\r\n            } catch (JSONException e) {\r\n                e.printStackTrace();\r\n            }\r\n        }\r\n\r\n        // Add code to save favorites list to firebase\r\n\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/f1companion/drivers.java b/app/src/main/java/com/example/f1companion/drivers.java
+--- a/app/src/main/java/com/example/f1companion/drivers.java	
++++ b/app/src/main/java/com/example/f1companion/drivers.java	
+@@ -14,6 +14,10 @@
+ import android.widget.TextView;
+ import android.widget.Toast;
+ 
++import com.google.firebase.auth.FirebaseAuth;
++import com.google.firebase.auth.FirebaseUser;
++import com.google.firebase.database.DatabaseReference;
++import com.google.firebase.database.FirebaseDatabase;
+ import com.squareup.picasso.Picasso;
+ 
+ import org.json.JSONException;
+@@ -33,11 +37,25 @@
+     static JSONObject data = new JSONObject();
+     static List<String> favorite_drivers = new ArrayList<String>();
+ 
++    // firebase stuff
++    FirebaseDatabase database;
++    FirebaseUser user;
++    FirebaseAuth mAuth;
++    FirebaseAuth.AuthStateListener mAuthListener;
++    DatabaseReference myRef;
++
++
+     @Override
+     protected void onCreate(Bundle savedInstanceState) {
+         super.onCreate(savedInstanceState);
+         setContentView(R.layout.activity_drivers);
+ 
++        //declare firebase variables
++        mAuth = FirebaseAuth.getInstance();
++        database = FirebaseDatabase.getInstance();
++        myRef = database.getReference();
++        user = mAuth.getCurrentUser();
++
+         // Setup connection to API
+         OkHttpClient client = new OkHttpClient();
+         Request request = new Request.Builder()
+@@ -101,6 +119,8 @@
+     @Override
+     public void onClick(View view) {
+ 
++
++
+         CheckBox cb = (CheckBox) view;
+         int num = Integer.parseInt(getResources().getResourceEntryName(view.getId()).replace("favorite_",""));
+ 
+@@ -125,7 +145,21 @@
+             }
+         }
+ 
++
+         // Add code to save favorites list to firebase
++        // Get Firebase database instance. Gets Userid and stores String of favorites_drivers into child of users database
++        String userID = user.getUid();
++        String newDriver = favorite_drivers.toString();
++        //Cant have [] when sending to database
++        //newDriver = newDriver.replace("[","");
++        //newDriver = newDriver.replace("]","");
++        Log.d("USER ID",userID);
++        Log.d("nFAVORITES",newDriver);
++        // Sending string
++        myRef.child(userID).child("Favorite Drivers").removeValue();
++        myRef.child(userID).child("Favorite Drivers").child(newDriver).setValue("true");
++        Toast.makeText(this, "Added driver to database", Toast.LENGTH_SHORT).show();
+ 
+     }
++
+ }
+\ No newline at end of file
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ExternalStorageConfigurationManager\" enabled=\"true\" />\r\n  <component name=\"ProjectRootManager\" version=\"2\" languageLevel=\"JDK_17_PREVIEW\" project-jdk-name=\"17\" project-jdk-type=\"JavaSDK\">\r\n    <output url=\"file://$PROJECT_DIR$/build/classes\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/misc.xml b/.idea/misc.xml
+--- a/.idea/misc.xml	
++++ b/.idea/misc.xml	
+@@ -1,7 +1,7 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
+   <component name="ExternalStorageConfigurationManager" enabled="true" />
+-  <component name="ProjectRootManager" version="2" languageLevel="JDK_17_PREVIEW" project-jdk-name="17" project-jdk-type="JavaSDK">
++  <component name="ProjectRootManager" version="2" languageLevel="JDK_17" project-jdk-name="17" project-jdk-type="JavaSDK">
+     <output url="file://$PROJECT_DIR$/build/classes" />
+   </component>
+ </project>
+\ No newline at end of file
+Index: app/build.gradle
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>plugins {\r\n    id 'com.android.application'\r\n    id 'com.google.gms.google-services'\r\n    id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'\r\n}\r\n\r\nandroid {\r\n    namespace 'com.example.f1companion'\r\n    compileSdk 33\r\n\r\n    defaultConfig {\r\n        applicationId \"com.example.f1companion\"\r\n        minSdk 29\r\n        targetSdk 33\r\n        versionCode 1\r\n        versionName \"1.0\"\r\n\r\n        testInstrumentationRunner \"androidx.test.runner.AndroidJUnitRunner\"\r\n    }\r\n\r\n    buildTypes {\r\n        release {\r\n            minifyEnabled false\r\n            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'\r\n        }\r\n    }\r\n    compileOptions {\r\n        sourceCompatibility JavaVersion.VERSION_1_8\r\n        targetCompatibility JavaVersion.VERSION_1_8\r\n    }\r\n    buildFeatures {\r\n        viewBinding true\r\n    }\r\n}\r\n\r\ndependencies {\r\n\r\n    implementation 'androidx.appcompat:appcompat:1.6.1'\r\n    implementation 'com.google.android.material:material:1.8.0'\r\n    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'\r\n    implementation \"com.squareup.okhttp3:okhttp:4.10.0\"\r\n    implementation 'com.squareup.picasso:picasso:2.8'\r\n    implementation 'com.google.firebase:firebase-auth-ktx:21.1.0'\r\n    implementation 'com.google.android.gms:play-services-maps:18.1.0'\r\n    testImplementation 'junit:junit:4.13.2'\r\n    androidTestImplementation 'androidx.test.ext:junit:1.1.5'\r\n    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/build.gradle b/app/build.gradle
+--- a/app/build.gradle	
++++ b/app/build.gradle	
+@@ -42,6 +42,7 @@
+     implementation 'com.squareup.picasso:picasso:2.8'
+     implementation 'com.google.firebase:firebase-auth-ktx:21.1.0'
+     implementation 'com.google.android.gms:play-services-maps:18.1.0'
++    implementation 'com.google.firebase:firebase-database:20.1.0'
+     testImplementation 'junit:junit:4.13.2'
+     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
