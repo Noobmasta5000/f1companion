@@ -76,7 +76,7 @@
                 android:layout_weight="1"
                 android:onClick="goto_drivers"
                 android:src="@drawable/helmet"
-                app:tint="?android:attr/colorSecondary"/>
+                android:tint="?attr/colorPrimaryVariant"/>
 
             <ImageView
                 android:id="@+id/track_nav"
@@ -85,7 +85,7 @@
                 android:layout_weight="1"
                 android:onClick="goto_tracks"
                 android:src="@drawable/track"
-                app:tint="?android:attr/colorSecondary"/>
+                android:tint="?attr/colorPrimaryVariant"/>
 
             <ImageView
                 android:id="@+id/team_nav"
@@ -94,7 +94,7 @@
                 android:layout_weight="1"
                 android:onClick="goto_teams"
                 android:src="@drawable/teams"
-                app:tint="?android:attr/colorSecondary"/>
+                android:tint="?attr/colorPrimaryVariant"/>
         </LinearLayout>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
