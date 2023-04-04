@@ -129,7 +129,7 @@ public class tracks extends menu {
 
     public void goto_track_info(View view) {
 
-        int num = Integer.parseInt(getResources().getResourceEntryName(view.getId()).replace("track_",""));
+        int num = view.getId();
 
         try {
             String track_info = data.getJSONArray("response").getJSONObject(num).toString();

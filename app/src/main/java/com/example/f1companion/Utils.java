@@ -4,7 +4,11 @@ package com.example.f1companion;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.PorterDuffColorFilter;
+import android.graphics.drawable.Drawable;
 import android.util.Log;
+
+import androidx.core.content.ContextCompat;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
