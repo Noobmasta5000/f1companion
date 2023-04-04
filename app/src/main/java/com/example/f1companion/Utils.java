@@ -4,10 +4,33 @@ package com.example.f1companion;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.PorterDuffColorFilter;
+import android.graphics.drawable.Drawable;
+import android.util.Log;
+
+import androidx.core.content.ContextCompat;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+
 public class Utils
 {
-    private static int sTheme;
+    // Add code to save theme choice
+    private static FirebaseAuth auth = FirebaseAuth.getInstance();
+    private static FirebaseDatabase database = FirebaseDatabase.getInstance();
+    private static DatabaseReference myRef = database.getReference();
+    private static FirebaseUser user = auth.getCurrentUser();
+    private static String userID = user.getUid();
 
+    static int sTheme;
+    private final static int UNDEFINED = 0;
     public final static int THEME_ALFA_ROMEO = 1;
     public final static int THEME_ALPHA_TAURI = 2;
     public final static int THEME_ALPINE = 3;
@@ -23,6 +46,10 @@ public class Utils
      */
     public static void changeToTheme(Activity activity, int theme)
     {
+        //myRef.setValue(Theme);
+        myRef.child(userID).child("Theme").setValue(Integer.toString(theme));
+
+        // Change app theme to selected theme
         sTheme = theme;
         activity.recreate();
     }
@@ -32,6 +59,30 @@ public class Utils
         switch (sTheme)
         {
             default:
+                activity.setTheme(R.style.Theme_F1companion);
+                break;
+            case UNDEFINED:
+                // Read from the database
+                myRef.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        // This method is called once with the initial value and again
+                        // whenever data at this location is updated.
+
+                        // Retrieve theme
+                        int theme = Integer.parseInt(dataSnapshot.child(userID).child("Theme").getValue(String.class));
+                        activity.setTheme(theme);
+                        activity.recreate();
+                        Log.d("THEME", Integer.toString(Utils.sTheme));
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError error) {
+                        // Failed to read value
+                        Log.w("ERROR", "Failed to read value.", error.toException());
+                    }
+                });
+                break;
             case THEME_ALFA_ROMEO:
                 activity.setTheme(R.style.alfaromeo);
                 break;
