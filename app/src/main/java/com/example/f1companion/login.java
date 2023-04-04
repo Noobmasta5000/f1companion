@@ -50,10 +50,6 @@ public class login extends AppCompatActivity {
     EditText editTextEmail, editTextPassword;
     Button buttonLogin;
     FirebaseAuth auth;
-    FirebaseUser user;
-    FirebaseDatabase database;
-    DatabaseReference myRef;
-    String userID;
 
 
     // ZACHS CODE//
@@ -78,10 +74,6 @@ public class login extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         auth = FirebaseAuth.getInstance();
-        user = auth.getCurrentUser();
-        database = FirebaseDatabase.getInstance();
-        myRef = database.getReference();
-        userID = user.getUid();
         editTextEmail = findViewById(R.id.email);
         editTextPassword = findViewById(R.id.password);
         buttonLogin = findViewById(R.id.btn_login);
