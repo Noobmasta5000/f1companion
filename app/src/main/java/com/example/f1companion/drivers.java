@@ -213,6 +213,7 @@ public class drivers extends menu {
                                                         throw new RuntimeException(e);
                                                     }
                                                 }
+
                                                 // Add code to save favorites list to firebase
                                                 auth = FirebaseAuth.getInstance();
                                                 database = FirebaseDatabase.getInstance();
@@ -229,8 +230,6 @@ public class drivers extends menu {
                                                 Log.d("USER ID", userID);
                                                 Log.d("FAVORITES",favorite_drivers.toString());
                                                 Log.d("new drivers",new_drivers);
-
-
                                             }
                                         });
 
